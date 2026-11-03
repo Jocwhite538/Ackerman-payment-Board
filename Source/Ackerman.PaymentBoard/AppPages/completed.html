@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Completed patients for the Ackerman Patient Payment Board.">
+  <link rel="icon" href="data:,">
+  <script>
+    (() => {
+      try {
+        const savedTheme = localStorage.getItem("ackermanColorTheme");
+        if (savedTheme === "dark") {
+          document.documentElement.dataset.theme = "dark";
+          document.documentElement.style.colorScheme = "dark";
+        }
+      } catch (_) {}
+    })();
+  </script>
+  <title>Ackerman Completed Patients</title>
+  <link rel="stylesheet" href="/assets/styles.css?v=3.3.0">
+  <script src="/assets/theme.js?v=3.3.0" defer></script>
+  <script src="/assets/patient-merge.js?v=3.3.0"></script>
+  <script src="/assets/server-bridge.js?v=3.3.0"></script>
+  <script src="/assets/data.js?v=3.3.0" defer></script>
+  <script src="/assets/documents.js?v=3.3.0" defer></script>
+  <script src="/assets/excel-export.js?v=3.3.0" defer></script>
+  <script src="/assets/completed.js?v=3.3.0" defer></script>
+</head>
+<body>
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="brand">
+        <h1>Ackerman Patient Payment Board</h1>
+        <p>Finance ↔ Front Desk payment communication</p>
+      </div>
+      <nav class="app-nav" aria-label="Application pages">
+        <a href="/app">Payment Board</a>
+        <a href="/app/analytics">Statistical Analysis</a>
+        <a class="active" href="/app/completed" aria-current="page">Completed Patients</a>
+      </nav>
+      <div class="header-tools">
+        <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to dark mode" title="Switch to dark mode">
+          <span class="theme-toggle-icon" data-theme-icon aria-hidden="true">☾</span>
+          <span data-theme-label>Dark</span>
+        </button>
+        <div class="demo-chip">INTERNAL USE ONLY</div>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <div class="page-heading">
+      <div>
+        <h2>Completed Patients</h2>
+        <p>A separate archive of completed accounts, sortable by completion day, treatment site, treatment type, and financial result.</p>
+      </div>
+    </div>
+
+    <div class="notice">
+      <strong>Internal application:</strong> completed accounts and documents use shared server-side storage available to authorized users.
+    </div>
+
+    <section class="summary-grid summary-grid-five" aria-label="Completed patient summary">
+      <article class="summary-card">
+        <div class="summary-label">Completed Patients</div>
+        <div class="summary-value" id="completedCount">0</div>
+        <div class="summary-subtext">All archived records</div>
+      </article>
+      <article class="summary-card">
+        <div class="summary-label">Completed Today</div>
+        <div class="summary-value" id="completedToday">0</div>
+        <div class="summary-subtext" id="completedTodayAmount">$0 collected</div>
+      </article>
+      <article class="summary-card">
+        <div class="summary-label">Completed This Month</div>
+        <div class="summary-value" id="completedMonth">0</div>
+        <div class="summary-subtext" id="completedMonthAmount">$0 collected</div>
+      </article>
+      <article class="summary-card">
+        <div class="summary-label">Collected on Completed</div>
+        <div class="summary-value" id="completedCollected">$0</div>
+        <div class="summary-subtext">Across archived accounts</div>
+      </article>
+      <article class="summary-card">
+        <div class="summary-label">Completed Payment Plans</div>
+        <div class="summary-value" id="completedPlans">0</div>
+        <div class="summary-subtext" id="completedPlanRate">0% on-time installment rate</div>
+      </article>
+    </section>
+
+    <section class="workspace" aria-labelledby="completedQueueHeading">
+      <div class="toolbar completed-toolbar">
+        <div class="completed-filter-grid">
+          <div class="field">
+            <label for="completedSearch">Search</label>
+            <input id="completedSearch" type="search" autocomplete="off" placeholder="Patient, MRN, treatment, or insurance">
+          </div>
+          <div class="field">
+            <label for="completedFromDate">Completed from</label>
+            <input id="completedFromDate" type="date">
+          </div>
+          <div class="field">
+            <label for="completedToDate">Completed through</label>
+            <input id="completedToDate" type="date">
+          </div>
+          <div class="field">
+            <label for="completedLocationFilter">Treatment site</label>
+            <select id="completedLocationFilter"><option value="all">All sites</option></select>
+          </div>
+          <div class="field">
+            <label for="completedTreatmentFilter">Treatment type</label>
+            <select id="completedTreatmentFilter"><option value="all">All treatments</option></select>
+          </div>
+          <div class="field">
+            <label for="completedStatusFilter">Completion type</label>
+            <select id="completedStatusFilter">
+              <option value="all">All completed</option>
+              <option value="Paid in Full">Paid in Full</option>
+              <option value="No Responsibility">No Responsibility</option>
+              <option value="Payment Plan">Had a Payment Plan</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="completedSortSelect">Sort by</label>
+            <select id="completedSortSelect">
+              <option value="completedAt:desc">Completion day: newest</option>
+              <option value="completedAt:asc">Completion day: oldest</option>
+              <option value="name:asc">Patient name: A-Z</option>
+              <option value="name:desc">Patient name: Z-A</option>
+              <option value="location:asc">Treatment site: A-Z</option>
+              <option value="location:desc">Treatment site: Z-A</option>
+              <option value="treatment:asc">Treatment type: A-Z</option>
+              <option value="treatment:desc">Treatment type: Z-A</option>
+              <option value="collected:desc">Amount collected: highest</option>
+              <option value="collected:asc">Amount collected: lowest</option>
+              <option value="daysToComplete:asc">Days to complete: fastest</option>
+              <option value="daysToComplete:desc">Days to complete: slowest</option>
+            </select>
+          </div>
+        </div>
+        <div class="saved-view-bar completed-saved-views" aria-label="Saved completed views">
+          <div class="field"><label for="completedSavedViewSelect">Saved archive view</label><select id="completedSavedViewSelect"><option value="">Choose a saved view</option></select></div>
+          <div class="field"><label for="completedSavedViewName">View name</label><input id="completedSavedViewName" maxlength="60" placeholder="Example: Proton completed this month"></div>
+          <button class="btn btn-secondary" id="saveCompletedViewButton" type="button">Save Current View</button>
+          <button class="btn btn-danger" id="deleteCompletedViewButton" type="button" disabled>Delete Saved View</button>
+        </div>
+        <div class="toolbar-actions">
+          <div class="toolbar-actions-right toolbar-actions-only">
+            <button class="btn btn-secondary" id="completedThisMonthButton" type="button">This Month</button>
+            <button class="btn btn-secondary" id="clearCompletedFilters" type="button">Clear Filters</button>
+            <button class="btn btn-secondary" id="exportCompletedButton" type="button">Export Current View Excel</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-title-row">
+        <div>
+          <h2 id="completedQueueHeading">Completed Account Archive</h2>
+          <p>Restoring a record returns it to the active Payment Board.</p>
+        </div>
+        <div class="section-title-meta">
+          <span class="data-refreshed" id="completedRefreshedAt">Browser data refreshed -</span>
+          <div class="record-count-badge" id="completedResultCount" aria-live="polite">0 records</div>
+        </div>
+      </div>
+
+      <div class="table-meta">
+        <span>Click a column heading to sort.</span>
+        <span>Excel export includes only the completed records currently shown after filters and sorting.</span>
+      </div>
+
+      <div class="table-wrap">
+        <table class="payment-table completed-table">
+          <caption class="sr-only">Completed patient account archive</caption>
+          <colgroup>
+            <col style="width: 12%">
+            <col style="width: 18%">
+            <col style="width: 16%">
+            <col style="width: 15%">
+            <col style="width: 17%">
+            <col style="width: 12%">
+            <col style="width: 10%">
+          </colgroup>
+          <thead>
+            <tr>
+              <th scope="col"><button class="sort-button" type="button" data-sort-key="completedAt">Completed <span class="sort-indicator" aria-hidden="true"></span></button></th>
+              <th scope="col"><button class="sort-button" type="button" data-sort-key="name">Patient <span class="sort-indicator" aria-hidden="true"></span></button></th>
+              <th scope="col"><button class="sort-button" type="button" data-sort-key="treatment">Treatment <span class="sort-indicator" aria-hidden="true"></span></button></th>
+              <th scope="col"><button class="sort-button" type="button" data-sort-key="location">Site &amp; Insurance <span class="sort-indicator" aria-hidden="true"></span></button></th>
+              <th scope="col"><button class="sort-button" type="button" data-sort-key="collected">Financial Result <span class="sort-indicator" aria-hidden="true"></span></button></th>
+              <th scope="col"><button class="sort-button" type="button" data-sort-key="planProgress">Plan Performance <span class="sort-indicator" aria-hidden="true"></span></button></th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="completedTableBody"></tbody>
+        </table>
+        <div class="empty-state" id="completedEmptyState" hidden>
+          <strong>No completed patients match these filters</strong>
+          Clear the filters or complete a patient from the Payment Board.
+        </div>
+      </div>
+    </section>
+
+    <div class="footer-note">Completed dates are recorded when Complete &amp; Archive is selected. Older migrated records use their latest recorded payment date when no completion date exists.</div>
+  </main>
+
+  <dialog id="completedDetailsDialog" class="wide-dialog">
+    <div class="modal-header">
+      <div>
+        <h2 id="completedDetailsTitle">Completed Patient</h2>
+        <p id="completedDetailsSubtitle">-</p>
+      </div>
+      <button class="icon-button" type="button" data-close="completedDetailsDialog" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body" id="completedDetailsBody"></div>
+    <div class="modal-footer split">
+      <div class="modal-footer-group">
+        <button class="btn btn-secondary" id="restoreCompletedButton" type="button">Restore to Active</button>
+      </div>
+      <div class="modal-footer-group">
+        <button class="btn btn-secondary" id="completedDetailsPrintButton" type="button">Print Summary</button>
+        <button class="btn btn-documents" id="completedDetailsDocumentsButton" type="button">Documents</button>
+        <button class="btn btn-ghost" type="button" data-close="completedDetailsDialog">Close</button>
+      </div>
+    </div>
+  </dialog>
+
+  <div class="toast-region" id="toastRegion" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>

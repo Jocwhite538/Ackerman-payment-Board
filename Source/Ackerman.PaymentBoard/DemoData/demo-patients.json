@@ -1,0 +1,3219 @@
+{
+  "description": "Fictional demo patients for development and test sites only. Loaded when Demo:SeedPatients is true and the board is empty.",
+  "anchorDate": "2026-11-03",
+  "patients": [
+    {
+      "id": "demo-001",
+      "name": "Marisol Vega",
+      "mrn": "DEMO-1001",
+      "location": "Jacksonville",
+      "treatments": [
+        "Proton"
+      ],
+      "treatment": "Proton",
+      "insurance": "Florida Blue",
+      "responsibility": 2400,
+      "collected": 800,
+      "ledgerInitialized": true,
+      "collectionDate": "2026-09-04",
+      "status": "Payment Plan",
+      "arrangement": "Payment Plan",
+      "noResponsibilityReason": "",
+      "statusNote": "",
+      "notes": "",
+      "archived": false,
+      "completedAt": "",
+      "completionReason": "",
+      "completionNote": "",
+      "createdAt": "2026-08-20T08:00:00",
+      "updatedAt": "2026-10-04T09:00:00",
+      "paymentPlan": {
+        "createdDate": "2026-08-20",
+        "openingCollected": 0,
+        "promiseToPayDate": "",
+        "renegotiationCount": 0,
+        "history": [],
+        "installments": [
+          {
+            "id": "demo-001-inst-1",
+            "dueDate": "2026-09-04",
+            "originalDueDate": "2026-09-04",
+            "amount": 400,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-001-inst-2",
+            "dueDate": "2026-10-04",
+            "originalDueDate": "2026-10-04",
+            "amount": 400,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-001-inst-3",
+            "dueDate": "2026-11-04",
+            "originalDueDate": "2026-11-04",
+            "amount": 400,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-001-inst-4",
+            "dueDate": "2026-12-04",
+            "originalDueDate": "2026-12-04",
+            "amount": 400,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-001-inst-5",
+            "dueDate": "2027-01-04",
+            "originalDueDate": "2027-01-04",
+            "amount": 400,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-001-inst-6",
+            "dueDate": "2027-02-04",
+            "originalDueDate": "2027-02-04",
+            "amount": 400,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          }
+        ]
+      },
+      "payments": [
+        {
+          "id": "demo-001-pay-1",
+          "type": "Payment",
+          "amount": 400,
+          "date": "2026-09-04",
+          "location": "Jacksonville",
+          "officeSite": "ACC Mandarin",
+          "username": "frontdesk.jax",
+          "responsibilityParty": "Ackerman",
+          "installmentId": "demo-001-inst-1",
+          "method": "Credit/Debit Card",
+          "note": "",
+          "appliesToPlan": true,
+          "relatedTransactionId": "",
+          "createdAt": "2026-09-04T11:07:00"
+        },
+        {
+          "id": "demo-001-pay-2",
+          "type": "Payment",
+          "amount": 400,
+          "date": "2026-10-04",
+          "location": "Jacksonville",
+          "officeSite": "ACC Mandarin",
+          "username": "rpatel",
+          "responsibilityParty": "Ackerman",
+          "installmentId": "demo-001-inst-2",
+          "method": "ACH",
+          "note": "",
+          "appliesToPlan": true,
+          "relatedTransactionId": "",
+          "createdAt": "2026-10-04T12:14:00"
+        }
+      ],
+      "adjustments": [],
+      "activity": [
+        {
+          "id": "activity-21c1b26b-5134-4a72-9184-f109d3d9ab8d",
+          "type": "payment",
+          "title": "Payment recorded",
+          "detail": "$400.00 · ACH",
+          "date": "2026-10-04",
+          "createdAt": "2026-10-04T09:00:00",
+          "actor": "System user"
+        },
+        {
+          "id": "activity-3477e9f2-5590-4747-acb4-3e65c6ee042b",
+          "type": "payment",
+          "title": "Payment recorded",
+          "detail": "$400.00 · Credit/Debit Card",
+          "date": "2026-09-04",
+          "createdAt": "2026-09-04T10:13:00",
+          "actor": "System user"
+        },
+        {
+          "id": "activity-demo-001-created",
+          "type": "account",
+          "title": "Patient account created",
+          "detail": "Payment Plan account with $2,400.00 responsibility.",
+          "date": "2026-08-20",
+          "createdAt": "2026-08-20T11:26:00",
+          "actor": "System user"
+        }
+      ]
+    },
+    {
+      "id": "demo-002",
+      "name": "Theodore Banks",
+      "mrn": "DEMO-1002",
+      "location": "Amelia Island",
+      "treatments": [
+        "Radiation (Linac/HDR/Other)"
+      ],
+      "treatment": "Radiation (Linac/HDR/Other)",
+      "insurance": "Aetna",
+      "responsibility": 1800,
+      "collected": 600,
+      "ledgerInitialized": true,
+      "collectionDate": "2026-09-19",
+      "status": "Payment Plan",
+      "arrangement": "Payment Plan",
+      "noResponsibilityReason": "",
+      "statusNote": "Left voicemail",
+      "notes": "",
+      "archived": false,
+      "completedAt": "",
+      "completionReason": "",
+      "completionNote": "",
+      "createdAt": "2026-09-14T08:00:00",
+      "updatedAt": "2026-11-02T10:13:00",
+      "paymentPlan": {
+        "createdDate": "2026-09-14",
+        "openingCollected": 0,
+        "promiseToPayDate": "",
+        "renegotiationCount": 0,
+        "history": [],
+        "installments": [
+          {
+            "id": "demo-002-inst-1",
+            "dueDate": "2026-09-19",
+            "originalDueDate": "2026-09-19",
+            "amount": 600,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-002-inst-2",
+            "dueDate": "2026-10-19",
+            "originalDueDate": "2026-10-19",
+            "amount": 600,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-002-inst-3",
+            "dueDate": "2026-11-19",
+            "originalDueDate": "2026-11-19",
+            "amount": 600,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          }
+        ]
+      },
+      "payments": [
+        {
+          "id": "demo-002-pay-1",
+          "type": "Payment",
+          "amount": 600,
+          "date": "2026-09-19",
+          "location": "Amelia Island",
+          "officeSite": "ACC Amelia Island",
+          "username": "rpatel",
+          "responsibilityParty": "Ackerman",
+          "installmentId": "demo-002-inst-1",
+          "method": "Credit/Debit Card",
+          "note": "",
+          "appliesToPlan": true,
+          "relatedTransactionId": "",
+          "createdAt": "2026-09-19T11:07:00"
+        }
+      ],
+      "adjustments": [],
+      "activity": [
+        {
+          "id": "activity-8cc39c70-8e53-489e-aa77-926376a19c2d",
+          "type": "account",
+          "title": "Status note updated",
+          "detail": "Left voicemail",
+          "date": "2026-11-02",
+          "createdAt": "2026-11-02T10:13:00",
+          "actor": "System user"
+        },
+        {
+          "id": "activity-95571e21-1f45-46ec-9ec2-d9665f647a51",
+          "type": "payment",
+          "title": "Payment recorded",
+          "detail": "$600.00 · Credit/Debit Card",
+          "date": "2026-09-19",
+          "createdAt": "2026-09-19T09:00:00",
+          "actor": "System user"
+        },
+        {
+          "id": "activity-demo-002-created",
+          "type": "account",
+          "title": "Patient account created",
+          "detail": "Payment Plan account with $1,800.00 responsibility.",
+          "date": "2026-09-14",
+          "createdAt": "2026-09-14T11:26:00",
+          "actor": "System user"
+        }
+      ]
+    },
+    {
+      "id": "demo-003",
+      "name": "Priya Raman",
+      "mrn": "DEMO-1003",
+      "location": "Jacksonville",
+      "treatments": [
+        "Imaging"
+      ],
+      "treatment": "Imaging",
+      "insurance": "Cigna",
+      "responsibility": 350,
+      "collected": 0,
+      "ledgerInitialized": true,
+      "collectionDate": "2026-11-03",
+      "status": "Payment Plan",
+      "arrangement": "Payment Plan",
+      "noResponsibilityReason": "",
+      "statusNote": "",
+      "notes": "",
+      "archived": false,
+      "completedAt": "",
+      "completionReason": "",
+      "completionNote": "",
+      "createdAt": "2026-10-22T08:00:00",
+      "updatedAt": "2026-10-22T09:00:00",
+      "paymentPlan": {
+        "createdDate": "2026-10-22",
+        "openingCollected": 0,
+        "promiseToPayDate": "",
+        "renegotiationCount": 0,
+        "history": [],
+        "installments": [
+          {
+            "id": "demo-003-inst-1",
+            "dueDate": "2026-11-03",
+            "originalDueDate": "2026-11-03",
+            "amount": 350,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          }
+        ]
+      },
+      "payments": [],
+      "adjustments": [],
+      "activity": [
+        {
+          "id": "activity-demo-003-created",
+          "type": "account",
+          "title": "Patient account created",
+          "detail": "Payment Plan account with $350.00 responsibility.",
+          "date": "2026-10-22",
+          "createdAt": "2026-10-22T09:00:00",
+          "actor": "System user"
+        }
+      ]
+    },
+    {
+      "id": "demo-004",
+      "name": "Walter Okafor",
+      "mrn": "DEMO-1004",
+      "location": "Jacksonville",
+      "treatments": [
+        "Proton"
+      ],
+      "treatment": "Proton",
+      "insurance": "Medicare + supplement",
+      "responsibility": 4200,
+      "collected": 1750,
+      "ledgerInitialized": true,
+      "collectionDate": "2026-06-06",
+      "status": "Payment Plan",
+      "arrangement": "Payment Plan",
+      "noResponsibilityReason": "",
+      "statusNote": "",
+      "notes": "",
+      "archived": false,
+      "completedAt": "",
+      "completionReason": "",
+      "completionNote": "",
+      "createdAt": "2026-05-27T08:00:00",
+      "updatedAt": "2026-10-06T12:39:00",
+      "paymentPlan": {
+        "createdDate": "2026-05-27",
+        "openingCollected": 0,
+        "promiseToPayDate": "",
+        "renegotiationCount": 0,
+        "history": [],
+        "installments": [
+          {
+            "id": "demo-004-inst-1",
+            "dueDate": "2026-06-06",
+            "originalDueDate": "2026-06-06",
+            "amount": 350,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-004-inst-2",
+            "dueDate": "2026-07-06",
+            "originalDueDate": "2026-07-06",
+            "amount": 350,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-004-inst-3",
+            "dueDate": "2026-08-06",
+            "originalDueDate": "2026-08-06",
+            "amount": 350,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-004-inst-4",
+            "dueDate": "2026-09-06",
+            "originalDueDate": "2026-09-06",
+            "amount": 350,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-004-inst-5",
+            "dueDate": "2026-10-06",
+            "originalDueDate": "2026-10-06",
+            "amount": 350,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-004-inst-6",
+            "dueDate": "2026-11-06",
+            "originalDueDate": "2026-11-06",
+            "amount": 350,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-004-inst-7",
+            "dueDate": "2026-12-06",
+            "originalDueDate": "2026-12-06",
+            "amount": 350,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-004-inst-8",
+            "dueDate": "2027-01-06",
+            "originalDueDate": "2027-01-06",
+            "amount": 350,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-004-inst-9",
+            "dueDate": "2027-02-06",
+            "originalDueDate": "2027-02-06",
+            "amount": 350,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-004-inst-10",
+            "dueDate": "2027-03-06",
+            "originalDueDate": "2027-03-06",
+            "amount": 350,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-004-inst-11",
+            "dueDate": "2027-04-06",
+            "originalDueDate": "2027-04-06",
+            "amount": 350,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-004-inst-12",
+            "dueDate": "2027-05-06",
+            "originalDueDate": "2027-05-06",
+            "amount": 350,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          }
+        ]
+      },
+      "payments": [
+        {
+          "id": "demo-004-pay-1",
+          "type": "Payment",
+          "amount": 350,
+          "date": "2026-06-06",
+          "location": "Jacksonville",
+          "officeSite": "ACC Mandarin",
+          "username": "mgarcia",
+          "responsibilityParty": "Ackerman",
+          "installmentId": "demo-004-inst-1",
+          "method": "ACH",
+          "note": "",
+          "appliesToPlan": true,
+          "relatedTransactionId": "",
+          "createdAt": "2026-06-06T11:07:00"
+        },
+        {
+          "id": "demo-004-pay-2",
+          "type": "Payment",
+          "amount": 350,
+          "date": "2026-07-06",
+          "location": "Jacksonville",
+          "officeSite": "ACC Mandarin",
+          "username": "tlee",
+          "responsibilityParty": "Ackerman",
+          "installmentId": "demo-004-inst-2",
+          "method": "ACH",
+          "note": "",
+          "appliesToPlan": true,
+          "relatedTransactionId": "",
+          "createdAt": "2026-07-06T12:14:00"
+        },
+        {
+          "id": "demo-004-pay-3",
+          "type": "Payment",
+          "amount": 350,
+          "date": "2026-08-06",
+          "location": "Jacksonville",
+          "officeSite": "ACC Mandarin",
+          "username": "frontdesk.jax",
+          "responsibilityParty": "Ackerman",
+          "installmentId": "demo-004-inst-3",
+          "method": "ACH",
+          "note": "",
+          "appliesToPlan": true,
+          "relatedTransactionId": "",
+          "createdAt": "2026-08-06T13:21:00"
+        },
+        {
+          "id": "demo-004-pay-4",
+          "type": "Payment",
+          "amount": 350,
+          "date": "2026-09-06",
+          "location": "Jacksonville",
+          "officeSite": "ACC Mandarin",
+          "username": "rpatel",
+          "responsibilityParty": "Ackerman",
+          "installmentId": "demo-004-inst-4",
+          "method": "ACH",
+          "note": "",
+          "appliesToPlan": true,
+          "relatedTransactionId": "",
+          "createdAt": "2026-09-06T14:28:00"
+        },
+        {
+          "id": "demo-004-pay-5",
+          "type": "Payment",
+          "amount": 350,
+          "date": "2026-10-06",
+          "location": "Jacksonville",
+          "officeSite": "ACC Mandarin",
+          "username": "kwilliams",
+          "responsibilityParty": "Ackerman",
+          "installmentId": "demo-004-inst-5",
+          "method": "ACH",
+          "note": "",
+          "appliesToPlan": true,
+          "relatedTransactionId": "",
+          "createdAt": "2026-10-06T15:35:00"
+        }
+      ],
+      "adjustments": [],
+      "activity": [
+        {
+          "id": "activity-57ac2e95-9b47-4964-b02d-c79fa60efc67",
+          "type": "payment",
+          "title": "Payment recorded",
+          "detail": "$350.00 · ACH",
+          "date": "2026-10-06",
+          "createdAt": "2026-10-06T12:39:00",
+          "actor": "System user"
+        },
+        {
+          "id": "activity-64cf7314-ba26-4e1f-93e3-303cb64e8bc0",
+          "type": "payment",
+          "title": "Payment recorded",
+          "detail": "$350.00 · ACH",
+          "date": "2026-09-06",
+          "createdAt": "2026-09-06T11:26:00",
+          "actor": "System user"
+        },
+        {
+          "id": "activity-19b82b7f-ddfa-402c-a6c9-aade1f10b728",
+          "type": "payment",
+          "title": "Payment recorded",
+          "detail": "$350.00 · ACH",
+          "date": "2026-08-06",
+          "createdAt": "2026-08-06T10:13:00",
+          "actor": "System user"
+        },
+        {
+          "id": "activity-af376864-bdf4-478f-b75a-37f4439ab255",
+          "type": "payment",
+          "title": "Payment recorded",
+          "detail": "$350.00 · ACH",
+          "date": "2026-07-06",
+          "createdAt": "2026-07-06T09:00:00",
+          "actor": "System user"
+        },
+        {
+          "id": "activity-1ec060c4-3a4c-4c12-af18-332292b48cb5",
+          "type": "payment",
+          "title": "Payment recorded",
+          "detail": "$350.00 · ACH",
+          "date": "2026-06-06",
+          "createdAt": "2026-06-06T13:52:00",
+          "actor": "System user"
+        },
+        {
+          "id": "activity-demo-004-created",
+          "type": "account",
+          "title": "Patient account created",
+          "detail": "Payment Plan account with $4,200.00 responsibility.",
+          "date": "2026-05-27",
+          "createdAt": "2026-05-27T14:05:00",
+          "actor": "System user"
+        }
+      ]
+    },
+    {
+      "id": "demo-005",
+      "name": "Hannah Lindqvist",
+      "mrn": "DEMO-1005",
+      "location": "Urology World Golf Village",
+      "treatments": [
+        "Women's Imaging"
+      ],
+      "treatment": "Women's Imaging",
+      "insurance": "UnitedHealthcare",
+      "responsibility": 275,
+      "collected": 0,
+      "ledgerInitialized": true,
+      "collectionDate": "2026-11-10",
+      "status": "Payment Plan",
+      "arrangement": "Payment Plan",
+      "noResponsibilityReason": "",
+      "statusNote": "",
+      "notes": "",
+      "archived": false,
+      "completedAt": "",
+      "completionReason": "",
+      "completionNote": "",
+      "createdAt": "2026-10-29T08:00:00",
+      "updatedAt": "2026-10-29T09:00:00",
+      "paymentPlan": {
+        "createdDate": "2026-10-29",
+        "openingCollected": 0,
+        "promiseToPayDate": "",
+        "renegotiationCount": 0,
+        "history": [],
+        "installments": [
+          {
+            "id": "demo-005-inst-1",
+            "dueDate": "2026-11-10",
+            "originalDueDate": "2026-11-10",
+            "amount": 275,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          }
+        ]
+      },
+      "payments": [],
+      "adjustments": [],
+      "activity": [
+        {
+          "id": "activity-demo-005-created",
+          "type": "account",
+          "title": "Patient account created",
+          "detail": "Payment Plan account with $275.00 responsibility.",
+          "date": "2026-10-29",
+          "createdAt": "2026-10-29T09:00:00",
+          "actor": "System user"
+        }
+      ]
+    },
+    {
+      "id": "demo-006",
+      "name": "Desmond Hale",
+      "mrn": "DEMO-1006",
+      "location": "Urology Middleburg",
+      "treatments": [
+        "Radiation (Linac/HDR/Other)",
+        "Clinic"
+      ],
+      "treatment": "Radiation (Linac/HDR/Other) · Clinic",
+      "insurance": "Humana",
+      "responsibility": 3000,
+      "collected": 500,
+      "ledgerInitialized": true,
+      "collectionDate": "2026-09-24",
+      "status": "Payment Plan",
+      "arrangement": "Payment Plan",
+      "noResponsibilityReason": "",
+      "statusNote": "Confirm UF check received",
+      "notes": "",
+      "archived": false,
+      "completedAt": "",
+      "completionReason": "",
+      "completionNote": "",
+      "createdAt": "2026-09-09T08:00:00",
+      "updatedAt": "2026-11-02T10:13:00",
+      "paymentPlan": {
+        "createdDate": "2026-09-09",
+        "openingCollected": 0,
+        "promiseToPayDate": "",
+        "renegotiationCount": 0,
+        "history": [],
+        "installments": [
+          {
+            "id": "demo-006-inst-1",
+            "dueDate": "2026-09-24",
+            "originalDueDate": "2026-09-24",
+            "amount": 500,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-006-inst-2",
+            "dueDate": "2026-10-24",
+            "originalDueDate": "2026-10-24",
+            "amount": 500,
+            "responsibilityParty": "UF",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-006-inst-3",
+            "dueDate": "2026-11-24",
+            "originalDueDate": "2026-11-24",
+            "amount": 500,
+            "responsibilityParty": "UF",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-006-inst-4",
+            "dueDate": "2026-12-24",
+            "originalDueDate": "2026-12-24",
+            "amount": 500,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-006-inst-5",
+            "dueDate": "2027-01-24",
+            "originalDueDate": "2027-01-24",
+            "amount": 500,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-006-inst-6",
+            "dueDate": "2027-02-24",
+            "originalDueDate": "2027-02-24",
+            "amount": 500,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          }
+        ]
+      },
+      "payments": [
+        {
+          "id": "demo-006-pay-1",
+          "type": "Payment",
+          "amount": 500,
+          "date": "2026-09-24",
+          "location": "Urology Middleburg",
+          "officeSite": "Urology Middleburg",
+          "username": "frontdesk.jax",
+          "responsibilityParty": "Ackerman",
+          "installmentId": "demo-006-inst-1",
+          "method": "Credit/Debit Card",
+          "note": "",
+          "appliesToPlan": true,
+          "relatedTransactionId": "",
+          "createdAt": "2026-09-24T11:07:00"
+        }
+      ],
+      "adjustments": [],
+      "activity": [
+        {
+          "id": "activity-61d58f11-0ca5-4eab-bed8-420fd4acf414",
+          "type": "account",
+          "title": "Status note updated",
+          "detail": "Confirm UF check received",
+          "date": "2026-11-02",
+          "createdAt": "2026-11-02T10:13:00",
+          "actor": "System user"
+        },
+        {
+          "id": "activity-c403d11e-50bf-4759-abf6-e8048dd355a5",
+          "type": "payment",
+          "title": "Payment recorded",
+          "detail": "$500.00 · Credit/Debit Card",
+          "date": "2026-09-24",
+          "createdAt": "2026-09-24T09:00:00",
+          "actor": "System user"
+        },
+        {
+          "id": "activity-demo-006-created",
+          "type": "account",
+          "title": "Patient account created",
+          "detail": "Payment Plan account with $3,000.00 responsibility.",
+          "date": "2026-09-09",
+          "createdAt": "2026-09-09T11:26:00",
+          "actor": "System user"
+        }
+      ]
+    },
+    {
+      "id": "demo-007",
+      "name": "Rosa Delgado",
+      "mrn": "DEMO-1007",
+      "location": "Jacksonville",
+      "treatments": [
+        "Clinic"
+      ],
+      "treatment": "Clinic",
+      "insurance": "Florida Blue",
+      "responsibility": 0,
+      "collected": 0,
+      "ledgerInitialized": true,
+      "collectionDate": "2026-10-14",
+      "status": "No Responsibility",
+      "arrangement": "No Responsibility",
+      "noResponsibilityReason": "Covered in full by insurance",
+      "statusNote": "",
+      "notes": "",
+      "archived": false,
+      "completedAt": "",
+      "completionReason": "",
+      "completionNote": "",
+      "createdAt": "2026-10-14T08:00:00",
+      "updatedAt": "2026-10-14T09:00:00",
+      "paymentPlan": null,
+      "payments": [],
+      "adjustments": [],
+      "activity": [
+        {
+          "id": "activity-demo-007-created",
+          "type": "account",
+          "title": "Patient account created",
+          "detail": "No Responsibility account with $0.00 responsibility.",
+          "date": "2026-10-14",
+          "createdAt": "2026-10-14T09:00:00",
+          "actor": "System user"
+        }
+      ]
+    },
+    {
+      "id": "demo-008",
+      "name": "Gregory Pham",
+      "mrn": "DEMO-1008",
+      "location": "Jacksonville",
+      "treatments": [
+        "Proton"
+      ],
+      "treatment": "Proton",
+      "insurance": "Tricare",
+      "responsibility": 1200,
+      "collected": 1200,
+      "ledgerInitialized": true,
+      "collectionDate": "2026-08-15",
+      "status": "Payment Plan",
+      "arrangement": "Payment Plan",
+      "noResponsibilityReason": "",
+      "statusNote": "",
+      "notes": "",
+      "archived": false,
+      "completedAt": "",
+      "completionReason": "",
+      "completionNote": "",
+      "createdAt": "2026-08-10T08:00:00",
+      "updatedAt": "2026-10-24T10:13:00",
+      "paymentPlan": {
+        "createdDate": "2026-08-10",
+        "openingCollected": 0,
+        "promiseToPayDate": "",
+        "renegotiationCount": 0,
+        "history": [],
+        "installments": [
+          {
+            "id": "demo-008-inst-1",
+            "dueDate": "2026-08-15",
+            "originalDueDate": "2026-08-15",
+            "amount": 200,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-008-inst-2",
+            "dueDate": "2026-08-29",
+            "originalDueDate": "2026-08-29",
+            "amount": 200,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-008-inst-3",
+            "dueDate": "2026-09-12",
+            "originalDueDate": "2026-09-12",
+            "amount": 200,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-008-inst-4",
+            "dueDate": "2026-09-26",
+            "originalDueDate": "2026-09-26",
+            "amount": 200,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-008-inst-5",
+            "dueDate": "2026-10-10",
+            "originalDueDate": "2026-10-10",
+            "amount": 200,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-008-inst-6",
+            "dueDate": "2026-10-24",
+            "originalDueDate": "2026-10-24",
+            "amount": 200,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          }
+        ]
+      },
+      "payments": [
+        {
+          "id": "demo-008-pay-1",
+          "type": "Payment",
+          "amount": 200,
+          "date": "2026-08-15",
+          "location": "Jacksonville",
+          "officeSite": "ACC Mandarin",
+          "username": "kwilliams",
+          "responsibilityParty": "Ackerman",
+          "installmentId": "demo-008-inst-1",
+          "method": "Credit/Debit Card",
+          "note": "",
+          "appliesToPlan": true,
+          "relatedTransactionId": "",
+          "createdAt": "2026-08-15T11:07:00"
+        },
+        {
+          "id": "demo-008-pay-2",
+          "type": "Payment",
+          "amount": 200,
+          "date": "2026-08-29",
+          "location": "Jacksonville",
+          "officeSite": "ACC Mandarin",
+          "username": "mgarcia",
+          "responsibilityParty": "Ackerman",
+          "installmentId": "demo-008-inst-2",
+          "method": "Credit/Debit Card",
+          "note": "",
+          "appliesToPlan": true,
+          "relatedTransactionId": "",
+          "createdAt": "2026-08-29T12:14:00"
+        },
+        {
+          "id": "demo-008-pay-3",
+          "type": "Payment",
+          "amount": 200,
+          "date": "2026-09-12",
+          "location": "Jacksonville",
+          "officeSite": "ACC Mandarin",
+          "username": "tlee",
+          "responsibilityParty": "Ackerman",
+          "installmentId": "demo-008-inst-3",
+          "method": "Credit/Debit Card",
+          "note": "",
+          "appliesToPlan": true,
+          "relatedTransactionId": "",
+          "createdAt": "2026-09-12T13:21:00"
+        },
+        {
+          "id": "demo-008-pay-4",
+          "type": "Payment",
+          "amount": 200,
+          "date": "2026-09-26",
+          "location": "Jacksonville",
+          "officeSite": "ACC Mandarin",
+          "username": "frontdesk.jax",
+          "responsibilityParty": "Ackerman",
+          "installmentId": "demo-008-inst-4",
+          "method": "Credit/Debit Card",
+          "note": "",
+          "appliesToPlan": true,
+          "relatedTransactionId": "",
+          "createdAt": "2026-09-26T14:28:00"
+        },
+        {
+          "id": "demo-008-pay-5",
+          "type": "Payment",
+          "amount": 200,
+          "date": "2026-10-10",
+          "location": "Jacksonville",
+          "officeSite": "ACC Mandarin",
+          "username": "rpatel",
+          "responsibilityParty": "Ackerman",
+          "installmentId": "demo-008-inst-5",
+          "method": "Credit/Debit Card",
+          "note": "",
+          "appliesToPlan": true,
+          "relatedTransactionId": "",
+          "createdAt": "2026-10-10T15:35:00"
+        },
+        {
+          "id": "demo-008-pay-6",
+          "type": "Payment",
+          "amount": 200,
+          "date": "2026-10-24",
+          "location": "Jacksonville",
+          "officeSite": "ACC Mandarin",
+          "username": "kwilliams",
+          "responsibilityParty": "Ackerman",
+          "installmentId": "demo-008-inst-6",
+          "method": "Credit/Debit Card",
+          "note": "",
+          "appliesToPlan": true,
+          "relatedTransactionId": "",
+          "createdAt": "2026-10-24T10:42:00"
+        }
+      ],
+      "adjustments": [],
+      "activity": [
+        {
+          "id": "activity-761171b1-39db-4c22-aa43-3c52e8ba7589",
+          "type": "payment",
+          "title": "Payment recorded",
+          "detail": "$200.00 · Credit/Debit Card",
+          "date": "2026-10-24",
+          "createdAt": "2026-10-24T10:13:00",
+          "actor": "System user"
+        },
+        {
+          "id": "activity-f7661138-b12f-4b15-af84-bdb41111a7e4",
+          "type": "payment",
+          "title": "Payment recorded",
+          "detail": "$200.00 · Credit/Debit Card",
+          "date": "2026-10-10",
+          "createdAt": "2026-10-10T09:00:00",
+          "actor": "System user"
+        },
+        {
+          "id": "activity-1088fbf0-1e68-425e-854e-8c0a6589bad3",
+          "type": "payment",
+          "title": "Payment recorded",
+          "detail": "$200.00 · Credit/Debit Card",
+          "date": "2026-09-26",
+          "createdAt": "2026-09-26T14:05:00",
+          "actor": "System user"
+        },
+        {
+          "id": "activity-c0741315-a5a2-4a48-b189-5c01193f4d27",
+          "type": "payment",
+          "title": "Payment recorded",
+          "detail": "$200.00 · Credit/Debit Card",
+          "date": "2026-09-12",
+          "createdAt": "2026-09-12T13:52:00",
+          "actor": "System user"
+        },
+        {
+          "id": "activity-d8ab6af3-03fb-4216-8ba5-6f9fcfab1e0f",
+          "type": "payment",
+          "title": "Payment recorded",
+          "detail": "$200.00 · Credit/Debit Card",
+          "date": "2026-08-29",
+          "createdAt": "2026-08-29T12:39:00",
+          "actor": "System user"
+        },
+        {
+          "id": "activity-fb9b5675-abac-45c4-b081-36930095b0ed",
+          "type": "payment",
+          "title": "Payment recorded",
+          "detail": "$200.00 · Credit/Debit Card",
+          "date": "2026-08-15",
+          "createdAt": "2026-08-15T11:26:00",
+          "actor": "System user"
+        },
+        {
+          "id": "activity-demo-008-created",
+          "type": "account",
+          "title": "Patient account created",
+          "detail": "Payment Plan account with $1,200.00 responsibility.",
+          "date": "2026-08-10",
+          "createdAt": "2026-08-10T15:18:00",
+          "actor": "System user"
+        }
+      ]
+    },
+    {
+      "id": "demo-009",
+      "name": "Naomi Fitzgerald",
+      "mrn": "DEMO-1009",
+      "location": "Amelia Island",
+      "treatments": [
+        "Radiation (Linac/HDR/Other)"
+      ],
+      "treatment": "Radiation (Linac/HDR/Other)",
+      "insurance": "Aetna",
+      "responsibility": 2000,
+      "collected": 0,
+      "ledgerInitialized": true,
+      "collectionDate": "2026-09-29",
+      "status": "Payment Plan",
+      "arrangement": "Payment Plan",
+      "noResponsibilityReason": "",
+      "statusNote": "Returned check - call patient",
+      "notes": "",
+      "archived": false,
+      "completedAt": "",
+      "completionReason": "",
+      "completionNote": "",
+      "createdAt": "2026-09-24T08:00:00",
+      "updatedAt": "2026-11-02T10:13:00",
+      "paymentPlan": {
+        "createdDate": "2026-09-24",
+        "openingCollected": 0,
+        "promiseToPayDate": "",
+        "renegotiationCount": 0,
+        "history": [],
+        "installments": [
+          {
+            "id": "demo-009-inst-1",
+            "dueDate": "2026-09-29",
+            "originalDueDate": "2026-09-29",
+            "amount": 500,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-009-inst-2",
+            "dueDate": "2026-10-29",
+            "originalDueDate": "2026-10-29",
+            "amount": 500,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-009-inst-3",
+            "dueDate": "2026-11-29",
+            "originalDueDate": "2026-11-29",
+            "amount": 500,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-009-inst-4",
+            "dueDate": "2026-12-29",
+            "originalDueDate": "2026-12-29",
+            "amount": 500,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          }
+        ]
+      },
+      "payments": [
+        {
+          "id": "demo-009-pay-1",
+          "type": "Payment",
+          "amount": 500,
+          "date": "2026-09-29",
+          "location": "Amelia Island",
+          "officeSite": "ACC Mandarin",
+          "username": "mgarcia",
+          "responsibilityParty": "Ackerman",
+          "installmentId": "demo-009-inst-1",
+          "method": "Check",
+          "note": "",
+          "appliesToPlan": true,
+          "relatedTransactionId": "",
+          "createdAt": "2026-09-29T11:07:00"
+        },
+        {
+          "id": "demo-009-pay-2",
+          "type": "Reversal",
+          "amount": 500,
+          "date": "2026-10-04",
+          "location": "Amelia Island",
+          "officeSite": "ACC Mandarin",
+          "username": "tlee",
+          "responsibilityParty": "Ackerman",
+          "installmentId": "",
+          "method": "Check",
+          "note": "Check returned by bank",
+          "appliesToPlan": true,
+          "relatedTransactionId": "demo-009-pay-1",
+          "createdAt": "2026-10-04T12:14:00"
+        }
+      ],
+      "adjustments": [],
+      "activity": [
+        {
+          "id": "activity-2798db2a-ea5b-48bc-a583-749c983154f9",
+          "type": "account",
+          "title": "Status note updated",
+          "detail": "Returned check - call patient",
+          "date": "2026-11-02",
+          "createdAt": "2026-11-02T10:13:00",
+          "actor": "System user"
+        },
+        {
+          "id": "activity-8c041f16-f996-497a-9f6f-15a6d2560776",
+          "type": "payment",
+          "title": "Payment reversed",
+          "detail": "$500.00 · Check · Check returned by bank",
+          "date": "2026-10-04",
+          "createdAt": "2026-10-04T09:00:00",
+          "actor": "System user"
+        },
+        {
+          "id": "activity-da54fde2-2139-4519-941b-d216d4e06397",
+          "type": "payment",
+          "title": "Payment recorded",
+          "detail": "$500.00 · Check",
+          "date": "2026-09-29",
+          "createdAt": "2026-09-29T11:26:00",
+          "actor": "System user"
+        },
+        {
+          "id": "activity-demo-009-created",
+          "type": "account",
+          "title": "Patient account created",
+          "detail": "Payment Plan account with $2,000.00 responsibility.",
+          "date": "2026-09-24",
+          "createdAt": "2026-09-24T12:39:00",
+          "actor": "System user"
+        }
+      ]
+    },
+    {
+      "id": "demo-010",
+      "name": "Calvin Brooks",
+      "mrn": "DEMO-1010",
+      "location": "Jacksonville",
+      "treatments": [
+        "Imaging"
+      ],
+      "treatment": "Imaging",
+      "insurance": "Self-pay",
+      "responsibility": 900,
+      "collected": 300,
+      "ledgerInitialized": true,
+      "collectionDate": "2026-10-14",
+      "status": "Payment Plan",
+      "arrangement": "Payment Plan",
+      "noResponsibilityReason": "",
+      "statusNote": "",
+      "notes": "",
+      "archived": false,
+      "completedAt": "",
+      "completionReason": "",
+      "completionNote": "",
+      "createdAt": "2026-10-04T08:00:00",
+      "updatedAt": "2026-10-19T10:13:00",
+      "paymentPlan": {
+        "createdDate": "2026-10-04",
+        "openingCollected": 0,
+        "promiseToPayDate": "",
+        "renegotiationCount": 0,
+        "history": [],
+        "installments": [
+          {
+            "id": "demo-010-inst-1",
+            "dueDate": "2026-10-14",
+            "originalDueDate": "2026-10-14",
+            "amount": 300,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-010-inst-2",
+            "dueDate": "2026-11-14",
+            "originalDueDate": "2026-11-14",
+            "amount": 300,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-010-inst-3",
+            "dueDate": "2026-12-14",
+            "originalDueDate": "2026-12-14",
+            "amount": 300,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          }
+        ]
+      },
+      "payments": [
+        {
+          "id": "demo-010-pay-1",
+          "type": "Payment",
+          "amount": 300,
+          "date": "2026-10-14",
+          "location": "Jacksonville",
+          "officeSite": "ACC Mandarin",
+          "username": "tlee",
+          "responsibilityParty": "Ackerman",
+          "installmentId": "demo-010-inst-1",
+          "method": "Cash",
+          "note": "",
+          "appliesToPlan": true,
+          "relatedTransactionId": "",
+          "createdAt": "2026-10-14T11:07:00"
+        }
+      ],
+      "adjustments": [
+        {
+          "id": "demo-010-adj-2",
+          "type": "Financial Assistance",
+          "amount": 150,
+          "date": "2026-10-19",
+          "note": "Approved under assistance policy",
+          "createdAt": "2026-10-19T14:20:00"
+        }
+      ],
+      "activity": [
+        {
+          "id": "activity-414231ea-808c-420e-9d94-838b2d1be1e5",
+          "type": "adjustment",
+          "title": "Financial Assistance recorded",
+          "detail": "$150.00 · Approved under assistance policy",
+          "date": "2026-10-19",
+          "createdAt": "2026-10-19T10:13:00",
+          "actor": "System user"
+        },
+        {
+          "id": "activity-aa816b7c-9964-43de-8a44-3a51c44dc6fc",
+          "type": "payment",
+          "title": "Payment recorded",
+          "detail": "$300.00 · Cash",
+          "date": "2026-10-14",
+          "createdAt": "2026-10-14T09:00:00",
+          "actor": "System user"
+        },
+        {
+          "id": "activity-demo-010-created",
+          "type": "account",
+          "title": "Patient account created",
+          "detail": "Payment Plan account with $900.00 responsibility.",
+          "date": "2026-10-04",
+          "createdAt": "2026-10-04T11:26:00",
+          "actor": "System user"
+        }
+      ]
+    },
+    {
+      "id": "demo-011",
+      "name": "Imani Carter",
+      "mrn": "DEMO-1011",
+      "location": "Jacksonville",
+      "treatments": [
+        "Proton"
+      ],
+      "treatment": "Proton",
+      "insurance": "Cigna",
+      "responsibility": 5500,
+      "collected": 1375,
+      "ledgerInitialized": true,
+      "collectionDate": "2026-07-26",
+      "status": "Payment Plan",
+      "arrangement": "Payment Plan",
+      "noResponsibilityReason": "",
+      "statusNote": "Promised payment by Friday",
+      "notes": "",
+      "archived": false,
+      "completedAt": "",
+      "completionReason": "",
+      "completionNote": "",
+      "createdAt": "2026-07-16T08:00:00",
+      "updatedAt": "2026-11-02T10:13:00",
+      "paymentPlan": {
+        "createdDate": "2026-07-16",
+        "openingCollected": 0,
+        "promiseToPayDate": "2026-11-08",
+        "renegotiationCount": 0,
+        "history": [],
+        "installments": [
+          {
+            "id": "demo-011-inst-1",
+            "dueDate": "2026-07-26",
+            "originalDueDate": "2026-07-26",
+            "amount": 1375,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-011-inst-2",
+            "dueDate": "2026-10-26",
+            "originalDueDate": "2026-10-26",
+            "amount": 1375,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-011-inst-3",
+            "dueDate": "2027-01-26",
+            "originalDueDate": "2027-01-26",
+            "amount": 1375,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-011-inst-4",
+            "dueDate": "2027-04-26",
+            "originalDueDate": "2027-04-26",
+            "amount": 1375,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          }
+        ]
+      },
+      "payments": [
+        {
+          "id": "demo-011-pay-1",
+          "type": "Payment",
+          "amount": 1375,
+          "date": "2026-07-26",
+          "location": "Jacksonville",
+          "officeSite": "ACC Mandarin",
+          "username": "frontdesk.jax",
+          "responsibilityParty": "Ackerman",
+          "installmentId": "demo-011-inst-1",
+          "method": "ACH",
+          "note": "",
+          "appliesToPlan": true,
+          "relatedTransactionId": "",
+          "createdAt": "2026-07-26T11:07:00"
+        }
+      ],
+      "adjustments": [],
+      "activity": [
+        {
+          "id": "activity-6746476c-c0bb-4ceb-88e8-869d068f59ad",
+          "type": "account",
+          "title": "Status note updated",
+          "detail": "Promised payment by Friday",
+          "date": "2026-11-02",
+          "createdAt": "2026-11-02T10:13:00",
+          "actor": "System user"
+        },
+        {
+          "id": "activity-8c323bfc-2e8d-4a82-8bd5-39a947ee5b3b",
+          "type": "payment",
+          "title": "Payment recorded",
+          "detail": "$1,375.00 · ACH",
+          "date": "2026-07-26",
+          "createdAt": "2026-07-26T09:00:00",
+          "actor": "System user"
+        },
+        {
+          "id": "activity-demo-011-created",
+          "type": "account",
+          "title": "Patient account created",
+          "detail": "Payment Plan account with $5,500.00 responsibility.",
+          "date": "2026-07-16",
+          "createdAt": "2026-07-16T11:26:00",
+          "actor": "System user"
+        }
+      ]
+    },
+    {
+      "id": "demo-012",
+      "name": "Oliver Strand",
+      "mrn": "DEMO-1012",
+      "location": "Urology World Golf Village",
+      "treatments": [
+        "Clinic"
+      ],
+      "treatment": "Clinic",
+      "insurance": "Medicare",
+      "responsibility": 150,
+      "collected": 0,
+      "ledgerInitialized": true,
+      "collectionDate": "2026-10-31",
+      "status": "Payment Plan",
+      "arrangement": "Payment Plan",
+      "noResponsibilityReason": "",
+      "statusNote": "",
+      "notes": "",
+      "archived": false,
+      "completedAt": "",
+      "completionReason": "",
+      "completionNote": "",
+      "createdAt": "2026-10-24T08:00:00",
+      "updatedAt": "2026-10-24T09:00:00",
+      "paymentPlan": {
+        "createdDate": "2026-10-24",
+        "openingCollected": 0,
+        "promiseToPayDate": "",
+        "renegotiationCount": 0,
+        "history": [],
+        "installments": [
+          {
+            "id": "demo-012-inst-1",
+            "dueDate": "2026-10-31",
+            "originalDueDate": "2026-10-31",
+            "amount": 150,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          }
+        ]
+      },
+      "payments": [],
+      "adjustments": [],
+      "activity": [
+        {
+          "id": "activity-demo-012-created",
+          "type": "account",
+          "title": "Patient account created",
+          "detail": "Payment Plan account with $150.00 responsibility.",
+          "date": "2026-10-24",
+          "createdAt": "2026-10-24T09:00:00",
+          "actor": "System user"
+        }
+      ]
+    },
+    {
+      "id": "demo-013",
+      "name": "Lucia Moretti",
+      "mrn": "DEMO-1013",
+      "location": "Jacksonville",
+      "treatments": [
+        "Women's Imaging"
+      ],
+      "treatment": "Women's Imaging",
+      "insurance": "Florida Blue",
+      "responsibility": 425,
+      "collected": 212.5,
+      "ledgerInitialized": true,
+      "collectionDate": "2026-10-09",
+      "status": "Payment Plan",
+      "arrangement": "Payment Plan",
+      "noResponsibilityReason": "",
+      "statusNote": "",
+      "notes": "",
+      "archived": false,
+      "completedAt": "",
+      "completionReason": "",
+      "completionNote": "",
+      "createdAt": "2026-10-04T08:00:00",
+      "updatedAt": "2026-10-09T09:00:00",
+      "paymentPlan": {
+        "createdDate": "2026-10-04",
+        "openingCollected": 0,
+        "promiseToPayDate": "",
+        "renegotiationCount": 0,
+        "history": [],
+        "installments": [
+          {
+            "id": "demo-013-inst-1",
+            "dueDate": "2026-10-09",
+            "originalDueDate": "2026-10-09",
+            "amount": 212.5,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-013-inst-2",
+            "dueDate": "2026-11-09",
+            "originalDueDate": "2026-11-09",
+            "amount": 212.5,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          }
+        ]
+      },
+      "payments": [
+        {
+          "id": "demo-013-pay-1",
+          "type": "Payment",
+          "amount": 212.5,
+          "date": "2026-10-09",
+          "location": "Jacksonville",
+          "officeSite": "Other",
+          "username": "kwilliams",
+          "responsibilityParty": "Ackerman",
+          "installmentId": "demo-013-inst-1",
+          "method": "Online Portal",
+          "note": "",
+          "appliesToPlan": true,
+          "relatedTransactionId": "",
+          "createdAt": "2026-10-09T11:07:00"
+        }
+      ],
+      "adjustments": [],
+      "activity": [
+        {
+          "id": "activity-07610986-4e45-4fdb-9969-197c73780ee0",
+          "type": "payment",
+          "title": "Payment recorded",
+          "detail": "$212.50 · Online Portal",
+          "date": "2026-10-09",
+          "createdAt": "2026-10-09T09:00:00",
+          "actor": "System user"
+        },
+        {
+          "id": "activity-demo-013-created",
+          "type": "account",
+          "title": "Patient account created",
+          "detail": "Payment Plan account with $425.00 responsibility.",
+          "date": "2026-10-04",
+          "createdAt": "2026-10-04T10:13:00",
+          "actor": "System user"
+        }
+      ]
+    },
+    {
+      "id": "demo-014",
+      "name": "Samuel Achebe",
+      "mrn": "DEMO-1014",
+      "location": "Urology Middleburg",
+      "treatments": [
+        "Radiation (Linac/HDR/Other)"
+      ],
+      "treatment": "Radiation (Linac/HDR/Other)",
+      "insurance": "UnitedHealthcare",
+      "responsibility": 2750,
+      "collected": 1375,
+      "ledgerInitialized": true,
+      "collectionDate": "2026-10-06",
+      "status": "Payment Plan",
+      "arrangement": "Payment Plan",
+      "noResponsibilityReason": "",
+      "statusNote": "",
+      "notes": "",
+      "archived": false,
+      "completedAt": "",
+      "completionReason": "",
+      "completionNote": "",
+      "createdAt": "2026-09-29T08:00:00",
+      "updatedAt": "2026-10-27T12:39:00",
+      "paymentPlan": {
+        "createdDate": "2026-09-29",
+        "openingCollected": 0,
+        "promiseToPayDate": "",
+        "renegotiationCount": 0,
+        "history": [],
+        "installments": [
+          {
+            "id": "demo-014-inst-1",
+            "dueDate": "2026-10-06",
+            "originalDueDate": "2026-10-06",
+            "amount": 343.75,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-014-inst-2",
+            "dueDate": "2026-10-13",
+            "originalDueDate": "2026-10-13",
+            "amount": 343.75,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-014-inst-3",
+            "dueDate": "2026-10-20",
+            "originalDueDate": "2026-10-20",
+            "amount": 343.75,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-014-inst-4",
+            "dueDate": "2026-10-27",
+            "originalDueDate": "2026-10-27",
+            "amount": 343.75,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-014-inst-5",
+            "dueDate": "2026-11-03",
+            "originalDueDate": "2026-11-03",
+            "amount": 343.75,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-014-inst-6",
+            "dueDate": "2026-11-10",
+            "originalDueDate": "2026-11-10",
+            "amount": 343.75,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-014-inst-7",
+            "dueDate": "2026-11-17",
+            "originalDueDate": "2026-11-17",
+            "amount": 343.75,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-014-inst-8",
+            "dueDate": "2026-11-24",
+            "originalDueDate": "2026-11-24",
+            "amount": 343.75,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          }
+        ]
+      },
+      "payments": [
+        {
+          "id": "demo-014-pay-1",
+          "type": "Payment",
+          "amount": 343.75,
+          "date": "2026-10-06",
+          "location": "Urology Middleburg",
+          "officeSite": "Urology Middleburg",
+          "username": "mgarcia",
+          "responsibilityParty": "Ackerman",
+          "installmentId": "demo-014-inst-1",
+          "method": "Credit/Debit Card",
+          "note": "",
+          "appliesToPlan": true,
+          "relatedTransactionId": "",
+          "createdAt": "2026-10-06T11:07:00"
+        },
+        {
+          "id": "demo-014-pay-2",
+          "type": "Payment",
+          "amount": 343.75,
+          "date": "2026-10-13",
+          "location": "Urology Middleburg",
+          "officeSite": "Urology Middleburg",
+          "username": "tlee",
+          "responsibilityParty": "Ackerman",
+          "installmentId": "demo-014-inst-2",
+          "method": "Credit/Debit Card",
+          "note": "",
+          "appliesToPlan": true,
+          "relatedTransactionId": "",
+          "createdAt": "2026-10-13T12:14:00"
+        },
+        {
+          "id": "demo-014-pay-3",
+          "type": "Payment",
+          "amount": 343.75,
+          "date": "2026-10-20",
+          "location": "Urology Middleburg",
+          "officeSite": "Urology Middleburg",
+          "username": "frontdesk.jax",
+          "responsibilityParty": "Ackerman",
+          "installmentId": "demo-014-inst-3",
+          "method": "Credit/Debit Card",
+          "note": "",
+          "appliesToPlan": true,
+          "relatedTransactionId": "",
+          "createdAt": "2026-10-20T13:21:00"
+        },
+        {
+          "id": "demo-014-pay-4",
+          "type": "Payment",
+          "amount": 343.75,
+          "date": "2026-10-27",
+          "location": "Urology Middleburg",
+          "officeSite": "Urology Middleburg",
+          "username": "rpatel",
+          "responsibilityParty": "Ackerman",
+          "installmentId": "demo-014-inst-4",
+          "method": "Credit/Debit Card",
+          "note": "",
+          "appliesToPlan": true,
+          "relatedTransactionId": "",
+          "createdAt": "2026-10-27T14:28:00"
+        }
+      ],
+      "adjustments": [],
+      "activity": [
+        {
+          "id": "activity-7ed9b789-70cd-4cd6-bd0e-de4d2664de7f",
+          "type": "payment",
+          "title": "Payment recorded",
+          "detail": "$343.75 · Credit/Debit Card",
+          "date": "2026-10-27",
+          "createdAt": "2026-10-27T12:39:00",
+          "actor": "System user"
+        },
+        {
+          "id": "activity-bed6c591-95e3-4d9f-9ad0-eadc544c9cd5",
+          "type": "payment",
+          "title": "Payment recorded",
+          "detail": "$343.75 · Credit/Debit Card",
+          "date": "2026-10-20",
+          "createdAt": "2026-10-20T11:26:00",
+          "actor": "System user"
+        },
+        {
+          "id": "activity-9338c101-f6a9-4e96-86a1-d9e0696b43e6",
+          "type": "payment",
+          "title": "Payment recorded",
+          "detail": "$343.75 · Credit/Debit Card",
+          "date": "2026-10-13",
+          "createdAt": "2026-10-13T10:13:00",
+          "actor": "System user"
+        },
+        {
+          "id": "activity-23aa3a4c-249a-429c-accb-78712672f8e3",
+          "type": "payment",
+          "title": "Payment recorded",
+          "detail": "$343.75 · Credit/Debit Card",
+          "date": "2026-10-06",
+          "createdAt": "2026-10-06T09:00:00",
+          "actor": "System user"
+        },
+        {
+          "id": "activity-demo-014-created",
+          "type": "account",
+          "title": "Patient account created",
+          "detail": "Payment Plan account with $2,750.00 responsibility.",
+          "date": "2026-09-29",
+          "createdAt": "2026-09-29T13:52:00",
+          "actor": "System user"
+        }
+      ]
+    },
+    {
+      "id": "demo-015",
+      "name": "Beatrice Holloway",
+      "mrn": "DEMO-1015",
+      "location": "Jacksonville",
+      "treatments": [
+        "Proton"
+      ],
+      "treatment": "Proton",
+      "insurance": "Aetna",
+      "responsibility": 1500,
+      "collected": 1500,
+      "ledgerInitialized": true,
+      "collectionDate": "2026-07-06",
+      "status": "Payment Plan",
+      "arrangement": "Payment Plan",
+      "noResponsibilityReason": "",
+      "statusNote": "",
+      "notes": "",
+      "archived": true,
+      "completedAt": "2026-09-14",
+      "completionReason": "Treatment completed",
+      "completionNote": "",
+      "createdAt": "2026-06-26T08:00:00",
+      "updatedAt": "2026-09-14T12:39:00",
+      "paymentPlan": {
+        "createdDate": "2026-06-26",
+        "openingCollected": 0,
+        "promiseToPayDate": "",
+        "renegotiationCount": 0,
+        "history": [],
+        "installments": [
+          {
+            "id": "demo-015-inst-1",
+            "dueDate": "2026-07-06",
+            "originalDueDate": "2026-07-06",
+            "amount": 500,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-015-inst-2",
+            "dueDate": "2026-08-06",
+            "originalDueDate": "2026-08-06",
+            "amount": 500,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-015-inst-3",
+            "dueDate": "2026-09-06",
+            "originalDueDate": "2026-09-06",
+            "amount": 500,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          }
+        ]
+      },
+      "payments": [
+        {
+          "id": "demo-015-pay-1",
+          "type": "Payment",
+          "amount": 500,
+          "date": "2026-07-06",
+          "location": "Jacksonville",
+          "officeSite": "ACC Mandarin",
+          "username": "tlee",
+          "responsibilityParty": "Ackerman",
+          "installmentId": "demo-015-inst-1",
+          "method": "Credit/Debit Card",
+          "note": "",
+          "appliesToPlan": true,
+          "relatedTransactionId": "",
+          "createdAt": "2026-07-06T11:07:00"
+        },
+        {
+          "id": "demo-015-pay-2",
+          "type": "Payment",
+          "amount": 500,
+          "date": "2026-08-06",
+          "location": "Jacksonville",
+          "officeSite": "ACC Mandarin",
+          "username": "frontdesk.jax",
+          "responsibilityParty": "Ackerman",
+          "installmentId": "demo-015-inst-2",
+          "method": "Credit/Debit Card",
+          "note": "",
+          "appliesToPlan": true,
+          "relatedTransactionId": "",
+          "createdAt": "2026-08-06T12:14:00"
+        },
+        {
+          "id": "demo-015-pay-3",
+          "type": "Payment",
+          "amount": 500,
+          "date": "2026-09-06",
+          "location": "Jacksonville",
+          "officeSite": "ACC Mandarin",
+          "username": "rpatel",
+          "responsibilityParty": "Ackerman",
+          "installmentId": "demo-015-inst-3",
+          "method": "Credit/Debit Card",
+          "note": "",
+          "appliesToPlan": true,
+          "relatedTransactionId": "",
+          "createdAt": "2026-09-06T13:21:00"
+        }
+      ],
+      "adjustments": [],
+      "activity": [
+        {
+          "id": "activity-16dcd39d-08bc-4b95-8f3a-01dc36cdc7fd",
+          "type": "completion",
+          "title": "Account completed and archived",
+          "detail": "Reason: Treatment completed.",
+          "date": "2026-09-14",
+          "createdAt": "2026-09-14T12:39:00",
+          "actor": "System user"
+        },
+        {
+          "id": "activity-c3798f64-616a-4d64-8270-71d8a9c4c156",
+          "type": "payment",
+          "title": "Payment recorded",
+          "detail": "$500.00 · Credit/Debit Card",
+          "date": "2026-09-06",
+          "createdAt": "2026-09-06T11:26:00",
+          "actor": "System user"
+        },
+        {
+          "id": "activity-8320221e-4904-443c-ae5f-757680d3c29e",
+          "type": "payment",
+          "title": "Payment recorded",
+          "detail": "$500.00 · Credit/Debit Card",
+          "date": "2026-08-06",
+          "createdAt": "2026-08-06T10:13:00",
+          "actor": "System user"
+        },
+        {
+          "id": "activity-cccace21-3a99-4260-81c9-6ebfd5d43198",
+          "type": "payment",
+          "title": "Payment recorded",
+          "detail": "$500.00 · Credit/Debit Card",
+          "date": "2026-07-06",
+          "createdAt": "2026-07-06T09:00:00",
+          "actor": "System user"
+        },
+        {
+          "id": "activity-demo-015-created",
+          "type": "account",
+          "title": "Patient account created",
+          "detail": "Payment Plan account with $1,500.00 responsibility.",
+          "date": "2026-06-26",
+          "createdAt": "2026-06-26T13:52:00",
+          "actor": "System user"
+        }
+      ]
+    },
+    {
+      "id": "demo-016",
+      "name": "Franklin Reyes",
+      "mrn": "DEMO-1016",
+      "location": "Amelia Island",
+      "treatments": [
+        "Imaging"
+      ],
+      "treatment": "Imaging",
+      "insurance": "Humana",
+      "responsibility": 800,
+      "collected": 400,
+      "ledgerInitialized": true,
+      "collectionDate": "2026-08-05",
+      "status": "Payment Plan",
+      "arrangement": "Payment Plan",
+      "noResponsibilityReason": "",
+      "statusNote": "",
+      "notes": "",
+      "archived": true,
+      "completedAt": "2026-09-04",
+      "completionReason": "Patient cancelled treatment",
+      "completionNote": "",
+      "createdAt": "2026-07-31T08:00:00",
+      "updatedAt": "2026-09-04T11:26:00",
+      "paymentPlan": {
+        "createdDate": "2026-07-31",
+        "openingCollected": 0,
+        "promiseToPayDate": "",
+        "renegotiationCount": 0,
+        "history": [],
+        "installments": [
+          {
+            "id": "demo-016-inst-1",
+            "dueDate": "2026-08-05",
+            "originalDueDate": "2026-08-05",
+            "amount": 400,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-016-inst-2",
+            "dueDate": "2026-09-05",
+            "originalDueDate": "2026-09-05",
+            "amount": 400,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          }
+        ]
+      },
+      "payments": [
+        {
+          "id": "demo-016-pay-1",
+          "type": "Payment",
+          "amount": 400,
+          "date": "2026-08-05",
+          "location": "Amelia Island",
+          "officeSite": "ACC Amelia Island",
+          "username": "frontdesk.jax",
+          "responsibilityParty": "Ackerman",
+          "installmentId": "demo-016-inst-1",
+          "method": "Credit/Debit Card",
+          "note": "",
+          "appliesToPlan": true,
+          "relatedTransactionId": "",
+          "createdAt": "2026-08-05T11:07:00"
+        }
+      ],
+      "adjustments": [
+        {
+          "id": "demo-016-adj-2",
+          "type": "Write-off",
+          "amount": 400,
+          "date": "2026-09-04",
+          "note": "Balance written off after cancellation",
+          "createdAt": "2026-09-04T14:20:00"
+        }
+      ],
+      "activity": [
+        {
+          "id": "activity-0e971262-45cc-4fb1-9af9-917a2ff28b79",
+          "type": "completion",
+          "title": "Account completed and archived",
+          "detail": "Reason: Patient cancelled treatment.",
+          "date": "2026-09-04",
+          "createdAt": "2026-09-04T11:26:00",
+          "actor": "System user"
+        },
+        {
+          "id": "activity-da39aaf7-56e1-4a0d-9a94-c02ea1473d65",
+          "type": "adjustment",
+          "title": "Write-off recorded",
+          "detail": "$400.00 · Balance written off after cancellation",
+          "date": "2026-09-04",
+          "createdAt": "2026-09-04T10:13:00",
+          "actor": "System user"
+        },
+        {
+          "id": "activity-c51a2f80-e593-4d26-9cb0-1e4bfef10b64",
+          "type": "payment",
+          "title": "Payment recorded",
+          "detail": "$400.00 · Credit/Debit Card",
+          "date": "2026-08-05",
+          "createdAt": "2026-08-05T09:00:00",
+          "actor": "System user"
+        },
+        {
+          "id": "activity-demo-016-created",
+          "type": "account",
+          "title": "Patient account created",
+          "detail": "Payment Plan account with $800.00 responsibility.",
+          "date": "2026-07-31",
+          "createdAt": "2026-07-31T12:39:00",
+          "actor": "System user"
+        }
+      ]
+    },
+    {
+      "id": "demo-017",
+      "name": "Yuki Tanaka",
+      "mrn": "DEMO-1017",
+      "location": "Jacksonville",
+      "treatments": [
+        "Radiation (Linac/HDR/Other)",
+        "Clinic"
+      ],
+      "treatment": "Radiation (Linac/HDR/Other) · Clinic",
+      "insurance": "Cigna",
+      "responsibility": 2100,
+      "collected": 700,
+      "ledgerInitialized": true,
+      "collectionDate": "2026-08-25",
+      "status": "Payment Plan",
+      "arrangement": "Payment Plan",
+      "noResponsibilityReason": "",
+      "statusNote": "",
+      "notes": "",
+      "archived": true,
+      "completedAt": "2026-09-24",
+      "completionReason": "Transferred / referred elsewhere",
+      "completionNote": "Care transferred to another provider",
+      "createdAt": "2026-08-15T08:00:00",
+      "updatedAt": "2026-09-24T10:13:00",
+      "paymentPlan": {
+        "createdDate": "2026-08-15",
+        "openingCollected": 0,
+        "promiseToPayDate": "",
+        "renegotiationCount": 0,
+        "history": [],
+        "installments": [
+          {
+            "id": "demo-017-inst-1",
+            "dueDate": "2026-08-25",
+            "originalDueDate": "2026-08-25",
+            "amount": 700,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-017-inst-2",
+            "dueDate": "2026-09-25",
+            "originalDueDate": "2026-09-25",
+            "amount": 700,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-017-inst-3",
+            "dueDate": "2026-10-25",
+            "originalDueDate": "2026-10-25",
+            "amount": 700,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          }
+        ]
+      },
+      "payments": [
+        {
+          "id": "demo-017-pay-1",
+          "type": "Payment",
+          "amount": 700,
+          "date": "2026-08-25",
+          "location": "Jacksonville",
+          "officeSite": "ACC Mandarin",
+          "username": "rpatel",
+          "responsibilityParty": "Ackerman",
+          "installmentId": "demo-017-inst-1",
+          "method": "Credit/Debit Card",
+          "note": "",
+          "appliesToPlan": true,
+          "relatedTransactionId": "",
+          "createdAt": "2026-08-25T11:07:00"
+        }
+      ],
+      "adjustments": [],
+      "activity": [
+        {
+          "id": "activity-d7318bd2-b299-4e7f-98c2-40beadf6c872",
+          "type": "completion",
+          "title": "Account completed and archived",
+          "detail": "Reason: Transferred / referred elsewhere.",
+          "date": "2026-09-24",
+          "createdAt": "2026-09-24T10:13:00",
+          "actor": "System user"
+        },
+        {
+          "id": "activity-d95573c7-130c-4f45-a35f-13051f55199a",
+          "type": "payment",
+          "title": "Payment recorded",
+          "detail": "$700.00 · Credit/Debit Card",
+          "date": "2026-08-25",
+          "createdAt": "2026-08-25T09:00:00",
+          "actor": "System user"
+        },
+        {
+          "id": "activity-demo-017-created",
+          "type": "account",
+          "title": "Patient account created",
+          "detail": "Payment Plan account with $2,100.00 responsibility.",
+          "date": "2026-08-15",
+          "createdAt": "2026-08-15T11:26:00",
+          "actor": "System user"
+        }
+      ]
+    },
+    {
+      "id": "demo-018",
+      "name": "Margaret O'Neil",
+      "mrn": "DEMO-1018",
+      "location": "Jacksonville",
+      "treatments": [
+        "Proton"
+      ],
+      "treatment": "Proton",
+      "insurance": "Aetna",
+      "responsibility": 3600,
+      "collected": 0,
+      "ledgerInitialized": true,
+      "collectionDate": "2026-11-08",
+      "status": "Payment Plan",
+      "arrangement": "Payment Plan",
+      "noResponsibilityReason": "",
+      "statusNote": "",
+      "notes": "",
+      "archived": false,
+      "completedAt": "",
+      "completionReason": "",
+      "completionNote": "",
+      "createdAt": "2026-11-01T08:00:00",
+      "updatedAt": "2026-11-01T09:00:00",
+      "paymentPlan": {
+        "createdDate": "2026-11-01",
+        "openingCollected": 0,
+        "promiseToPayDate": "",
+        "renegotiationCount": 0,
+        "history": [],
+        "installments": [
+          {
+            "id": "demo-018-inst-1",
+            "dueDate": "2026-11-08",
+            "originalDueDate": "2026-11-08",
+            "amount": 600,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-018-inst-2",
+            "dueDate": "2026-12-08",
+            "originalDueDate": "2026-12-08",
+            "amount": 600,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-018-inst-3",
+            "dueDate": "2027-01-08",
+            "originalDueDate": "2027-01-08",
+            "amount": 600,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-018-inst-4",
+            "dueDate": "2027-02-08",
+            "originalDueDate": "2027-02-08",
+            "amount": 600,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-018-inst-5",
+            "dueDate": "2027-03-08",
+            "originalDueDate": "2027-03-08",
+            "amount": 600,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-018-inst-6",
+            "dueDate": "2027-04-08",
+            "originalDueDate": "2027-04-08",
+            "amount": 600,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          }
+        ]
+      },
+      "payments": [],
+      "adjustments": [],
+      "activity": [
+        {
+          "id": "activity-demo-018-created",
+          "type": "account",
+          "title": "Patient account created",
+          "detail": "Payment Plan account with $3,600.00 responsibility.",
+          "date": "2026-11-01",
+          "createdAt": "2026-11-01T09:00:00",
+          "actor": "System user"
+        }
+      ]
+    },
+    {
+      "id": "demo-019",
+      "name": "Andre Thibodeaux",
+      "mrn": "DEMO-1019",
+      "location": "Amelia Island",
+      "treatments": [
+        "Radiation (Linac/HDR/Other)"
+      ],
+      "treatment": "Radiation (Linac/HDR/Other)",
+      "insurance": "Humana",
+      "responsibility": 1350,
+      "collected": 450,
+      "ledgerInitialized": true,
+      "collectionDate": "2026-10-04",
+      "status": "Payment Plan",
+      "arrangement": "Payment Plan",
+      "noResponsibilityReason": "",
+      "statusNote": "",
+      "notes": "",
+      "archived": false,
+      "completedAt": "",
+      "completionReason": "",
+      "completionNote": "",
+      "createdAt": "2026-09-29T08:00:00",
+      "updatedAt": "2026-10-04T09:00:00",
+      "paymentPlan": {
+        "createdDate": "2026-09-29",
+        "openingCollected": 0,
+        "promiseToPayDate": "",
+        "renegotiationCount": 0,
+        "history": [],
+        "installments": [
+          {
+            "id": "demo-019-inst-1",
+            "dueDate": "2026-10-04",
+            "originalDueDate": "2026-10-04",
+            "amount": 450,
+            "responsibilityParty": "UF",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-019-inst-2",
+            "dueDate": "2026-11-04",
+            "originalDueDate": "2026-11-04",
+            "amount": 450,
+            "responsibilityParty": "UF",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-019-inst-3",
+            "dueDate": "2026-12-04",
+            "originalDueDate": "2026-12-04",
+            "amount": 450,
+            "responsibilityParty": "UF",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          }
+        ]
+      },
+      "payments": [
+        {
+          "id": "demo-019-pay-1",
+          "type": "Payment",
+          "amount": 450,
+          "date": "2026-10-04",
+          "location": "Amelia Island",
+          "officeSite": "ACC Amelia Island",
+          "username": "mgarcia",
+          "responsibilityParty": "UF",
+          "installmentId": "demo-019-inst-1",
+          "method": "Check",
+          "note": "UF check received",
+          "appliesToPlan": true,
+          "relatedTransactionId": "",
+          "createdAt": "2026-10-04T11:07:00"
+        }
+      ],
+      "adjustments": [],
+      "activity": [
+        {
+          "id": "activity-cefd3534-45ea-454f-864f-9b5efd7085ab",
+          "type": "payment",
+          "title": "Payment recorded",
+          "detail": "$450.00 · Check · UF check received",
+          "date": "2026-10-04",
+          "createdAt": "2026-10-04T09:00:00",
+          "actor": "System user"
+        },
+        {
+          "id": "activity-demo-019-created",
+          "type": "account",
+          "title": "Patient account created",
+          "detail": "Payment Plan account with $1,350.00 responsibility.",
+          "date": "2026-09-29",
+          "createdAt": "2026-09-29T10:13:00",
+          "actor": "System user"
+        }
+      ]
+    },
+    {
+      "id": "demo-020",
+      "name": "Elena Petrov",
+      "mrn": "DEMO-1020",
+      "location": "Jacksonville",
+      "treatments": [
+        "Imaging",
+        "Clinic"
+      ],
+      "treatment": "Imaging · Clinic",
+      "insurance": "Cigna",
+      "responsibility": 600,
+      "collected": 600,
+      "ledgerInitialized": true,
+      "collectionDate": "2026-09-24",
+      "status": "Payment Plan",
+      "arrangement": "Payment Plan",
+      "noResponsibilityReason": "",
+      "statusNote": "",
+      "notes": "",
+      "archived": false,
+      "completedAt": "",
+      "completionReason": "",
+      "completionNote": "",
+      "createdAt": "2026-09-19T08:00:00",
+      "updatedAt": "2026-10-26T11:26:00",
+      "paymentPlan": {
+        "createdDate": "2026-09-19",
+        "openingCollected": 0,
+        "promiseToPayDate": "",
+        "renegotiationCount": 0,
+        "history": [],
+        "installments": [
+          {
+            "id": "demo-020-inst-1",
+            "dueDate": "2026-09-24",
+            "originalDueDate": "2026-09-24",
+            "amount": 300,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-020-inst-2",
+            "dueDate": "2026-10-24",
+            "originalDueDate": "2026-10-24",
+            "amount": 300,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          }
+        ]
+      },
+      "payments": [
+        {
+          "id": "demo-020-pay-1",
+          "type": "Payment",
+          "amount": 300,
+          "date": "2026-09-24",
+          "location": "Jacksonville",
+          "officeSite": "ACC Mandarin",
+          "username": "tlee",
+          "responsibilityParty": "Ackerman",
+          "installmentId": "demo-020-inst-1",
+          "method": "Credit/Debit Card",
+          "note": "",
+          "appliesToPlan": true,
+          "relatedTransactionId": "",
+          "createdAt": "2026-09-24T11:07:00"
+        },
+        {
+          "id": "demo-020-pay-2",
+          "type": "Payment",
+          "amount": 350,
+          "date": "2026-10-24",
+          "location": "Jacksonville",
+          "officeSite": "ACC Mandarin",
+          "username": "frontdesk.jax",
+          "responsibilityParty": "Ackerman",
+          "installmentId": "demo-020-inst-2",
+          "method": "Credit/Debit Card",
+          "note": "",
+          "appliesToPlan": true,
+          "relatedTransactionId": "",
+          "createdAt": "2026-10-24T12:14:00"
+        },
+        {
+          "id": "demo-020-pay-3",
+          "type": "Refund",
+          "amount": 50,
+          "date": "2026-10-26",
+          "location": "Jacksonville",
+          "officeSite": "ACC Mandarin",
+          "username": "rpatel",
+          "responsibilityParty": "Ackerman",
+          "installmentId": "",
+          "method": "Credit/Debit Card",
+          "note": "Overpayment refunded",
+          "appliesToPlan": true,
+          "relatedTransactionId": "demo-020-pay-2",
+          "createdAt": "2026-10-26T13:21:00"
+        }
+      ],
+      "adjustments": [],
+      "activity": [
+        {
+          "id": "activity-ba6ce83f-2844-4567-9c19-f86ea4964f49",
+          "type": "payment",
+          "title": "Payment refunded",
+          "detail": "$50.00 · Credit/Debit Card · Overpayment refunded",
+          "date": "2026-10-26",
+          "createdAt": "2026-10-26T11:26:00",
+          "actor": "System user"
+        },
+        {
+          "id": "activity-8f8e20da-b13d-4fa9-acd5-7bd807be4e77",
+          "type": "payment",
+          "title": "Payment recorded",
+          "detail": "$350.00 · Credit/Debit Card",
+          "date": "2026-10-24",
+          "createdAt": "2026-10-24T10:13:00",
+          "actor": "System user"
+        },
+        {
+          "id": "activity-98af258f-3ac9-4075-bd9a-5a8c5b159352",
+          "type": "payment",
+          "title": "Payment recorded",
+          "detail": "$300.00 · Credit/Debit Card",
+          "date": "2026-09-24",
+          "createdAt": "2026-09-24T09:00:00",
+          "actor": "System user"
+        },
+        {
+          "id": "activity-demo-020-created",
+          "type": "account",
+          "title": "Patient account created",
+          "detail": "Payment Plan account with $600.00 responsibility.",
+          "date": "2026-09-19",
+          "createdAt": "2026-09-19T12:39:00",
+          "actor": "System user"
+        }
+      ]
+    },
+    {
+      "id": "demo-021",
+      "name": "Jamal Whitaker",
+      "mrn": "DEMO-1021",
+      "location": "Jacksonville",
+      "treatments": [
+        "Proton"
+      ],
+      "treatment": "Proton",
+      "insurance": "Florida Blue",
+      "responsibility": 2200,
+      "collected": 1100,
+      "ledgerInitialized": true,
+      "collectionDate": "2026-09-14",
+      "status": "Payment Plan",
+      "arrangement": "Payment Plan",
+      "noResponsibilityReason": "",
+      "statusNote": "",
+      "notes": "",
+      "archived": false,
+      "completedAt": "",
+      "completionReason": "",
+      "completionNote": "",
+      "createdAt": "2026-09-09T08:00:00",
+      "updatedAt": "2026-10-14T12:39:00",
+      "paymentPlan": {
+        "createdDate": "2026-09-09",
+        "openingCollected": 0,
+        "promiseToPayDate": "",
+        "renegotiationCount": 0,
+        "history": [],
+        "installments": [
+          {
+            "id": "demo-021-inst-1",
+            "dueDate": "2026-09-14",
+            "originalDueDate": "2026-09-14",
+            "amount": 550,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-021-inst-2",
+            "dueDate": "2026-10-14",
+            "originalDueDate": "2026-10-14",
+            "amount": 550,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-021-inst-3",
+            "dueDate": "2026-11-14",
+            "originalDueDate": "2026-11-14",
+            "amount": 550,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-021-inst-4",
+            "dueDate": "2026-12-14",
+            "originalDueDate": "2026-12-14",
+            "amount": 550,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          }
+        ]
+      },
+      "payments": [
+        {
+          "id": "demo-021-pay-1",
+          "type": "Payment",
+          "amount": 5500,
+          "date": "2026-09-14",
+          "location": "Jacksonville",
+          "officeSite": "ACC Mandarin",
+          "username": "frontdesk.jax",
+          "responsibilityParty": "Ackerman",
+          "installmentId": "demo-021-inst-1",
+          "method": "Credit/Debit Card",
+          "note": "Entered with a typo",
+          "appliesToPlan": true,
+          "relatedTransactionId": "",
+          "createdAt": "2026-09-14T11:07:00"
+        },
+        {
+          "id": "demo-021-pay-2",
+          "type": "Correction Reversal",
+          "amount": 5500,
+          "date": "2026-09-15",
+          "location": "Jacksonville",
+          "officeSite": "ACC Mandarin",
+          "username": "rpatel",
+          "responsibilityParty": "Ackerman",
+          "installmentId": "",
+          "method": "Credit/Debit Card",
+          "note": "Amount entered incorrectly",
+          "appliesToPlan": true,
+          "relatedTransactionId": "demo-021-pay-1",
+          "createdAt": "2026-09-15T12:14:00"
+        },
+        {
+          "id": "demo-021-pay-3",
+          "type": "Correction Payment",
+          "amount": 550,
+          "date": "2026-09-15",
+          "location": "Jacksonville",
+          "officeSite": "ACC Mandarin",
+          "username": "kwilliams",
+          "responsibilityParty": "Ackerman",
+          "installmentId": "demo-021-inst-1",
+          "method": "Credit/Debit Card",
+          "note": "Corrected amount",
+          "appliesToPlan": true,
+          "relatedTransactionId": "",
+          "createdAt": "2026-09-15T13:21:00"
+        },
+        {
+          "id": "demo-021-pay-4",
+          "type": "Payment",
+          "amount": 550,
+          "date": "2026-10-14",
+          "location": "Jacksonville",
+          "officeSite": "ACC Mandarin",
+          "username": "mgarcia",
+          "responsibilityParty": "Ackerman",
+          "installmentId": "demo-021-inst-2",
+          "method": "Credit/Debit Card",
+          "note": "",
+          "appliesToPlan": true,
+          "relatedTransactionId": "",
+          "createdAt": "2026-10-14T14:28:00"
+        }
+      ],
+      "adjustments": [],
+      "activity": [
+        {
+          "id": "activity-8aaa9e1a-af11-4ac9-9d8c-9df407af0551",
+          "type": "payment",
+          "title": "Payment recorded",
+          "detail": "$550.00 · Credit/Debit Card",
+          "date": "2026-10-14",
+          "createdAt": "2026-10-14T12:39:00",
+          "actor": "System user"
+        },
+        {
+          "id": "activity-fcbabc30-5a3c-4380-a29a-4b031dc0df3d",
+          "type": "payment",
+          "title": "Corrected payment recorded",
+          "detail": "$550.00 · Credit/Debit Card · Corrected amount",
+          "date": "2026-09-15",
+          "createdAt": "2026-09-15T11:26:00",
+          "actor": "System user"
+        },
+        {
+          "id": "activity-5a0126c8-25a9-45b1-9ebe-4809879e6bec",
+          "type": "payment",
+          "title": "Original payment corrected",
+          "detail": "$5,500.00 · Credit/Debit Card · Amount entered incorrectly",
+          "date": "2026-09-15",
+          "createdAt": "2026-09-15T10:13:00",
+          "actor": "System user"
+        },
+        {
+          "id": "activity-08c03b14-4d69-45ae-9b95-db760b1c3988",
+          "type": "payment",
+          "title": "Payment recorded",
+          "detail": "$5,500.00 · Credit/Debit Card · Entered with a typo",
+          "date": "2026-09-14",
+          "createdAt": "2026-09-14T09:00:00",
+          "actor": "System user"
+        },
+        {
+          "id": "activity-demo-021-created",
+          "type": "account",
+          "title": "Patient account created",
+          "detail": "Payment Plan account with $2,200.00 responsibility.",
+          "date": "2026-09-09",
+          "createdAt": "2026-09-09T13:52:00",
+          "actor": "System user"
+        }
+      ]
+    },
+    {
+      "id": "demo-022",
+      "name": "Sophie Laurent",
+      "mrn": "DEMO-1022",
+      "location": "Urology Middleburg",
+      "treatments": [
+        "Clinic"
+      ],
+      "treatment": "Clinic",
+      "insurance": "Self-pay",
+      "responsibility": 250,
+      "collected": 0,
+      "ledgerInitialized": true,
+      "collectionDate": "2026-11-17",
+      "status": "Payment Plan",
+      "arrangement": "Payment Plan",
+      "noResponsibilityReason": "",
+      "statusNote": "",
+      "notes": "",
+      "archived": false,
+      "completedAt": "",
+      "completionReason": "",
+      "completionNote": "",
+      "createdAt": "2026-10-31T08:00:00",
+      "updatedAt": "2026-10-31T09:00:00",
+      "paymentPlan": {
+        "createdDate": "2026-10-31",
+        "openingCollected": 0,
+        "promiseToPayDate": "",
+        "renegotiationCount": 0,
+        "history": [],
+        "installments": [
+          {
+            "id": "demo-022-inst-1",
+            "dueDate": "2026-11-17",
+            "originalDueDate": "2026-11-17",
+            "amount": 250,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          }
+        ]
+      },
+      "payments": [],
+      "adjustments": [],
+      "activity": [
+        {
+          "id": "activity-demo-022-created",
+          "type": "account",
+          "title": "Patient account created",
+          "detail": "Payment Plan account with $250.00 responsibility.",
+          "date": "2026-10-31",
+          "createdAt": "2026-10-31T09:00:00",
+          "actor": "System user"
+        }
+      ]
+    },
+    {
+      "id": "demo-023",
+      "name": "Victor Nakamura",
+      "mrn": "DEMO-1023",
+      "location": "Urology World Golf Village",
+      "treatments": [
+        "Radiation (Linac/HDR/Other)"
+      ],
+      "treatment": "Radiation (Linac/HDR/Other)",
+      "insurance": "Medicare",
+      "responsibility": 1000,
+      "collected": 1000,
+      "ledgerInitialized": true,
+      "collectionDate": "2026-07-26",
+      "status": "Payment Plan",
+      "arrangement": "Payment Plan",
+      "noResponsibilityReason": "",
+      "statusNote": "",
+      "notes": "",
+      "archived": true,
+      "completedAt": "2026-10-04",
+      "completionReason": "Treatment completed",
+      "completionNote": "",
+      "createdAt": "2026-07-16T08:00:00",
+      "updatedAt": "2026-10-04T11:26:00",
+      "paymentPlan": {
+        "createdDate": "2026-07-16",
+        "openingCollected": 0,
+        "promiseToPayDate": "",
+        "renegotiationCount": 0,
+        "history": [],
+        "installments": [
+          {
+            "id": "demo-023-inst-1",
+            "dueDate": "2026-07-26",
+            "originalDueDate": "2026-07-26",
+            "amount": 500,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-023-inst-2",
+            "dueDate": "2026-08-26",
+            "originalDueDate": "2026-08-26",
+            "amount": 500,
+            "responsibilityParty": "UF",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          }
+        ]
+      },
+      "payments": [
+        {
+          "id": "demo-023-pay-1",
+          "type": "Payment",
+          "amount": 500,
+          "date": "2026-07-26",
+          "location": "Urology World Golf Village",
+          "officeSite": "ACC Mandarin",
+          "username": "kwilliams",
+          "responsibilityParty": "Ackerman",
+          "installmentId": "demo-023-inst-1",
+          "method": "Credit/Debit Card",
+          "note": "",
+          "appliesToPlan": true,
+          "relatedTransactionId": "",
+          "createdAt": "2026-07-26T11:07:00"
+        },
+        {
+          "id": "demo-023-pay-2",
+          "type": "Payment",
+          "amount": 500,
+          "date": "2026-08-26",
+          "location": "Urology World Golf Village",
+          "officeSite": "ACC Mandarin",
+          "username": "mgarcia",
+          "responsibilityParty": "UF",
+          "installmentId": "demo-023-inst-2",
+          "method": "Check",
+          "note": "",
+          "appliesToPlan": true,
+          "relatedTransactionId": "",
+          "createdAt": "2026-08-26T12:14:00"
+        }
+      ],
+      "adjustments": [],
+      "activity": [
+        {
+          "id": "activity-375eba30-b187-4355-a78a-130cd005516c",
+          "type": "completion",
+          "title": "Account completed and archived",
+          "detail": "Reason: Treatment completed.",
+          "date": "2026-10-04",
+          "createdAt": "2026-10-04T11:26:00",
+          "actor": "System user"
+        },
+        {
+          "id": "activity-f5925b91-f948-425a-b329-d92d3760a5f9",
+          "type": "payment",
+          "title": "Payment recorded",
+          "detail": "$500.00 · Check",
+          "date": "2026-08-26",
+          "createdAt": "2026-08-26T10:13:00",
+          "actor": "System user"
+        },
+        {
+          "id": "activity-a999a7ef-cb6c-47fc-bd1c-9b22ad4f926a",
+          "type": "payment",
+          "title": "Payment recorded",
+          "detail": "$500.00 · Credit/Debit Card",
+          "date": "2026-07-26",
+          "createdAt": "2026-07-26T09:00:00",
+          "actor": "System user"
+        },
+        {
+          "id": "activity-demo-023-created",
+          "type": "account",
+          "title": "Patient account created",
+          "detail": "Payment Plan account with $1,000.00 responsibility.",
+          "date": "2026-07-16",
+          "createdAt": "2026-07-16T12:39:00",
+          "actor": "System user"
+        }
+      ]
+    },
+    {
+      "id": "demo-024",
+      "name": "Grace Adeyemi",
+      "mrn": "DEMO-1024",
+      "location": "Jacksonville",
+      "treatments": [
+        "Radiation (Linac/HDR/Other)"
+      ],
+      "treatment": "Radiation (Linac/HDR/Other)",
+      "insurance": "Medicare",
+      "responsibility": 1950,
+      "collected": 975,
+      "ledgerInitialized": true,
+      "collectionDate": "2026-08-05",
+      "status": "Payment Plan",
+      "arrangement": "Payment Plan",
+      "noResponsibilityReason": "",
+      "statusNote": "",
+      "notes": "",
+      "archived": false,
+      "completedAt": "",
+      "completionReason": "",
+      "completionNote": "",
+      "createdAt": "2026-07-31T08:00:00",
+      "updatedAt": "2026-10-05T11:26:00",
+      "paymentPlan": {
+        "createdDate": "2026-07-31",
+        "openingCollected": 0,
+        "promiseToPayDate": "",
+        "renegotiationCount": 0,
+        "history": [],
+        "installments": [
+          {
+            "id": "demo-024-inst-1",
+            "dueDate": "2026-08-05",
+            "originalDueDate": "2026-08-05",
+            "amount": 325,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-024-inst-2",
+            "dueDate": "2026-09-05",
+            "originalDueDate": "2026-09-05",
+            "amount": 325,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-024-inst-3",
+            "dueDate": "2026-10-05",
+            "originalDueDate": "2026-10-05",
+            "amount": 325,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-024-inst-4",
+            "dueDate": "2026-11-05",
+            "originalDueDate": "2026-11-05",
+            "amount": 325,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-024-inst-5",
+            "dueDate": "2026-12-05",
+            "originalDueDate": "2026-12-05",
+            "amount": 325,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          },
+          {
+            "id": "demo-024-inst-6",
+            "dueDate": "2027-01-05",
+            "originalDueDate": "2027-01-05",
+            "amount": 325,
+            "responsibilityParty": "Ackerman",
+            "ufVerified": false,
+            "ufVerifiedAt": "",
+            "rescheduledAt": ""
+          }
+        ]
+      },
+      "payments": [
+        {
+          "id": "demo-024-pay-1",
+          "type": "Payment",
+          "amount": 325,
+          "date": "2026-08-05",
+          "location": "Jacksonville",
+          "officeSite": "ACC Mandarin",
+          "username": "mgarcia",
+          "responsibilityParty": "Ackerman",
+          "installmentId": "demo-024-inst-1",
+          "method": "Credit/Debit Card",
+          "note": "",
+          "appliesToPlan": true,
+          "relatedTransactionId": "",
+          "createdAt": "2026-08-05T11:07:00"
+        },
+        {
+          "id": "demo-024-pay-2",
+          "type": "Payment",
+          "amount": 325,
+          "date": "2026-09-05",
+          "location": "Jacksonville",
+          "officeSite": "ACC Mandarin",
+          "username": "tlee",
+          "responsibilityParty": "Ackerman",
+          "installmentId": "demo-024-inst-2",
+          "method": "Credit/Debit Card",
+          "note": "",
+          "appliesToPlan": true,
+          "relatedTransactionId": "",
+          "createdAt": "2026-09-05T12:14:00"
+        },
+        {
+          "id": "demo-024-pay-3",
+          "type": "Payment",
+          "amount": 325,
+          "date": "2026-10-05",
+          "location": "Jacksonville",
+          "officeSite": "ACC Mandarin",
+          "username": "frontdesk.jax",
+          "responsibilityParty": "Ackerman",
+          "installmentId": "demo-024-inst-3",
+          "method": "Credit/Debit Card",
+          "note": "",
+          "appliesToPlan": true,
+          "relatedTransactionId": "",
+          "createdAt": "2026-10-05T13:21:00"
+        }
+      ],
+      "adjustments": [],
+      "activity": [
+        {
+          "id": "activity-4ca5f7a8-a909-4d2b-b73c-867567bd7b16",
+          "type": "payment",
+          "title": "Payment recorded",
+          "detail": "$325.00 · Credit/Debit Card",
+          "date": "2026-10-05",
+          "createdAt": "2026-10-05T11:26:00",
+          "actor": "System user"
+        },
+        {
+          "id": "activity-6b309ff5-0722-4bd8-8fe2-fed7f0850f67",
+          "type": "payment",
+          "title": "Payment recorded",
+          "detail": "$325.00 · Credit/Debit Card",
+          "date": "2026-09-05",
+          "createdAt": "2026-09-05T10:13:00",
+          "actor": "System user"
+        },
+        {
+          "id": "activity-b8587ffb-7012-4b5c-a083-52b6ef50bbd0",
+          "type": "payment",
+          "title": "Payment recorded",
+          "detail": "$325.00 · Credit/Debit Card",
+          "date": "2026-08-05",
+          "createdAt": "2026-08-05T09:00:00",
+          "actor": "System user"
+        },
+        {
+          "id": "activity-demo-024-created",
+          "type": "account",
+          "title": "Patient account created",
+          "detail": "Payment Plan account with $1,950.00 responsibility.",
+          "date": "2026-07-31",
+          "createdAt": "2026-07-31T12:39:00",
+          "actor": "System user"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Internal Ackerman patient payment workflow application.">
+  <link rel="icon" href="data:,">
+  <script>
+    (() => {
+      try {
+        const savedTheme = localStorage.getItem("ackermanColorTheme");
+        if (savedTheme === "dark") {
+          document.documentElement.dataset.theme = "dark";
+          document.documentElement.style.colorScheme = "dark";
+        }
+      } catch (_) {}
+    })();
+  </script>
+  <title>Ackerman Patient Payment Board - Version 3</title>
+  <link rel="stylesheet" href="/assets/styles.css?v=3.3.0">
+  <script src="/assets/theme.js?v=3.3.0" defer></script>
+  <script src="/assets/patient-merge.js?v=3.3.0"></script>
+  <script src="/assets/server-bridge.js?v=3.3.0"></script>
+  <script src="/assets/data.js?v=3.3.0" defer></script>
+  <script src="/assets/documents.js?v=3.3.0" defer></script>
+  <script src="/assets/excel-export.js?v=3.3.0" defer></script>
+  <script src="/assets/board.js?v=3.3.0" defer></script>
+</head>
+<body class="payment-board-page">
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="brand">
+        <h1>Ackerman Patient Payment Board</h1>
+        <p>Finance ↔ Front Desk payment communication</p>
+      </div>
+      <nav class="app-nav" aria-label="Application pages">
+        <a class="active" href="/app" aria-current="page">Payment Board</a>
+        <a href="/app/analytics">Statistical Analysis</a>
+        <a href="/app/completed">Completed Patients</a>
+      </nav>
+      <div class="header-tools">
+        <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to dark mode" title="Switch to dark mode">
+          <span class="theme-toggle-icon" data-theme-icon aria-hidden="true">☾</span>
+          <span data-theme-label>Dark</span>
+        </button>
+        <div class="demo-chip">INTERNAL USE ONLY</div>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <div class="notice">
+      <strong>Internal application:</strong> patient payment information is shared through authenticated server-side storage for authorized staff.
+    </div>
+
+    <section class="summary-grid summary-grid-four" aria-label="Payment summary">
+      <article class="summary-card">
+        <div class="summary-label">Active Patients</div>
+        <div class="summary-value" id="activeCount">0</div>
+        <div class="summary-subtext" id="activeSubtext">Open collection records</div>
+      </article>
+      <article class="summary-card">
+        <div class="summary-label">Amount Outstanding</div>
+        <div class="summary-value" id="outstandingAmount">$0</div>
+        <div class="summary-subtext">Across active records</div>
+      </article>
+      <article class="summary-card">
+        <div class="summary-label">Collection Rate</div>
+        <div class="summary-value" id="collectionRate">0%</div>
+        <div class="summary-subtext">Collected / responsibility</div>
+      </article>
+      <article class="summary-card">
+        <div class="summary-label">Active Payment Plans</div>
+        <div class="summary-value" id="planCount">0</div>
+        <div class="summary-subtext" id="planAttention">0 needing attention</div>
+      </article>
+    </section>
+
+    <section class="operations-panel" aria-labelledby="operationsHeading">
+      <div class="operations-heading">
+        <div>
+          <h2 id="operationsHeading">Today’s Operations</h2>
+          <p>Use a card as a quick filter for the active work queue.</p>
+        </div>
+        <button class="btn btn-ghost btn-small" id="clearQuickFilterButton" type="button">Show All Active</button>
+      </div>
+      <div class="operations-grid">
+        <button class="operation-card" type="button" data-quick-filter="Due Today">
+          <span class="operation-label">Due Today</span><strong id="opsDueToday">0</strong><small>all balances and plans</small>
+        </button>
+        <button class="operation-card danger" type="button" data-quick-filter="Overdue">
+          <span class="operation-label">Overdue</span><strong id="opsOverdue">0</strong><small id="opsOverdueAmount">$0 exposed</small>
+        </button>
+        <button class="operation-card" type="button" data-quick-filter="Plan Attention">
+          <span class="operation-label">Plan Installments Due</span><strong id="opsPlanAttention">0</strong><small id="opsPlanAttentionContext">across 0 payment plans</small>
+        </button>
+        <button class="operation-card gold" type="button" data-quick-filter="Partial Overdue">
+          <span class="operation-label">Partial Balances Overdue</span><strong id="opsPartialOverdue">0</strong><small>remaining balance past due</small>
+        </button>
+        <button class="operation-card green" type="button" data-quick-filter="Collected Today">
+          <span class="operation-label">Collected Today</span><strong id="opsCollectedToday">$0</strong><small id="opsTransactionCount">0 transactions</small>
+        </button>
+        <button class="operation-card blue" type="button" data-quick-filter="UF Check">
+          <span class="operation-label">UF Checks Due</span><strong id="opsUfChecks">0</strong><small id="opsUfChecksContext">UF-responsible payments whose due date has passed</small>
+        </button>
+      </div>
+    </section>
+
+    <section class="workspace" aria-labelledby="workQueueHeading">
+      <div class="toolbar">
+        <div class="toolbar-grid">
+          <div class="field">
+            <label for="searchInput">Search</label>
+            <input id="searchInput" type="search" autocomplete="off" placeholder="Patient, MRN, treatment, or insurance">
+          </div>
+          <div class="field">
+            <label for="statusFilter">Status</label>
+            <select id="statusFilter">
+              <option value="all">All statuses</option>
+              <option value="Overdue">Overdue</option>
+              <option value="Due Today">Due Today</option>
+              <option value="Overdue or Due Today">Overdue and Due Today</option>
+              <option value="UF Check Due">UF Checks Due</option>
+              <option value="Upcoming Collection">Upcoming Collections</option>
+              <option value="Paid in Full">Paid in Full</option>
+              <option value="No Responsibility">No Responsibility</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="locationFilter">Treatment site</label>
+            <select id="locationFilter"><option value="all">All sites</option></select>
+          </div>
+          <div class="field">
+            <label for="treatmentFilter">Treatment type</label>
+            <select id="treatmentFilter"><option value="all">All treatments</option></select>
+          </div>
+          <div class="field">
+            <label for="sortSelect">Sort by</label>
+            <select id="sortSelect">
+              <option value="actionDate:asc">Next due date: earliest</option>
+              <option value="actionDate:desc">Next due date: latest</option>
+              <option value="name:asc">Patient name: A-Z</option>
+              <option value="name:desc">Patient name: Z-A</option>
+              <option value="mrn:asc">MRN: A-Z</option>
+              <option value="mrn:desc">MRN: Z-A</option>
+              <option value="status:asc">Status: urgent first</option>
+              <option value="status:desc">Status: reverse priority</option>
+              <option value="ufCheckAge:desc">UF check: oldest first</option>
+              <option value="ufCheckAge:asc">UF check: newest first</option>
+              <option value="location:asc">Treatment site: A-Z</option>
+              <option value="location:desc">Treatment site: Z-A</option>
+              <option value="treatment:asc">Treatment type: A-Z</option>
+              <option value="treatment:desc">Treatment type: Z-A</option>
+              <option value="planProgress:asc">Plan progress: lowest</option>
+              <option value="planProgress:desc">Plan progress: highest</option>
+              <option value="responsibility:desc">Responsibility: highest</option>
+              <option value="responsibility:asc">Responsibility: lowest</option>
+              <option value="collected:desc">Collected: highest</option>
+              <option value="collected:asc">Collected: lowest</option>
+              <option value="owed:desc">Amount owed: highest</option>
+              <option value="owed:asc">Amount owed: lowest</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="saved-view-bar" aria-label="Saved views">
+          <div class="field saved-view-select-field">
+            <label for="savedViewSelect">Saved view</label>
+            <select id="savedViewSelect"><option value="">Choose a saved view</option></select>
+          </div>
+          <div class="field saved-view-name-field">
+            <label for="savedViewName">View name</label>
+            <input id="savedViewName" maxlength="60" placeholder="Example: Jacksonville overdue">
+          </div>
+          <button class="btn btn-secondary" id="saveViewButton" type="button">Save Current View</button>
+          <button class="btn btn-danger" id="deleteViewButton" type="button" disabled>Delete Saved View</button>
+        </div>
+
+        <div class="toolbar-actions">
+          <div class="toolbar-actions-left">
+            <button class="btn btn-primary" id="addPatientButton" type="button">+ Add Patient</button>
+            <button class="btn btn-secondary" id="toggleAllRowsButton" type="button" aria-expanded="true" title="Collapse all visible patient rows">▾ Collapse All</button>
+          </div>
+          <div class="toolbar-actions-right">
+            <button class="btn btn-secondary" id="clearFiltersButton" type="button">Clear Filters</button>
+            <button class="btn btn-secondary" id="exportButton" type="button">Export Current View Excel</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-title-row">
+        <div>
+          <h2 id="workQueueHeading">Active Patient Work Queue</h2>
+          <p>Statuses are calculated from payments, adjustments, due dates, and payment-plan schedules. Click a status badge to open the patient activity timeline.</p>
+        </div>
+        <div class="section-title-meta">
+          <span class="data-refreshed" id="boardRefreshedAt">Browser data refreshed -</span>
+          <div class="record-count-badge" id="resultCount" aria-live="polite">0 records</div>
+        </div>
+      </div>
+
+      <div class="table-meta">
+        <span>Click a column heading to sort.</span>
+        <span>Excel export includes only the records currently shown after filters and sorting.</span>
+      </div>
+
+      <div class="table-wrap">
+        <table class="payment-table" aria-describedby="workQueueDescription">
+          <caption class="sr-only">Active patient payment work queue</caption>
+          <colgroup>
+            <col style="width: 14%">
+            <col style="width: 15%">
+            <col style="width: 13%">
+            <col style="width: 12%">
+            <col style="width: 18%">
+            <col style="width: 9%">
+            <col style="width: 19%">
+          </colgroup>
+          <thead>
+            <tr>
+              <th scope="col"><button class="sort-button" type="button" data-sort-key="status">Status <span class="sort-indicator" aria-hidden="true"></span></button></th>
+              <th scope="col"><button class="sort-button" type="button" data-sort-key="name">Patient <span class="sort-indicator" aria-hidden="true"></span></button></th>
+              <th scope="col"><button class="sort-button" type="button" data-sort-key="treatment">Treatment <span class="sort-indicator" aria-hidden="true"></span></button></th>
+              <th scope="col"><button class="sort-button" type="button" data-sort-key="location">Site &amp; Insurance <span class="sort-indicator" aria-hidden="true"></span></button></th>
+              <th scope="col"><button class="sort-button" type="button" data-sort-key="owed">Financials / Plan <span class="sort-indicator" aria-hidden="true"></span></button></th>
+              <th scope="col"><button class="sort-button" type="button" data-sort-key="actionDate">Next Due <span class="sort-indicator" aria-hidden="true"></span></button></th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="patientTableBody"></tbody>
+        </table>
+        <div class="empty-state" id="emptyState" hidden>
+          <strong>No matching active records</strong>
+          Change the filters or add a patient.
+        </div>
+      </div>
+      <p class="sr-only" id="workQueueDescription">The table combines related fields so the page fits without horizontal scrolling.</p>
+    </section>
+
+    <div class="footer-note">Version 3 uses authenticated shared server-side storage for patient/payment data and documents. Theme and saved-view preferences may remain local to each browser.</div>
+  </main>
+
+  <dialog id="patientDialog" class="wide-dialog">
+    <form id="patientForm" method="dialog">
+      <div class="modal-header">
+        <div>
+          <h2 id="patientDialogTitle">Add Patient</h2>
+          <p>Enter the patient information used for payment tracking.</p>
+        </div>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="patientId">
+        <input type="hidden" id="planOpeningCollected" value="0">
+        <div class="form-grid">
+          <div class="field">
+            <label for="patientName">Patient name</label>
+            <input id="patientName" required maxlength="100" placeholder="Patient name">
+          </div>
+          <div class="field">
+            <label for="patientMrn">MRN</label>
+            <input id="patientMrn" required maxlength="30" placeholder="MRN">
+          </div>
+          <div class="field">
+            <label for="patientLocation">Treatment site</label>
+            <select id="patientLocation" required>
+              <option>Jacksonville</option>
+              <option>Amelia Island</option>
+              <option>Urology World Golf Village</option>
+              <option>Urology Middleburg</option>
+            </select>
+          </div>
+          <div class="field full">
+            <label>Treatment flags</label>
+            <div class="treatment-flag-picker" id="patientTreatmentFlags" role="group" aria-label="Treatment flags">
+              <label><input type="checkbox" name="patientTreatmentFlag" value="Proton"> <span>Proton</span></label>
+              <label><input type="checkbox" name="patientTreatmentFlag" value="Radiation (Linac/HDR/Other)"> <span>Radiation (Linac/HDR/Other)</span></label>
+              <label><input type="checkbox" name="patientTreatmentFlag" value="Imaging"> <span>Imaging</span></label>
+              <label><input type="checkbox" name="patientTreatmentFlag" value="Clinic"> <span>Clinic</span></label>
+              <label><input type="checkbox" name="patientTreatmentFlag" value="Women's Imaging"> <span>Women's Imaging</span></label>
+            </div>
+            <span class="field-hint">Select every treatment category that applies. Most patients may have more than one.</span>
+          </div>
+          <div class="field">
+            <label for="patientInsurance">Insurance</label>
+            <input id="patientInsurance" required maxlength="100" placeholder="Example Insurance">
+          </div>
+          <div class="field">
+            <label for="patientResponsibility">Patient responsibility</label>
+            <input id="patientResponsibility" type="number" min="0" step="0.01" required>
+          </div>
+          <input id="patientCollected" type="hidden" value="0">
+          <div class="field">
+            <label for="patientDate">Collection date</label>
+            <input id="patientDate" type="date" required>
+            <span class="field-hint" id="collectionDateHint">For payment plans, this follows the first scheduled payment.</span>
+          </div>
+          <div class="field">
+            <label for="patientArrangement">Account arrangement</label>
+            <select id="patientArrangement" required>
+              <option value="Payment Plan">Payment Plan</option>
+              <option value="No Responsibility">No Payment Responsibility</option>
+            </select>
+            <span class="field-hint">Every account is either a Payment Plan or No Payment Responsibility. A one-payment account is still a Payment Plan.</span>
+          </div>
+          <div class="field">
+            <label for="patientStatusNote">Status / action note</label>
+            <input id="patientStatusNote" maxlength="120" placeholder="Example: Call patient">
+            <span class="field-hint">This appears directly under the patient's status and can also be edited from the board.</span>
+          </div>
+          <div class="field" id="noResponsibilityReasonField" hidden>
+            <label for="noResponsibilityReason">No-responsibility reason</label>
+            <input id="noResponsibilityReason" maxlength="200" placeholder="Required reason">
+          </div>
+
+          <section class="payment-plan-editor full" id="paymentPlanSection" hidden aria-labelledby="paymentPlanHeading">
+            <div class="plan-editor-header">
+              <div>
+                <h3 id="paymentPlanHeading">Payment Plan Schedule</h3>
+                <p>Generate a starting schedule with 1–24 payments, then manually edit any due date, amount, or responsibility assignment. A one-payment plan is still a payment plan.</p>
+              </div>
+              <span class="status-pill health-green">Payment Plan</span>
+            </div>
+
+            <div class="plan-config-grid extended">
+              <div class="field">
+                <label for="planInstallmentCount">Number of payments</label>
+                <input id="planInstallmentCount" type="number" min="1" max="24" step="1" value="1">
+              </div>
+              <div class="field">
+                <label for="planFirstDueDate">First due date</label>
+                <input id="planFirstDueDate" type="date">
+              </div>
+              <div class="field">
+                <label for="planFrequency">Generate dates</label>
+                <select id="planFrequency">
+                  <option value="monthly">Monthly</option>
+                  <option value="biweekly">Every 2 weeks</option>
+                  <option value="weekly">Weekly</option>
+                  <option value="quarterly">Every 3 months</option>
+                </select>
+              </div>
+              <div class="plan-config-actions build-schedule-action">
+                <button class="btn btn-primary btn-build-schedule" id="buildPlanButton" type="button">Build / Generate Payment Schedule</button>
+              </div>
+            </div>
+
+            <div class="plan-target-note" id="planTargetNote">Schedule target: $0.00</div>
+            <div class="plan-schedule-wrap">
+              <table class="plan-schedule-table">
+                <thead><tr><th>Payment</th><th>Due date</th><th>Amount</th><th>Progress</th><th>Responsibility</th></tr></thead>
+                <tbody id="planScheduleBody"></tbody>
+              </table>
+              <div class="plan-schedule-empty" id="planScheduleEmpty">Build the schedule to add installment due dates.</div>
+            </div>
+            <div class="plan-total-row" id="planScheduleSummary"></div>
+          </section>
+
+          <div class="field full">
+            <label for="patientNotes">Finance note</label>
+            <textarea id="patientNotes" rows="3" maxlength="1000" placeholder="Optional collection instructions"></textarea>
+          </div>
+          <div class="form-callout">Amount still owed is calculated from the financial ledger. Payment-plan due dates and amounts are intentionally manual; the schedule total is shown for reference but does not block saving.</div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" data-close="patientDialog">Cancel</button>
+        <button class="btn btn-primary" type="submit">Save Patient</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="paymentsDialog" class="wide-dialog payments-workspace-dialog">
+    <div class="modal-header">
+      <div>
+        <h2 id="paymentsTitle">Payments</h2>
+        <p id="paymentsSubtitle">Edit the assigned schedule and record ACC or UF payments.</p>
+      </div>
+      <button class="icon-button" type="button" data-close="paymentsDialog" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div id="paymentsFinancialSummary"></div>
+
+      <section class="detail-section payment-workspace-section">
+        <div class="detail-section-heading">
+          <div>
+            <h3>Payment Schedule</h3>
+            <p>Assigned amounts remain unchanged when an actual collection differs. Edit the schedule only when Finance intentionally changes the assignment.</p>
+          </div>
+          <div class="modal-footer-group">
+            <button class="btn btn-secondary btn-small" id="addScheduledPaymentButton" type="button">+ Add Scheduled Payment</button>
+            <button class="btn btn-primary btn-small" id="savePaymentScheduleButton" type="button">Save Schedule</button>
+          </div>
+        </div>
+        <div class="history-wrap">
+          <table class="history-table payments-schedule-table">
+            <thead><tr><th>#</th><th>Due date</th><th>Assigned amount</th><th>Assigned to</th><th>Collected</th><th>Outstanding</th><th>Status</th><th>Action</th></tr></thead>
+            <tbody id="paymentsScheduleBody"></tbody>
+          </table>
+        </div>
+        <div class="plan-total-row manual" id="paymentsScheduleSummary"></div>
+      </section>
+
+      <section class="detail-section payment-workspace-section">
+        <div class="detail-section-heading">
+          <div>
+            <h3>Payment Ledger</h3>
+            <p>The ledger records what actually happened. Corrections create separate reversal/refund entries so the history stays auditable.</p>
+          </div>
+        </div>
+        <div id="paymentsLedger"></div>
+      </section>
+    </div>
+    <div class="modal-footer split">
+      <div class="modal-footer-group">
+        <button class="btn btn-secondary" id="paymentsAdjustmentButton" type="button">Financial Adjustment</button>
+      </div>
+      <div class="modal-footer-group">
+        <button class="btn btn-ghost" type="button" data-close="paymentsDialog">Close</button>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog id="paymentDialog">
+    <form id="paymentForm" method="dialog">
+      <div class="modal-header">
+        <div>
+          <h2>Record Payment</h2>
+          <p>Record the actual amount collected against this scheduled ACC or UF payment.</p>
+        </div>
+        <button class="icon-button" type="button" data-close="paymentDialog" aria-label="Close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="paymentPatientId">
+        <input type="hidden" id="paymentInstallmentId">
+        <input type="hidden" id="paymentResponsibilityParty">
+        <div class="payment-summary payment-summary-six">
+          <div class="mini-card"><span>Patient</span><strong id="paymentPatientName">-</strong></div>
+          <div class="mini-card"><span>MRN</span><strong id="paymentPatientMrn">-</strong></div>
+          <div class="mini-card"><span>Assigned to</span><strong id="paymentAssignedParty">-</strong></div>
+          <div class="mini-card"><span>Scheduled amount</span><strong id="paymentScheduledAmount">$0</strong></div>
+          <div class="mini-card"><span>Already collected</span><strong id="paymentAlreadyCollected">$0</strong></div>
+          <div class="mini-card"><span>Scheduled outstanding</span><strong id="paymentBalance">$0</strong></div>
+        </div>
+        <div class="plan-payment-context" id="paymentPlanContext"></div>
+        <div class="form-grid">
+          <div class="field">
+            <label for="paymentAmount">Collected amount</label>
+            <input id="paymentAmount" type="number" min="0.01" step="0.01" required>
+            <span class="field-hint">The recorded amount may differ from the assigned amount. The assigned schedule is not changed automatically.</span>
+          </div>
+          <div class="field">
+            <label for="paymentUsername">Recorded by</label>
+            <input id="paymentUsername" maxlength="100" required readonly aria-readonly="true">
+            <span class="field-hint">Automatically uses the signed-in user.</span>
+          </div>
+          <div class="field">
+            <label for="paymentOfficeSite">Office site</label>
+            <select id="paymentOfficeSite" required>
+              <option>ACC Mandarin</option>
+              <option>ACC Amelia Island</option>
+              <option>ACC St. Augustine</option>
+              <option>Urology World Golf Village</option>
+              <option>Urology Middleburg</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="paymentMethod">Payment method</label>
+            <select id="paymentMethod" required>
+              <option>Credit/Debit Card</option>
+              <option>Check</option>
+              <option>Cash</option>
+              <option>ACH</option>
+              <option>Online Portal</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="paymentDate">Collection date</label>
+            <input id="paymentDate" type="date" required>
+          </div>
+          <div class="field full">
+            <label for="paymentNote">Note</label>
+            <textarea id="paymentNote" rows="3" maxlength="500" placeholder="Optional note"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" data-close="paymentDialog">Cancel</button>
+        <button class="btn btn-primary" type="submit">Submit Payment Record</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="detailsDialog" class="wide-dialog">
+    <div class="modal-header">
+      <div>
+        <h2 id="detailsTitle">Patient Details</h2>
+        <p id="detailsSubtitle">-</p>
+      </div>
+      <button class="icon-button" type="button" data-close="detailsDialog" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body" id="detailsBody"></div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" id="detailsPrintButton" type="button">Print Summary</button>
+      <button class="btn btn-ghost" type="button" data-close="detailsDialog">Close</button>
+    </div>
+  </dialog>
+
+
+  <dialog id="completionDialog">
+    <form id="completionForm" method="dialog">
+      <div class="modal-header">
+        <div>
+          <h2>Complete Patient</h2>
+          <p id="completionPatientLabel">Choose why this patient is leaving the active work queue.</p>
+        </div>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="completionPatientId">
+        <div class="completion-balance-callout" id="completionBalanceCallout"></div>
+        <div class="form-grid">
+          <div class="field full">
+            <label for="completionReason">Completion reason</label>
+            <select id="completionReason" required>
+              <option value="">Choose a reason</option>
+              <option>Treatment completed</option>
+              <option>Patient cancelled treatment</option>
+              <option>Patient deceased</option>
+              <option>Transferred / referred elsewhere</option>
+              <option>Administrative closure</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field full">
+            <label for="completionNote">Completion note</label>
+            <textarea id="completionNote" rows="3" maxlength="500" placeholder="Optional additional detail"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" id="cancelCompletionButton">Cancel</button>
+        <button class="btn btn-success" type="submit">Complete &amp; Archive</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="adjustmentDialog">
+    <form id="adjustmentForm" method="dialog">
+      <div class="modal-header"><div><h2>Record Financial Adjustment</h2><p id="adjustmentPatientLabel">-</p></div><button class="icon-button" type="button" data-close="adjustmentDialog" aria-label="Close">&times;</button></div>
+      <div class="modal-body">
+        <input type="hidden" id="adjustmentPatientId">
+        <div class="payment-summary"><div class="mini-card"><span>Current balance</span><strong id="adjustmentBalance">$0</strong></div><div class="mini-card"><span>Existing adjustments</span><strong id="adjustmentExisting">$0</strong></div><div class="mini-card"><span>After adjustment</span><strong id="adjustmentAfter">$0</strong></div></div>
+        <div class="form-grid">
+          <div class="field"><label for="adjustmentType">Adjustment type</label><select id="adjustmentType"><option>Adjustment</option><option>Write-off</option><option>Financial Assistance</option><option>Insurance Reallocation</option></select></div>
+          <div class="field"><label for="adjustmentAmount">Amount</label><input id="adjustmentAmount" type="number" min="0.01" step="0.01" required></div>
+          <div class="field"><label for="adjustmentDate">Date</label><input id="adjustmentDate" type="date" required></div>
+          <div class="field full"><label for="adjustmentNote">Reason</label><textarea id="adjustmentNote" rows="3" maxlength="1000" required placeholder="A reason is required for every adjustment"></textarea></div>
+        </div>
+      </div>
+      <div class="modal-footer"><button class="btn btn-secondary" type="button" data-close="adjustmentDialog">Cancel</button><button class="btn btn-primary" type="submit">Save Adjustment</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="transactionDialog">
+    <form id="transactionForm" method="dialog">
+      <div class="modal-header"><div><h2>Correct Payment Transaction</h2><p id="transactionPatientLabel">-</p></div><button class="icon-button" type="button" data-close="transactionDialog" aria-label="Close">&times;</button></div>
+      <div class="modal-body">
+        <input type="hidden" id="transactionPatientId"><input type="hidden" id="transactionId">
+        <div class="payment-summary"><div class="mini-card"><span>Original payment</span><strong id="transactionOriginal">$0</strong></div><div class="mini-card"><span>Available to reverse</span><strong id="transactionAvailable">$0</strong></div><div class="mini-card"><span>Current balance</span><strong id="transactionBalance">$0</strong></div></div>
+        <div class="form-grid">
+          <div class="field"><label for="transactionAction">Action</label><select id="transactionAction"><option value="Reversal">Reverse payment</option><option value="Refund">Refund payment</option><option value="Correction">Correct and replace payment</option></select></div>
+          <div class="field"><label for="transactionAmount">Amount to reverse/refund</label><input id="transactionAmount" type="number" min="0.01" step="0.01" required></div>
+          <div class="field"><label for="transactionDate">Effective date</label><input id="transactionDate" type="date" required></div>
+          <div class="field correction-field" hidden><label for="correctedAmount">Corrected payment amount</label><input id="correctedAmount" type="number" min="0.01" step="0.01"></div>
+          <div class="field correction-field" hidden><label for="correctedMethod">Corrected method</label><select id="correctedMethod"><option>Credit/Debit Card</option><option>Check</option><option>Cash</option><option>Online Portal</option><option>Other</option></select></div>
+          <div class="field full"><label for="transactionReason">Reason</label><textarea id="transactionReason" rows="3" maxlength="1000" required placeholder="Explain why the payment is being reversed, refunded, or corrected"></textarea></div>
+        </div>
+      </div>
+      <div class="modal-footer"><button class="btn btn-secondary" type="button" data-close="transactionDialog">Cancel</button><button class="btn btn-danger" type="submit">Save Financial Correction</button></div>
+    </form>
+  </dialog>
+
+  <div class="toast-region" id="toastRegion" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>

@@ -1,0 +1,14 @@
+@model LoginViewModel
+@{ ViewData["Title"] = "Sign In"; }
+<div class="auth-card">
+  <h2>Sign in</h2>
+  <p class="intro">Use your Ackerman Patient Payment Board username and password.</p>
+  <div asp-validation-summary="ModelOnly"></div>
+  <form method="post" class="auth-form">
+    @Html.AntiForgeryToken()
+    <input asp-for="ReturnUrl" type="hidden" />
+    <div><label asp-for="Username"></label><input asp-for="Username" autocomplete="username" autofocus /><span asp-validation-for="Username"></span></div>
+    <div><label asp-for="Password"></label><input asp-for="Password" autocomplete="current-password" /><span asp-validation-for="Password"></span></div>
+    <button class="btn btn-primary" type="submit">Sign In</button>
+  </form>
+</div>

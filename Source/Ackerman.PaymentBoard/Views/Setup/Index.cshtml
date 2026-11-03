@@ -1,0 +1,14 @@
+@model FirstRunSetupViewModel
+@{ ViewData["Title"] = "First Run Setup"; }
+<div class="auth-card">
+  <h2>Create the first Super User</h2>
+  <p class="intro">This page is available only while the user database is empty. Create the initial Super User, then sign in and add all other users from User Management.</p>
+  <div asp-validation-summary="ModelOnly"></div>
+  <form method="post" class="auth-form">
+    @Html.AntiForgeryToken()
+    <div><label asp-for="Username"></label><input asp-for="Username" autocomplete="username" /><span asp-validation-for="Username"></span></div>
+    <div><label asp-for="Password"></label><input asp-for="Password" autocomplete="new-password" /><span asp-validation-for="Password"></span></div>
+    <div><label asp-for="ConfirmPassword">Confirm password</label><input asp-for="ConfirmPassword" autocomplete="new-password" /><span asp-validation-for="ConfirmPassword"></span></div>
+    <button class="btn btn-primary" type="submit">Create Super User</button>
+  </form>
+</div>

@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Statistical analysis for the Ackerman Patient Payment Board.">
+  <link rel="icon" href="data:,">
+  <script>
+    (() => {
+      try {
+        const savedTheme = localStorage.getItem("ackermanColorTheme");
+        if (savedTheme === "dark") {
+          document.documentElement.dataset.theme = "dark";
+          document.documentElement.style.colorScheme = "dark";
+        }
+      } catch (_) {}
+    })();
+  </script>
+  <title>Ackerman Payment Statistical Analysis</title>
+  <link rel="stylesheet" href="/assets/styles.css?v=3.3.0">
+  <script src="/assets/theme.js?v=3.3.0" defer></script>
+  <script src="/assets/patient-merge.js?v=3.3.0"></script>
+  <script src="/assets/server-bridge.js?v=3.3.0"></script>
+  <script src="/assets/data.js?v=3.3.0" defer></script>
+  <script src="/assets/analytics.js?v=3.3.0" defer></script>
+</head>
+<body>
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="brand">
+        <h1>Ackerman Patient Payment Board</h1>
+        <p>Finance ↔ Front Desk payment communication</p>
+      </div>
+      <nav class="app-nav" aria-label="Application pages">
+        <a href="/app">Payment Board</a>
+        <a class="active" href="/app/analytics" aria-current="page">Statistical Analysis</a>
+        <a href="/app/completed">Completed Patients</a>
+      </nav>
+      <div class="header-tools">
+        <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to dark mode" title="Switch to dark mode">
+          <span class="theme-toggle-icon" data-theme-icon aria-hidden="true">☾</span>
+          <span data-theme-label>Dark</span>
+        </button>
+        <div class="demo-chip">INTERNAL USE ONLY</div>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <div class="page-heading">
+      <div>
+        <h2>Statistical Analysis</h2>
+        <p>Collection performance, payment activity, outstanding balances, and operational breakdowns.</p>
+      </div>
+    </div>
+
+    <div class="notice">
+      <strong>Internal application:</strong> analytics use the same shared server-side data as the Payment Board.
+    </div>
+
+    <section class="analytics-filter-panel" aria-label="Analysis filters">
+      <div class="analytics-filter-grid">
+        <div class="field">
+          <label for="fromDate">Collection date from</label>
+          <input id="fromDate" type="date">
+        </div>
+        <div class="field">
+          <label for="toDate">Collection date through</label>
+          <input id="toDate" type="date">
+        </div>
+        <div class="field">
+          <label for="analyticsLocationFilter">Location</label>
+          <select id="analyticsLocationFilter">
+            <option value="all">All locations</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="analyticsTreatmentFilter">Treatment</label>
+          <select id="analyticsTreatmentFilter">
+            <option value="all">All treatments</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="analyticsStatusFilter">Current status</label>
+          <select id="analyticsStatusFilter">
+            <option value="all">All statuses</option>
+            <option value="Overdue">Overdue</option>
+            <option value="Due Today">Due Today</option>
+            <option value="UF Check Due">UF Checks Due</option>
+            <option value="Upcoming Collection">Upcoming Collection</option>
+            <option value="Partially Paid">All Partially Paid</option>
+            <option value="Partial Overdue">Partially Paid - Overdue</option>
+            <option value="Partial Due Today">Partially Paid - Due Today</option>
+            <option value="Plan Overdue">Payment Plan - Overdue</option>
+            <option value="Plan Due Today">Payment Plan - Due Today</option>
+            <option value="Plan On Schedule">Payment Plan - On Track</option>
+            <option value="Paid in Full">Paid in Full</option>
+            <option value="No Responsibility">No Responsibility</option>
+          </select>
+        </div>
+      </div>
+      <div class="saved-view-bar analytics-saved-views" aria-label="Saved analysis views">
+        <div class="field"><label for="analyticsSavedViewSelect">Saved analysis</label><select id="analyticsSavedViewSelect"><option value="">Choose a saved analysis</option></select></div>
+        <div class="field"><label for="analyticsSavedViewName">Analysis name</label><input id="analyticsSavedViewName" maxlength="60" placeholder="Example: Monthly Jacksonville plans"></div>
+        <button class="btn btn-secondary" id="saveAnalyticsViewButton" type="button">Save Current Analysis</button>
+        <button class="btn btn-danger" id="deleteAnalyticsViewButton" type="button" disabled>Delete Saved Analysis</button>
+      </div>
+      <div class="analytics-filter-footer">
+        <div class="filter-context" id="filterContext" aria-live="polite">Showing all patient accounts.</div>
+        <div class="toolbar-actions-right">
+          <button class="btn btn-secondary" id="last90Button" type="button">Last 90 Days</button>
+          <button class="btn btn-secondary" id="clearAnalyticsFilters" type="button">Clear Filters</button>
+          <button class="btn btn-primary" id="refreshAnalytics" type="button">Refresh Analysis</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="kpi-grid" aria-label="Key performance indicators">
+      <article class="kpi-card">
+        <div class="kpi-label">Patient Responsibility</div>
+        <div class="kpi-value" id="totalResponsibility">$0</div>
+        <div class="kpi-subtext" id="responsibilitySubtext">0 eligible accounts</div>
+      </article>
+      <article class="kpi-card blue">
+        <div class="kpi-label">Total Collected</div>
+        <div class="kpi-value" id="totalCollected">$0</div>
+        <div class="kpi-subtext" id="collectedSubtext">Across selected accounts</div>
+      </article>
+      <article class="kpi-card red">
+        <div class="kpi-label">Amount Outstanding</div>
+        <div class="kpi-value" id="totalOutstanding">$0</div>
+        <div class="kpi-subtext" id="outstandingSubtext">0 open balances</div>
+      </article>
+      <article class="kpi-card green">
+        <div class="kpi-label">Dollar Collection Rate</div>
+        <div class="kpi-value" id="collectionRateKpi">0%</div>
+        <div class="kpi-subtext">Collected ÷ responsibility</div>
+      </article>
+      <article class="kpi-card purple">
+        <div class="kpi-label">Patients Paying</div>
+        <div class="kpi-value" id="payingPatients">0</div>
+        <div class="kpi-subtext" id="participationRate">0% participation</div>
+      </article>
+      <article class="kpi-card green">
+        <div class="kpi-label">Paid in Full</div>
+        <div class="kpi-value" id="paidInFull">0</div>
+        <div class="kpi-subtext" id="paidInFullRate">0% of eligible accounts</div>
+      </article>
+      <article class="kpi-card gold">
+        <div class="kpi-label">Average per Paying Patient</div>
+        <div class="kpi-value" id="averageCollected">$0</div>
+        <div class="kpi-subtext">Total collected ÷ patients paying</div>
+      </article>
+      <article class="kpi-card">
+        <div class="kpi-label">Median Payment</div>
+        <div class="kpi-value" id="medianPayment">$0</div>
+        <div class="kpi-subtext" id="paymentCountSubtext">0 payment transactions</div>
+      </article>
+      <article class="kpi-card green">
+        <div class="kpi-label">Payment Plan On-Time Rate</div>
+        <div class="kpi-value" id="planOnTimeRate">0%</div>
+        <div class="kpi-subtext" id="planInstallmentSubtext">0 installments due</div>
+      </article>
+      <article class="kpi-card red">
+        <div class="kpi-label">Plans Needing Attention</div>
+        <div class="kpi-value" id="plansNeedingAttention">0</div>
+        <div class="kpi-subtext" id="planPastDueSubtext">$0 past due</div>
+      </article>
+      <article class="kpi-card gold">
+        <div class="kpi-label">Adjustments</div>
+        <div class="kpi-value" id="totalAdjustments">$0</div>
+        <div class="kpi-subtext" id="adjustmentCountSubtext">0 entries</div>
+      </article>
+      <article class="kpi-card red">
+        <div class="kpi-label">Critical Patients</div>
+        <div class="kpi-value" id="criticalPatientCount">0</div>
+        <div class="kpi-subtext">2 or more ACC-assigned payments overdue</div>
+      </article>
+      <article class="kpi-card blue">
+        <div class="kpi-label">UF Checks Due</div>
+        <div class="kpi-value" id="ufCheckCount">0</div>
+        <div class="kpi-subtext">UF-responsible payments whose due date has passed</div>
+      </article>
+    </section>
+
+    <section class="analytics-grid" aria-label="Analysis charts">
+      <article class="chart-card">
+        <div class="chart-header">
+          <div>
+            <h3>Collections by Month</h3>
+            <p>Recorded payment transactions for the selected patient accounts.</p>
+          </div>
+        </div>
+        <div class="chart-body" id="monthlyChart"></div>
+      </article>
+
+      <article class="chart-card">
+        <div class="chart-header">
+          <div>
+            <h3>Outstanding Balance by Status</h3>
+            <p>Where unpaid dollars are concentrated now.</p>
+          </div>
+        </div>
+        <div class="chart-body" id="statusChart"></div>
+      </article>
+
+      <article class="chart-card">
+        <div class="chart-header">
+          <div>
+            <h3>Collection Rate by Location</h3>
+            <p>Collected dollars divided by patient responsibility.</p>
+          </div>
+        </div>
+        <div class="chart-body" id="locationChart"></div>
+      </article>
+
+      <article class="chart-card">
+        <div class="chart-header">
+          <div>
+            <h3>Payment Method Mix</h3>
+            <p>Share of collected dollars by recorded method.</p>
+          </div>
+        </div>
+        <div class="chart-body" id="methodChart"></div>
+      </article>
+    </section>
+
+
+    <details class="panel collapsible-panel" style="margin-bottom: 18px" aria-labelledby="planPerformanceHeading">
+      <summary class="panel-header collapsible-summary">
+        <div>
+          <h3 id="planPerformanceHeading">Payment Plan Performance</h3>
+          <p>Track scheduled installments, on-time performance, past-due amounts, and the next payment for each plan.</p>
+        </div>
+        <span class="collapse-control" aria-hidden="true"><span class="collapse-chevron">›</span><span class="collapse-label">Show</span></span>
+      </summary>
+      <div class="collapsible-content">
+        <div class="table-wrap">
+          <table class="breakdown-table plan-performance-table">
+            <caption class="sr-only">Payment plan performance by patient</caption>
+            <colgroup>
+              <col style="width: 19%">
+              <col style="width: 14%">
+              <col style="width: 17%">
+              <col style="width: 13%">
+              <col style="width: 13%">
+              <col style="width: 12%">
+              <col style="width: 12%">
+            </colgroup>
+            <thead>
+              <tr>
+                <th>Patient</th>
+                <th>Plan Status</th>
+                <th>Progress</th>
+                <th>Next Due</th>
+                <th class="numeric">Past Due</th>
+                <th class="numeric">On-Time Rate</th>
+                <th class="numeric">Still Owed</th>
+              </tr>
+            </thead>
+            <tbody id="planPerformanceBody"></tbody>
+          </table>
+          <div class="empty-state" id="planPerformanceEmpty" hidden>
+            <strong>No payment plans in this selection</strong>
+            Change the filters or add a patient from the Payment Board.
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <section class="panel" aria-labelledby="breakdownHeading">
+      <div class="panel-header">
+        <div>
+          <h3 id="breakdownHeading">Detailed Breakdown</h3>
+          <p>Group the selected accounts and sort the resulting performance table. CSV export includes only this filtered, grouped view.</p>
+        </div>
+        <div class="breakdown-controls">
+          <div class="field">
+            <label for="groupBySelect">Group by</label>
+            <select id="groupBySelect">
+              <option value="location">Location</option>
+              <option value="treatment">Treatment</option>
+              <option value="insurance">Insurance</option>
+              <option value="status">Status</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="breakdownSortSelect">Sort by</label>
+            <select id="breakdownSortSelect">
+              <option value="outstanding:desc">Outstanding: highest</option>
+              <option value="collected:desc">Collected: highest</option>
+              <option value="responsibility:desc">Responsibility: highest</option>
+              <option value="rate:desc">Collection rate: highest</option>
+              <option value="patients:desc">Patient count: highest</option>
+              <option value="name:asc">Group name: A-Z</option>
+            </select>
+          </div>
+          <button class="btn btn-secondary" id="exportAnalysisButton" type="button">Export Current Analysis CSV</button>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="breakdown-table">
+          <caption class="sr-only">Grouped collection performance</caption>
+          <colgroup>
+            <col style="width: 22%">
+            <col style="width: 10%">
+            <col style="width: 11%">
+            <col style="width: 15%">
+            <col style="width: 15%">
+            <col style="width: 15%">
+            <col style="width: 12%">
+          </colgroup>
+          <thead>
+            <tr>
+              <th scope="col"><button class="sort-button breakdown-sort" type="button" data-sort-key="name">Group <span class="sort-indicator" aria-hidden="true"></span></button></th>
+              <th class="numeric" scope="col"><button class="sort-button breakdown-sort" type="button" data-sort-key="patients">Patients <span class="sort-indicator" aria-hidden="true"></span></button></th>
+              <th class="numeric" scope="col"><button class="sort-button breakdown-sort" type="button" data-sort-key="paying">Paying <span class="sort-indicator" aria-hidden="true"></span></button></th>
+              <th class="numeric" scope="col"><button class="sort-button breakdown-sort" type="button" data-sort-key="responsibility">Responsibility <span class="sort-indicator" aria-hidden="true"></span></button></th>
+              <th class="numeric" scope="col"><button class="sort-button breakdown-sort" type="button" data-sort-key="collected">Collected <span class="sort-indicator" aria-hidden="true"></span></button></th>
+              <th class="numeric" scope="col"><button class="sort-button breakdown-sort" type="button" data-sort-key="outstanding">Outstanding <span class="sort-indicator" aria-hidden="true"></span></button></th>
+              <th class="numeric" scope="col"><button class="sort-button breakdown-sort" type="button" data-sort-key="rate">Rate <span class="sort-indicator" aria-hidden="true"></span></button></th>
+            </tr>
+          </thead>
+          <tbody id="breakdownTableBody"></tbody>
+        </table>
+        <div class="empty-state" id="analysisEmpty" hidden>
+          <strong>No data for this filter selection</strong>
+          Clear or change the analysis filters.
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" style="margin-top: 18px" aria-labelledby="insightsHeading">
+      <div class="panel-header">
+        <div>
+          <h3 id="insightsHeading">Operational Highlights</h3>
+          <p>Automatically calculated from the current filter selection.</p>
+        </div>
+      </div>
+      <div class="panel-body">
+        <div class="insights-grid">
+          <article class="insight-card">
+            <span>Highest Collection Rate</span>
+            <strong id="bestLocation">-</strong>
+            <small id="bestLocationDetail">No qualifying data</small>
+          </article>
+          <article class="insight-card">
+            <span>Largest Outstanding Location</span>
+            <strong id="largestOutstandingLocation">-</strong>
+            <small id="largestOutstandingLocationDetail">No qualifying data</small>
+          </article>
+          <article class="insight-card">
+            <span>Overdue Exposure</span>
+            <strong id="overdueExposure">$0</strong>
+            <small id="overdueExposureDetail">0 overdue accounts</small>
+          </article>
+          <article class="insight-card">
+            <span>Largest Individual Balance</span>
+            <strong id="largestBalance">$0</strong>
+            <small id="largestBalanceDetail">No open balances</small>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer-note" id="analysisUpdated">Analysis has not been refreshed.</div>
+  </main>
+
+  <div class="toast-region" id="toastRegion" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>@ViewData["Title"] - Ackerman Patient Payment Board</title>
+  <script>
+    (() => { try { const t=localStorage.getItem('ackermanColorTheme'); if(t==='dark'){document.documentElement.dataset.theme='dark';document.documentElement.style.colorScheme='dark';} } catch(_){} })();
+  </script>
+  <link rel="stylesheet" href="/assets/styles.css?v=3.3.0" />
+  <link rel="stylesheet" href="/css/auth.css?v=3.3.0" />
+  <script src="/assets/theme.js?v=3.3.0" defer></script>
+</head>
+<body class="auth-page">
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="brand">
+        <h1>Ackerman Patient Payment Board</h1>
+        <p>Finance-to-front-office communication</p>
+      </div>
+      <div class="header-tools">
+        <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch theme">
+          <span class="theme-toggle-icon" data-theme-icon aria-hidden="true">☾</span><span data-theme-label>Dark</span>
+        </button>
+      </div>
+    </div>
+  </header>
+  <main class="auth-shell">
+    @RenderBody()
+  </main>
+</body>
+</html>

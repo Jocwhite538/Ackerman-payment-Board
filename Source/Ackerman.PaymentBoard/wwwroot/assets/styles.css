@@ -1,0 +1,4049 @@
+:root {
+  --navy-950: #0b2538;
+  --navy-900: #12324a;
+  --navy-800: #1f4967;
+  --teal-700: #087f8c;
+  --teal-600: #0a94a2;
+  --teal-100: #dff4f5;
+  --background: #f3f6f8;
+  --surface: #ffffff;
+  --surface-muted: #f7fafb;
+  --border: #d8e1e7;
+  --border-strong: #b9c7d0;
+  --text: #18232d;
+  --muted: #60717e;
+  --muted-2: #7a8993;
+  --shadow-sm: 0 4px 14px rgba(18, 50, 74, 0.07);
+  --shadow-md: 0 12px 32px rgba(18, 50, 74, 0.11);
+  --focus: 0 0 0 3px rgba(8, 127, 140, 0.2);
+  --ready: #e8f2ff;
+  --ready-accent: #2e6fae;
+  --due: #fff2d9;
+  --due-accent: #a85f00;
+  --overdue: #ffe8ea;
+  --overdue-accent: #b42318;
+  --partial: #fff8cc;
+  --partial-accent: #806300;
+  --plan: #f0e7ff;
+  --plan-accent: #6941c6;
+  --paid: #def7e5;
+  --paid-accent: #18794e;
+  --none: #edf1f4;
+  --none-accent: #53636f;
+  --danger: #b42318;
+  --success: #18794e;
+  --warning: #9a6700;
+  --chart-1: #087f8c;
+  --chart-2: #2e6fae;
+  --chart-3: #6941c6;
+  --chart-4: #c78600;
+  --chart-5: #18794e;
+  --chart-6: #b42318;
+  --navy: var(--navy-900);
+  --navy-700: var(--navy-800);
+  --teal: var(--teal-700);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+html {
+  min-width: 0;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  min-width: 0;
+  color: var(--text);
+  background: var(--background);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.45;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: none;
+  box-shadow: var(--focus);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.app-header {
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--navy-950), var(--navy-800));
+  box-shadow: var(--shadow-sm);
+}
+
+.header-inner {
+  width: min(1720px, 100%);
+  margin: 0 auto;
+  padding: 18px 28px;
+  display: grid;
+  grid-template-columns: minmax(260px, 1fr) auto auto;
+  align-items: center;
+  gap: 18px;
+}
+
+.brand h1 {
+  margin: 0;
+  font-size: clamp(1.2rem, 2vw, 1.78rem);
+  line-height: 1.15;
+  letter-spacing: 0.005em;
+}
+
+.brand p {
+  margin: 5px 0 0;
+  color: #dbe8ef;
+  font-size: 0.9rem;
+}
+
+.app-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.app-nav a {
+  min-height: 38px;
+  padding: 8px 13px;
+  border-radius: 7px;
+  color: #eaf3f7;
+  text-decoration: none;
+  font-size: 0.86rem;
+  font-weight: 760;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  white-space: nowrap;
+}
+
+.app-nav a:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.app-nav a.active {
+  color: var(--navy-950);
+  background: #ffffff;
+}
+
+.demo-chip {
+  padding: 8px 11px;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 999px;
+  color: #ffffff;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+
+.header-tools {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 9px;
+  min-width: 0;
+}
+
+.theme-toggle {
+  min-height: 38px;
+  padding: 7px 11px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 9px;
+  color: #f2f8fb;
+  background: rgba(255, 255, 255, 0.08);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background .15s ease, border-color .15s ease, transform .08s ease;
+}
+
+.theme-toggle:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.theme-toggle:active { transform: translateY(1px); }
+.theme-toggle-icon {
+  width: 18px;
+  display: inline-grid;
+  place-items: center;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.page-shell {
+  width: min(1720px, 100%);
+  margin: 0 auto;
+  padding: 22px 28px 42px;
+}
+
+.page-heading {
+  margin: 0 0 16px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.page-heading h2 {
+  margin: 0;
+  color: var(--navy-900);
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+}
+
+.page-heading p {
+  margin: 5px 0 0;
+  color: var(--muted);
+}
+
+.notice {
+  margin-bottom: 18px;
+  padding: 12px 14px;
+  border: 1px solid #ead08a;
+  border-left: 5px solid #c78600;
+  border-radius: 10px;
+  color: #5d4300;
+  background: #fff9e9;
+  font-size: 0.9rem;
+}
+
+.notice strong {
+  color: #4c3700;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.summary-card,
+.kpi-card {
+  min-width: 0;
+  padding: 15px 16px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.summary-label,
+.kpi-label {
+  color: var(--muted);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.045em;
+  text-transform: uppercase;
+}
+
+.summary-value,
+.kpi-value {
+  margin-top: 4px;
+  color: var(--navy-900);
+  font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+  font-weight: 850;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+
+.summary-subtext,
+.kpi-subtext {
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.workspace,
+.panel {
+  min-width: 0;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.panel {
+  overflow: visible;
+}
+
+.panel-header {
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.panel-header h3 {
+  margin: 0;
+  color: var(--navy-900);
+  font-size: 1rem;
+}
+
+.panel-header p {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.panel-body {
+  padding: 18px;
+}
+
+.toolbar {
+  padding: 16px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.toolbar-grid {
+  display: grid;
+  grid-template-columns: minmax(230px, 1.65fr) repeat(5, minmax(135px, 1fr));
+  gap: 10px;
+  align-items: end;
+}
+
+.toolbar-actions {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.toolbar-actions-left,
+.toolbar-actions-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.field {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.field label {
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 780;
+}
+
+.field-hint {
+  color: var(--muted-2);
+  font-size: 0.72rem;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  min-width: 0;
+  padding: 9px 10px;
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  color: var(--text);
+  background: #ffffff;
+}
+
+input:hover,
+select:hover,
+textarea:hover {
+  border-color: #91a6b3;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--teal-700);
+  box-shadow: var(--focus);
+}
+
+input:disabled,
+select:disabled,
+textarea:disabled {
+  color: #657580;
+  background: #edf2f5;
+  cursor: not-allowed;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.btn {
+  min-height: 36px;
+  padding: 8px 11px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-weight: 780;
+  line-height: 1.15;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: transform 0.08s ease, filter 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn:hover:not(:disabled) {
+  filter: brightness(0.97);
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.btn-primary {
+  color: #ffffff;
+  background: var(--teal-700);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #066f7a;
+}
+
+.btn-secondary {
+  color: var(--navy-900);
+  border-color: #c9d5dc;
+  background: #edf3f6;
+}
+
+.btn-ghost {
+  color: var(--navy-800);
+  border-color: var(--border);
+  background: #ffffff;
+}
+
+.btn-danger {
+  color: var(--danger);
+  border-color: #f2b8b5;
+  background: #feeceb;
+}
+
+.btn-success {
+  color: var(--success);
+  border-color: #b4dfc4;
+  background: #e2f6e8;
+}
+
+.btn-small {
+  min-height: 31px;
+  padding: 6px 8px;
+  border-radius: 7px;
+  font-size: 0.74rem;
+}
+
+.view-tabs {
+  display: flex;
+  gap: 6px;
+  padding: 12px 16px 0;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface-muted);
+}
+
+.tab {
+  margin-bottom: -1px;
+  padding: 9px 13px;
+  border: 1px solid var(--border);
+  border-bottom-color: var(--border);
+  border-radius: 8px 8px 0 0;
+  color: var(--muted);
+  background: #edf3f6;
+  font-weight: 780;
+  cursor: pointer;
+}
+
+.tab.active {
+  color: var(--navy-900);
+  border-bottom-color: #ffffff;
+  background: #ffffff;
+}
+
+.table-meta {
+  padding: 9px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--muted);
+  font-size: 0.77rem;
+  background: #ffffff;
+}
+
+.table-wrap {
+  min-width: 0;
+  width: 100%;
+  overflow: visible;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.payment-table {
+  table-layout: fixed;
+}
+
+.payment-table th,
+.payment-table td,
+.breakdown-table th,
+.breakdown-table td,
+.history-table th,
+.history-table td {
+  min-width: 0;
+  padding: 10px 9px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+
+.payment-table th,
+.breakdown-table th,
+.history-table th {
+  color: #415360;
+  background: #f7fafb;
+  font-size: 0.71rem;
+  font-weight: 840;
+  letter-spacing: 0.035em;
+  text-transform: uppercase;
+}
+
+.payment-table tbody tr {
+  border-left: 5px solid transparent;
+  transition: filter 0.12s ease;
+}
+
+.payment-table tbody tr:hover {
+  filter: brightness(0.986);
+}
+
+.payment-table tbody tr:last-child td,
+.breakdown-table tbody tr:last-child td,
+.history-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.status-ready {
+  border-left-color: var(--ready-accent) !important;
+  background: var(--ready);
+}
+
+.status-due {
+  border-left-color: var(--due-accent) !important;
+  background: var(--due);
+}
+
+.status-overdue {
+  border-left-color: var(--overdue-accent) !important;
+  background: var(--overdue);
+}
+
+.status-partial {
+  border-left-color: var(--partial-accent) !important;
+  background: var(--partial);
+}
+
+.status-plan {
+  border-left-color: var(--plan-accent) !important;
+  background: var(--plan);
+}
+
+.status-paid {
+  border-left-color: var(--paid-accent) !important;
+  background: var(--paid);
+}
+
+.status-none {
+  border-left-color: var(--none-accent) !important;
+  background: var(--none);
+}
+
+.sort-button {
+  width: 100%;
+  padding: 0;
+  border: 0;
+  color: inherit;
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 5px;
+  text-align: left;
+  font: inherit;
+  font-weight: inherit;
+  text-transform: inherit;
+  letter-spacing: inherit;
+  cursor: pointer;
+}
+
+.sort-button:hover {
+  color: var(--teal-700);
+}
+
+.sort-indicator {
+  min-width: 12px;
+  color: var(--teal-700);
+  font-size: 0.83rem;
+}
+
+.patient-name {
+  color: var(--navy-900);
+  font-size: 0.93rem;
+  font-weight: 840;
+  line-height: 1.25;
+}
+
+.mrn {
+  margin-top: 3px;
+  color: #4e6270;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.76rem;
+}
+
+.cell-primary {
+  color: #263845;
+  font-size: 0.82rem;
+  font-weight: 760;
+}
+
+.cell-secondary {
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 0.75rem;
+  line-height: 1.35;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  padding: 4px 8px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.66);
+  font-size: 0.69rem;
+  font-weight: 840;
+  line-height: 1.25;
+  text-align: center;
+}
+
+.status-pill.ready { color: var(--ready-accent); }
+.status-pill.due { color: var(--due-accent); }
+.status-pill.overdue { color: var(--overdue-accent); }
+.status-pill.partial { color: var(--partial-accent); }
+.status-pill.plan { color: var(--plan-accent); }
+.status-pill.paid { color: var(--paid-accent); }
+.status-pill.none { color: var(--none-accent); }
+
+.financial-stack {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3px;
+}
+
+.financial-line {
+  min-width: 0;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 7px;
+  font-size: 0.73rem;
+}
+
+.financial-line span {
+  color: var(--muted);
+}
+
+.financial-line strong {
+  color: #263845;
+  font-size: 0.79rem;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.financial-line.balance strong {
+  color: var(--navy-900);
+  font-size: 0.9rem;
+}
+
+.actions {
+  display: flex;
+  align-items: flex-start;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.date-main {
+  color: #2b3b47;
+  font-size: 0.79rem;
+  font-weight: 760;
+}
+
+.date-relative {
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 0.71rem;
+}
+
+.empty-state {
+  padding: 46px 20px;
+  color: var(--muted);
+  text-align: center;
+}
+
+.empty-state strong {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--navy-900);
+  font-size: 1rem;
+}
+
+.footer-note {
+  margin-top: 13px;
+  color: var(--muted);
+  font-size: 0.77rem;
+  text-align: right;
+}
+
+dialog {
+  width: min(760px, calc(100vw - 28px));
+  max-height: 92vh;
+  padding: 0;
+  border: 0;
+  border-radius: 14px;
+  background: #ffffff;
+  box-shadow: 0 28px 80px rgba(5, 25, 38, 0.32);
+}
+
+dialog::backdrop {
+  background: rgba(7, 24, 36, 0.62);
+  backdrop-filter: blur(2px);
+}
+
+.modal-header {
+  padding: 15px 18px;
+  color: #ffffff;
+  background: var(--navy-900);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.modal-header p {
+  margin: 3px 0 0;
+  color: #dce8ef;
+  font-size: 0.78rem;
+}
+
+.icon-button {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  color: inherit;
+  background: transparent;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.icon-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.modal-body {
+  max-height: calc(92vh - 132px);
+  padding: 18px;
+  overflow-y: auto;
+}
+
+.modal-footer {
+  padding: 13px 18px;
+  border-top: 1px solid var(--border);
+  background: var(--surface-muted);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.modal-footer.split {
+  justify-content: space-between;
+}
+
+.modal-footer-group {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.form-grid .full {
+  grid-column: 1 / -1;
+}
+
+.form-callout {
+  grid-column: 1 / -1;
+  padding: 10px 12px;
+  border: 1px solid #cfdbe2;
+  border-radius: 8px;
+  color: var(--muted);
+  background: #f7fafb;
+  font-size: 0.78rem;
+}
+
+.payment-summary,
+.details-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 9px;
+  margin-bottom: 14px;
+}
+
+.mini-card {
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface-muted);
+}
+
+.mini-card span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.mini-card strong {
+  display: block;
+  margin-top: 3px;
+  color: var(--navy-900);
+  font-size: 0.88rem;
+  overflow-wrap: anywhere;
+}
+
+.detail-section {
+  margin-top: 16px;
+}
+
+.detail-section:first-child {
+  margin-top: 0;
+}
+
+.detail-section h3 {
+  margin: 0 0 8px;
+  color: var(--navy-900);
+  font-size: 0.9rem;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px 14px;
+}
+
+.detail-item {
+  min-width: 0;
+  padding-bottom: 7px;
+  border-bottom: 1px solid #edf1f3;
+}
+
+.detail-item span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.detail-item strong {
+  display: block;
+  margin-top: 2px;
+  color: #2b3b47;
+  font-size: 0.83rem;
+  overflow-wrap: anywhere;
+}
+
+.notes-box {
+  padding: 11px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: #354854;
+  background: #f8fafb;
+  font-size: 0.82rem;
+  white-space: pre-wrap;
+}
+
+.history-wrap {
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  overflow: hidden;
+}
+
+.history-table {
+  table-layout: fixed;
+}
+
+.history-table td {
+  font-size: 0.78rem;
+}
+
+.toast-region {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 1000;
+  display: grid;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.toast {
+  width: min(360px, calc(100vw - 40px));
+  padding: 11px 13px;
+  border: 1px solid #a8c8b4;
+  border-left: 5px solid var(--success);
+  border-radius: 9px;
+  color: #173f2a;
+  background: #effaf3;
+  box-shadow: var(--shadow-md);
+  font-size: 0.82rem;
+  animation: toast-in 0.18s ease-out;
+}
+
+.toast.error {
+  border-color: #efb4b0;
+  border-left-color: var(--danger);
+  color: #5b1712;
+  background: #fff1f0;
+}
+
+@keyframes toast-in {
+  from { transform: translateY(8px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Analytics */
+.analytics-filter-panel {
+  margin-bottom: 18px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.analytics-filter-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(130px, 1fr));
+  gap: 10px;
+  align-items: end;
+}
+
+.analytics-filter-footer {
+  margin-top: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.filter-context {
+  color: var(--muted);
+  font-size: 0.77rem;
+}
+
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.kpi-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.kpi-card::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 4px;
+  background: var(--teal-700);
+}
+
+.kpi-card.blue::after { background: var(--chart-2); }
+.kpi-card.purple::after { background: var(--chart-3); }
+.kpi-card.gold::after { background: var(--chart-4); }
+.kpi-card.green::after { background: var(--chart-5); }
+.kpi-card.red::after { background: var(--chart-6); }
+
+.analytics-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.chart-card {
+  min-width: 0;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.chart-header {
+  padding: 15px 17px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.chart-header h3 {
+  margin: 0;
+  color: var(--navy-900);
+  font-size: 0.98rem;
+}
+
+.chart-header p {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.chart-body {
+  min-height: 280px;
+  padding: 18px;
+}
+
+.vertical-bars {
+  min-height: 238px;
+  display: grid;
+  grid-template-columns: repeat(var(--bar-count, 1), minmax(34px, 1fr));
+  align-items: end;
+  gap: 10px;
+}
+
+.vertical-bar-item {
+  min-width: 0;
+  height: 238px;
+  display: grid;
+  grid-template-rows: 24px 1fr 34px;
+  gap: 5px;
+  align-items: end;
+}
+
+.vertical-bar-value {
+  color: #334754;
+  font-size: 0.69rem;
+  font-weight: 780;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.vertical-bar-track {
+  width: min(54px, 74%);
+  height: 100%;
+  margin: 0 auto;
+  border-radius: 7px 7px 3px 3px;
+  background: #edf2f5;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.vertical-bar-fill {
+  width: 100%;
+  min-height: 2px;
+  border-radius: 7px 7px 3px 3px;
+  background: linear-gradient(180deg, var(--teal-600), var(--teal-700));
+}
+
+.vertical-bar-label {
+  color: var(--muted);
+  font-size: 0.68rem;
+  line-height: 1.2;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.horizontal-bars {
+  display: grid;
+  gap: 13px;
+}
+
+.horizontal-bar-item {
+  display: grid;
+  grid-template-columns: minmax(105px, 1.15fr) minmax(150px, 2fr) auto;
+  align-items: center;
+  gap: 10px;
+}
+
+.horizontal-bar-label {
+  min-width: 0;
+  color: #344955;
+  font-size: 0.76rem;
+  font-weight: 760;
+  overflow-wrap: anywhere;
+}
+
+.horizontal-bar-track {
+  height: 11px;
+  border-radius: 999px;
+  background: #e9eff2;
+  overflow: hidden;
+}
+
+.horizontal-bar-fill {
+  height: 100%;
+  min-width: 2px;
+  border-radius: 999px;
+  background: var(--teal-700);
+}
+
+.horizontal-bar-value {
+  min-width: 70px;
+  color: var(--navy-900);
+  font-size: 0.75rem;
+  font-weight: 820;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.donut-layout {
+  min-height: 238px;
+  display: grid;
+  grid-template-columns: minmax(160px, 0.8fr) minmax(180px, 1.2fr);
+  align-items: center;
+  gap: 20px;
+}
+
+.donut {
+  width: min(220px, 100%);
+  aspect-ratio: 1;
+  margin: 0 auto;
+  border-radius: 50%;
+  position: relative;
+  background: conic-gradient(#dfe7eb 0 100%);
+}
+
+.donut::after {
+  content: "";
+  position: absolute;
+  inset: 23%;
+  border-radius: 50%;
+  background: var(--surface);
+  box-shadow: inset 0 0 0 1px var(--border);
+}
+
+.donut-center {
+  position: absolute;
+  inset: 31%;
+  z-index: 1;
+  display: grid;
+  place-content: center;
+  text-align: center;
+}
+
+.donut-center strong {
+  color: var(--navy-900);
+  font-size: 1.25rem;
+}
+
+.donut-center span {
+  color: var(--muted);
+  font-size: 0.69rem;
+}
+
+.legend {
+  display: grid;
+  gap: 9px;
+}
+
+.legend-item {
+  display: grid;
+  grid-template-columns: 10px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px;
+  color: #3c505d;
+  font-size: 0.76rem;
+}
+
+.legend-swatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+}
+
+.legend-item strong {
+  color: var(--navy-900);
+  font-variant-numeric: tabular-nums;
+}
+
+.chart-empty {
+  min-height: 238px;
+  display: grid;
+  place-content: center;
+  color: var(--muted);
+  text-align: center;
+  font-size: 0.82rem;
+}
+
+.breakdown-controls {
+  display: flex;
+  align-items: flex-end;
+  gap: 9px;
+  flex-wrap: wrap;
+}
+
+.breakdown-controls .field {
+  min-width: 150px;
+}
+
+.breakdown-table {
+  table-layout: fixed;
+}
+
+.breakdown-table td {
+  color: #344955;
+  font-size: 0.79rem;
+}
+
+.breakdown-table .numeric {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.breakdown-table th.numeric .sort-button {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.rate-cell {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.rate-track {
+  width: 54px;
+  height: 7px;
+  border-radius: 999px;
+  background: #e6edf1;
+  overflow: hidden;
+}
+
+.rate-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: var(--teal-700);
+}
+
+.insights-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.insight-card {
+  min-width: 0;
+  padding: 13px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #f8fafb;
+}
+
+.insight-card span {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 760;
+}
+
+.insight-card strong {
+  display: block;
+  margin-top: 4px;
+  color: var(--navy-900);
+  font-size: 0.9rem;
+  overflow-wrap: anywhere;
+}
+
+.insight-card small {
+  display: block;
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+
+@media (max-width: 1400px) {
+  .header-inner,
+  .page-shell {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .toolbar-grid {
+    grid-template-columns: minmax(230px, 1.6fr) repeat(3, minmax(135px, 1fr));
+  }
+
+  .analytics-filter-grid {
+    grid-template-columns: repeat(3, minmax(150px, 1fr));
+  }
+
+  .summary-grid {
+    grid-template-columns: repeat(5, minmax(135px, 1fr));
+  }
+
+  .payment-table th,
+  .payment-table td {
+    padding-left: 7px;
+    padding-right: 7px;
+  }
+}
+
+@media (max-width: 1150px) {
+  .header-inner {
+    grid-template-columns: minmax(230px, 1fr) auto auto;
+  }
+
+  .demo-chip {
+    display: none;
+  }
+
+  .header-tools {
+    gap: 0;
+  }
+
+  .summary-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .kpi-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .insights-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Convert the dense patient table to cards instead of adding horizontal scrolling. */
+  .payment-table,
+  .payment-table tbody,
+  .payment-table tr,
+  .payment-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .payment-table colgroup,
+  .payment-table thead {
+    display: none;
+  }
+
+  .payment-table tbody {
+    padding: 12px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .payment-table tbody tr {
+    min-width: 0;
+    margin: 0;
+    border: 1px solid var(--border);
+    border-left-width: 5px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(18, 50, 74, 0.06);
+  }
+
+  .payment-table td {
+    min-height: 38px;
+    padding: 8px 10px;
+    border-bottom: 1px solid rgba(111, 135, 149, 0.18);
+    display: grid;
+    grid-template-columns: 112px minmax(0, 1fr);
+    align-items: start;
+    gap: 10px;
+  }
+
+  .payment-table td::before {
+    content: attr(data-label);
+    color: var(--muted);
+    font-size: 0.68rem;
+    font-weight: 820;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+
+  .payment-table td:last-child {
+    border-bottom: 0;
+  }
+
+  .payment-table .actions-cell {
+    grid-template-columns: 112px minmax(0, 1fr);
+  }
+
+  .financial-stack {
+    max-width: 260px;
+  }
+
+  .vertical-bars {
+    gap: 6px;
+  }
+}
+
+@media (max-width: 900px) {
+  .header-inner {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .header-tools {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .app-nav {
+    width: 100%;
+  }
+
+  .app-nav a {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .toolbar-grid,
+  .analytics-filter-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .summary-grid,
+  .kpi-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .analytics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .donut-layout {
+    grid-template-columns: minmax(150px, 0.8fr) minmax(160px, 1.2fr);
+  }
+
+  .breakdown-table,
+  .breakdown-table tbody,
+  .breakdown-table tr,
+  .breakdown-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .breakdown-table colgroup,
+  .breakdown-table thead {
+    display: none;
+  }
+
+  .breakdown-table tbody {
+    padding: 10px;
+    display: grid;
+    gap: 9px;
+  }
+
+  .breakdown-table tbody tr {
+    padding: 7px 10px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+  }
+
+  .breakdown-table td {
+    padding: 7px 0;
+    border-bottom: 1px solid #edf1f3;
+    display: grid;
+    grid-template-columns: 130px minmax(0, 1fr);
+    gap: 10px;
+    text-align: left !important;
+  }
+
+  .breakdown-table td::before {
+    content: attr(data-label);
+    color: var(--muted);
+    font-size: 0.69rem;
+    font-weight: 780;
+    text-transform: uppercase;
+  }
+
+  .breakdown-table td:last-child {
+    border-bottom: 0;
+  }
+
+  .rate-cell {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 720px) {
+  .page-shell,
+  .header-inner {
+    padding-left: 13px;
+    padding-right: 13px;
+  }
+
+  .page-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .summary-grid,
+  .kpi-grid,
+  .toolbar-grid,
+  .analytics-filter-grid,
+  .form-grid,
+  .payment-summary,
+  .details-summary,
+  .detail-grid,
+  .insights-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-grid .full {
+    grid-column: auto;
+  }
+
+  .payment-table tbody {
+    grid-template-columns: 1fr;
+    padding: 10px;
+  }
+
+  .toolbar-actions,
+  .analytics-filter-footer {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .toolbar-actions-left,
+  .toolbar-actions-right,
+  .analytics-filter-footer > div {
+    width: 100%;
+  }
+
+  .toolbar-actions .btn,
+  .analytics-filter-footer .btn {
+    flex: 1;
+  }
+
+  .modal-footer.split {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .modal-footer-group {
+    width: 100%;
+  }
+
+  .modal-footer-group .btn {
+    flex: 1;
+  }
+
+  .donut-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .donut {
+    width: 190px;
+  }
+
+  .horizontal-bar-item {
+    grid-template-columns: 1fr auto;
+    gap: 5px 8px;
+  }
+
+  .horizontal-bar-track {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+
+  .horizontal-bar-value {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .vertical-bars {
+    min-height: 210px;
+    overflow: hidden;
+    grid-template-columns: repeat(var(--bar-count, 1), minmax(0, 1fr));
+    padding-bottom: 4px;
+  }
+
+  .vertical-bar-item {
+    height: 210px;
+  }
+
+  .toast-region {
+    right: 12px;
+    bottom: 12px;
+  }
+}
+
+@media (max-width: 460px) {
+  .app-nav a {
+    padding-left: 8px;
+    padding-right: 8px;
+    font-size: 0.78rem;
+  }
+
+  .payment-table td,
+  .breakdown-table td {
+    grid-template-columns: 1fr;
+    gap: 3px;
+  }
+
+  .payment-table td::before,
+  .breakdown-table td::before {
+    margin-bottom: 2px;
+  }
+
+  .actions .btn {
+    flex: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Version 3 additions: completed page, installment plans, and local document attachments */
+.summary-grid-six {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.summary-grid-five {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.summary-card.purple-accent {
+  border-bottom: 4px solid var(--plan-accent);
+}
+
+.section-title-row {
+  padding: 14px 16px 11px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: #ffffff;
+}
+
+.section-title-row h2 {
+  margin: 0;
+  color: var(--navy-900);
+  font-size: 1rem;
+}
+
+.section-title-row p {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 0.76rem;
+}
+
+.record-count-badge {
+  flex: 0 0 auto;
+  padding: 6px 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--navy-900);
+  background: var(--surface-muted);
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.status-stack {
+  display: flex;
+  align-items: flex-start;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.status-stack.inline-status {
+  margin-top: 6px;
+}
+
+.status-pill.current {
+  color: var(--teal-700);
+}
+
+.status-pill.compact {
+  padding: 3px 6px;
+  font-size: 0.63rem;
+}
+
+.btn-documents {
+  color: #55309e;
+  border-color: #cdbcf1;
+  background: #f3edff;
+}
+
+.btn-documents:hover:not(:disabled) {
+  background: #ebe1ff;
+}
+
+.doc-count {
+  min-width: 17px;
+  height: 17px;
+  margin-left: 4px;
+  padding: 1px 4px;
+  border-radius: 999px;
+  color: #ffffff;
+  background: var(--plan-accent);
+  font-size: 0.62rem;
+  line-height: 15px;
+  text-align: center;
+}
+
+.date-kicker {
+  margin-bottom: 2px;
+  color: var(--teal-700);
+  font-size: 0.65rem;
+  font-weight: 820;
+  text-transform: uppercase;
+}
+
+.progress-track {
+  width: 100%;
+  height: 7px;
+  border-radius: 999px;
+  background: #e4eaee;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: var(--teal-700);
+}
+
+.progress-fill.plan-fill {
+  background: var(--teal-700);
+}
+
+.compact-progress {
+  height: 6px;
+  margin-top: 6px;
+}
+
+.plan-progress-block {
+  margin-top: 8px;
+  padding-top: 7px;
+  border-top: 1px solid rgba(8, 127, 140, 0.2);
+}
+
+.plan-progress-label {
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 7px;
+  color: var(--navy-800);
+  font-size: 0.67rem;
+}
+
+.plan-progress-label strong {
+  font-variant-numeric: tabular-nums;
+}
+
+.plan-progress-subtext {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 0.65rem;
+}
+
+.wide-dialog {
+  width: min(1000px, calc(100vw - 28px));
+}
+
+.payment-plan-editor {
+  padding: 14px;
+  border: 1px solid #b8d9dc;
+  border-radius: 11px;
+  background: #f7fcfc;
+}
+
+.plan-editor-header,
+.detail-section-heading,
+.document-list-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.plan-editor-header h3,
+.document-list-heading h3 {
+  margin: 0;
+  color: var(--navy-900);
+  font-size: 0.95rem;
+}
+
+.plan-editor-header p,
+.detail-section-heading p {
+  margin: 3px 0 0;
+  color: var(--muted);
+  font-size: 0.74rem;
+}
+
+.plan-config-grid {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(120px, 1fr)) auto;
+  gap: 10px;
+  align-items: end;
+}
+
+.plan-config-actions {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+
+.plan-target-note {
+  margin-top: 10px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  color: #234553;
+  background: #edf7f8;
+  font-size: 0.74rem;
+  font-weight: 760;
+}
+
+.plan-schedule-wrap {
+  margin-top: 10px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: #ffffff;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.plan-schedule-table {
+  table-layout: fixed;
+}
+
+.plan-schedule-table th,
+.plan-schedule-table td {
+  padding: 8px 9px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+
+.plan-schedule-table th {
+  color: #415360;
+  background: #f7fafb;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+}
+
+.plan-schedule-table tr:last-child td {
+  border-bottom: 0;
+}
+
+.plan-schedule-table th:first-child,
+.plan-schedule-table td:first-child {
+  width: 22%;
+}
+
+.plan-schedule-table input {
+  padding: 7px 8px;
+}
+
+.money-input {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 5px;
+}
+
+.money-input span {
+  color: var(--muted);
+  font-weight: 760;
+}
+
+.plan-schedule-empty {
+  padding: 20px;
+  color: var(--muted);
+  text-align: center;
+  font-size: 0.78rem;
+}
+
+.plan-total-row {
+  margin-top: 9px;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: 0.72rem;
+}
+
+.plan-total-row.balanced {
+  color: #155a38;
+  border-color: #add9bc;
+  background: #eefaf2;
+}
+
+.plan-total-row.unbalanced {
+  color: #7a4d00;
+  border-color: #e8c77f;
+  background: #fff8e8;
+}
+
+.plan-payment-context {
+  margin-bottom: 14px;
+  padding: 10px 12px;
+  border: 1px solid #cdbcf1;
+  border-radius: 9px;
+  color: #413260;
+  background: #f7f2ff;
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  font-size: 0.78rem;
+}
+
+.plan-summary-cards {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.plan-detail-progress {
+  margin: -4px 0 12px;
+}
+
+.plan-history-table {
+  min-width: 690px;
+}
+
+.completed-filter-grid {
+  display: grid;
+  grid-template-columns: minmax(220px, 1.6fr) repeat(7, minmax(125px, 1fr));
+  gap: 10px;
+  align-items: end;
+}
+
+.completed-table .status-stack {
+  margin-top: 5px;
+}
+
+/* Local document manager */
+.documents-dialog {
+  width: min(900px, calc(100vw - 28px));
+}
+
+.document-warning {
+  margin-bottom: 14px;
+  padding: 10px 12px;
+  border: 1px solid #e8c77f;
+  border-left: 4px solid #b47700;
+  border-radius: 8px;
+  color: #664600;
+  background: #fff9e9;
+  font-size: 0.78rem;
+}
+
+.document-upload-panel {
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface-muted);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 10px;
+}
+
+.document-list-heading {
+  margin: 17px 0 8px;
+  align-items: center;
+}
+
+.document-list-heading span {
+  color: var(--muted);
+  font-size: 0.74rem;
+}
+
+.documents-list {
+  display: grid;
+  gap: 8px;
+}
+
+.document-item {
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: #ffffff;
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+}
+
+.document-type {
+  width: 48px;
+  height: 48px;
+  border-radius: 9px;
+  color: #4d3585;
+  background: #f0e7ff;
+  display: grid;
+  place-items: center;
+  font-size: 0.66rem;
+  font-weight: 850;
+}
+
+.document-info {
+  min-width: 0;
+}
+
+.document-info strong,
+.document-info span {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.document-info strong {
+  color: var(--navy-900);
+  font-size: 0.82rem;
+}
+
+.document-info span {
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 0.69rem;
+}
+
+.document-actions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.document-empty,
+.document-loading {
+  padding: 26px 15px;
+  border: 1px dashed var(--border-strong);
+  border-radius: 9px;
+  color: var(--muted);
+  text-align: center;
+  font-size: 0.78rem;
+}
+
+.document-empty strong {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--navy-900);
+}
+
+.plan-performance-table {
+  table-layout: fixed;
+}
+
+.plan-performance-table td {
+  font-size: 0.76rem;
+}
+
+@media (max-width: 1550px) {
+  .summary-grid-six {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .completed-filter-grid {
+    grid-template-columns: minmax(220px, 1.5fr) repeat(3, minmax(140px, 1fr));
+  }
+}
+
+@media (max-width: 1150px) {
+  .summary-grid-five {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .plan-config-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .plan-config-actions {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 900px) {
+  .app-nav {
+    flex-wrap: wrap;
+  }
+
+  .app-nav a {
+    min-width: 145px;
+  }
+
+  .completed-filter-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .plan-performance-table,
+  .plan-performance-table tbody,
+  .plan-performance-table tr,
+  .plan-performance-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .plan-performance-table colgroup,
+  .plan-performance-table thead {
+    display: none;
+  }
+
+  .plan-performance-table tbody {
+    padding: 10px;
+    display: grid;
+    gap: 9px;
+  }
+
+  .plan-performance-table tbody tr {
+    padding: 7px 10px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+  }
+
+  .plan-performance-table td {
+    padding: 7px 0;
+    border-bottom: 1px solid #edf1f3;
+    display: grid;
+    grid-template-columns: 130px minmax(0, 1fr);
+    gap: 10px;
+    text-align: left !important;
+  }
+
+  .plan-performance-table td::before {
+    content: attr(data-label);
+    color: var(--muted);
+    font-size: 0.69rem;
+    font-weight: 780;
+    text-transform: uppercase;
+  }
+}
+
+@media (max-width: 720px) {
+  .summary-grid-six,
+  .summary-grid-five,
+  .completed-filter-grid,
+  .plan-config-grid,
+  .plan-summary-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .section-title-row,
+  .plan-editor-header,
+  .detail-section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .document-upload-panel,
+  .document-item {
+    grid-template-columns: 1fr;
+  }
+
+  .document-type {
+    width: 42px;
+    height: 42px;
+  }
+
+  .document-actions .btn {
+    flex: 1;
+  }
+
+  .plan-total-row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .plan-schedule-wrap,
+  .history-wrap {
+    overflow-x: auto;
+  }
+}
+
+@media (max-width: 460px) {
+  .app-nav a {
+    min-width: 0;
+    flex-basis: 100%;
+  }
+
+  .plan-performance-table td {
+    grid-template-columns: 1fr;
+    gap: 3px;
+  }
+}
+
+/* Version 4 workflow additions */
+.operations-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  padding: 16px;
+  margin-bottom: 18px;
+}
+
+.operations-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.operations-heading h2 { margin: 0 0 3px; color: var(--navy); font-size: 1.08rem; }
+.operations-heading p { margin: 0; color: var(--muted); font-size: .86rem; }
+
+.operations-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(120px, 1fr));
+  gap: 9px;
+}
+
+.operation-card {
+  appearance: none;
+  border: 1px solid var(--border);
+  border-top: 4px solid var(--teal);
+  border-radius: 10px;
+  background: #f9fbfc;
+  padding: 11px;
+  text-align: left;
+  cursor: pointer;
+  color: var(--text);
+  min-width: 0;
+}
+
+.operation-card:hover,
+.operation-card.active { outline: 3px solid rgba(8, 127, 140, .14); background: #fff; }
+.operation-card.danger { border-top-color: var(--overdue-accent); }
+.operation-card.purple { border-top-color: var(--plan-accent); }
+.operation-card.gold { border-top-color: var(--partial-accent); }
+.operation-card.green { border-top-color: var(--paid-accent); }
+.operation-card.blue { border-top-color: var(--ready-accent); }
+.operation-card .operation-label { display: block; color: var(--muted); font-size: .72rem; font-weight: 800; text-transform: uppercase; letter-spacing: .025em; }
+.operation-card strong { display: block; margin: 4px 0 1px; color: var(--navy); font-size: 1.3rem; line-height: 1.1; overflow-wrap: anywhere; }
+.operation-card small { display: block; color: var(--muted); font-size: .69rem; line-height: 1.25; }
+
+.saved-view-bar {
+  display: grid;
+  grid-template-columns: minmax(190px, 1fr) minmax(220px, 1.35fr) auto auto;
+  align-items: end;
+  gap: 10px;
+  padding-top: 13px;
+  margin-top: 13px;
+  border-top: 1px dashed var(--border);
+}
+
+.status-action {
+  appearance: none;
+  font: inherit;
+  cursor: pointer;
+}
+.status-action:hover { box-shadow: 0 0 0 3px rgba(18, 50, 74, .12); }
+.status-pill.grace { color: #9a5b13; border-color: #c98125; background: #fff7e5; }
+.status-pill.promise { color: #0b6f75; border-color: #0b8790; background: #e8fbfc; }
+.status-pill.compact { padding: 3px 7px; font-size: .67rem; }
+
+.patient-link {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  color: var(--navy);
+  font-weight: 850;
+  font-size: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.patient-link:hover { text-decoration: underline; }
+
+.plan-config-grid.extended { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.inline-control { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px; }
+.plan-change-reason { margin: 12px 0 4px; }
+.locked-label { display: block; color: var(--paid-accent); font-size: .66rem; margin-top: 2px; }
+.installment-editor-progress { display: flex; flex-direction: column; color: var(--navy); }
+.installment-editor-progress span { color: var(--muted); font-size: .7rem; }
+.plan-schedule-table { min-width: 760px; }
+
+.details-summary.four-up { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.plan-promise-callout,
+.plan-risk-callout {
+  border-radius: 9px;
+  padding: 10px 12px;
+  margin: 10px 0;
+  font-size: .82rem;
+}
+.plan-promise-callout { border: 1px solid #91d8dc; background: #ebfbfc; color: #095d62; }
+.plan-risk-callout { border: 1px solid #f3aaa4; background: #fff0ef; color: #9c251b; }
+
+.ledger-type {
+  display: inline-flex;
+  border-radius: 999px;
+  padding: 3px 7px;
+  font-size: .68rem;
+  font-weight: 800;
+  border: 1px solid currentColor;
+}
+.ledger-type.positive { color: var(--paid-accent); background: #eefbf2; }
+.ledger-type.negative { color: var(--overdue-accent); background: #fff0ef; }
+.negative-money { color: var(--overdue-accent); }
+
+.activity-section { scroll-margin-top: 10px; }
+.activity-timeline { position: relative; padding-left: 20px; }
+.activity-timeline::before { content: ""; position: absolute; left: 6px; top: 7px; bottom: 7px; width: 2px; background: #dbe5eb; }
+.activity-entry { position: relative; display: grid; grid-template-columns: 1fr; margin-bottom: 12px; }
+.activity-marker { position: absolute; left: -20px; top: 7px; width: 14px; height: 14px; border-radius: 50%; border: 3px solid #fff; background: var(--teal); box-shadow: 0 0 0 1px #a6bac6; }
+.activity-payment .activity-marker { background: var(--paid-accent); }
+.activity-adjustment .activity-marker { background: var(--partial-accent); }
+.activity-plan .activity-marker { background: var(--teal-700); }
+.activity-document .activity-marker { background: #65788a; }
+.activity-completion .activity-marker { background: #18794e; }
+.activity-content { border: 1px solid var(--border); border-radius: 9px; padding: 10px 11px; background: #fff; }
+.activity-heading { display: flex; justify-content: space-between; gap: 14px; }
+.activity-heading strong { color: var(--navy); }
+.activity-heading time { color: var(--muted); font-size: .7rem; white-space: nowrap; }
+.activity-content p { margin: 5px 0 2px; color: #40515f; font-size: .8rem; }
+.activity-content > span { color: var(--muted); font-size: .68rem; }
+
+@media (max-width: 1280px) {
+  .operations-grid { grid-template-columns: repeat(4, minmax(130px, 1fr)); }
+}
+
+@media (max-width: 1000px) {
+  .saved-view-bar { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .plan-config-grid.extended { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .details-summary.four-up { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 700px) {
+  .operations-heading { align-items: flex-start; flex-direction: column; }
+  .operations-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .saved-view-bar, .plan-config-grid.extended { grid-template-columns: 1fr; }
+  .saved-view-bar .btn { width: 100%; }
+  .activity-heading { flex-direction: column; gap: 2px; }
+  .details-summary.four-up { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 430px) {
+  .operations-grid, .details-summary.four-up { grid-template-columns: 1fr; }
+}
+
+/* Version 4.2: simplified navigation, update timestamps, and printable summaries */
+.summary-grid-four {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.cell-tertiary {
+  margin-top: 5px;
+  color: #6b7d89;
+  font-size: 0.66rem;
+  line-height: 1.3;
+}
+
+.section-title-meta {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 9px;
+  flex-wrap: wrap;
+}
+
+.data-refreshed {
+  color: var(--muted);
+  font-size: 0.7rem;
+  white-space: nowrap;
+}
+
+.toolbar-actions-only {
+  margin-left: auto;
+}
+
+@media (max-width: 1250px) {
+  .summary-grid-four {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .summary-grid-four {
+    grid-template-columns: 1fr;
+  }
+
+  .section-title-meta {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .data-refreshed {
+    white-space: normal;
+  }
+
+  .toolbar-actions-only {
+    margin-left: 0;
+  }
+}
+
+
+/* Version 5 payment-workflow refinements ---------------------------------- */
+.health-green {
+  border-left-color: var(--paid-accent) !important;
+  background: #eef9f2;
+}
+
+.health-yellow {
+  border-left-color: #c38a00 !important;
+  background: #fff8d8;
+}
+
+.health-red {
+  border-left-color: var(--overdue-accent) !important;
+  background: #ffe8ea;
+}
+
+.status-pill.health-green {
+  color: var(--paid-accent);
+  border-color: #86c9a0;
+  background: #eefaf2;
+}
+
+.status-pill.health-yellow {
+  color: #7a5b00;
+  border-color: #d4b34e;
+  background: #fff7d2;
+}
+
+.status-pill.health-red {
+  color: var(--overdue-accent);
+  border-color: #eeaaa5;
+  background: #fff0ef;
+}
+
+.status-pill.uf-flag {
+  color: #155f8d;
+  border-color: #83b6d7;
+  background: #eef7fd;
+}
+
+.status-pill.uf-pending {
+  color: #4d6676;
+  border-color: #aebdc7;
+  background: #f5f8fa;
+}
+
+.status-pill.status-subline {
+  flex-basis: 100%;
+  width: fit-content;
+}
+
+.status-note-input {
+  width: 100%;
+  margin-top: 7px;
+  padding: 6px 7px;
+  border-radius: 7px;
+  font-size: .71rem;
+  background: rgba(255, 255, 255, .9);
+}
+
+.status-note-readonly {
+  margin-top: 6px;
+  padding: 5px 7px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  color: #40515f;
+  background: rgba(255, 255, 255, .75);
+  font-size: .71rem;
+}
+
+.btn-build-schedule {
+  min-height: 46px;
+  padding: 11px 18px;
+  font-size: .9rem;
+  box-shadow: 0 6px 16px rgba(8, 127, 140, .16);
+}
+
+.build-schedule-action {
+  grid-column: 1 / -1;
+  justify-content: flex-start;
+  padding-top: 2px;
+}
+
+.plan-target-note {
+  color: #234553;
+  background: #edf7f8;
+}
+
+.plan-total-row.manual {
+  color: #345261;
+  border-color: #c5d9df;
+  background: #f5fafb;
+}
+
+.responsibility-choice {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px;
+}
+
+.responsibility-option {
+  min-width: 0;
+  padding: 7px 8px;
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #314754;
+  background: #fff;
+  font-size: .72rem;
+  font-weight: 760;
+  cursor: pointer;
+}
+
+.responsibility-option:has(input:checked) {
+  border-color: var(--teal-700);
+  box-shadow: 0 0 0 2px rgba(8, 127, 140, .12);
+  background: #effafb;
+}
+
+.responsibility-option input,
+.uf-verify-control input {
+  width: auto;
+  margin: 0;
+}
+
+.uf-verify-control {
+  margin-top: 7px;
+  padding: 7px 8px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #155f8d;
+  background: #eef7fd;
+  font-size: .71rem;
+  font-weight: 760;
+}
+
+.uf-check-flag {
+  margin-top: 6px;
+  padding: 6px 7px;
+  border: 1px solid #e1bd68;
+  border-radius: 7px;
+  color: #6f5200;
+  background: #fff8da;
+  font-size: .68rem;
+  font-weight: 800;
+}
+
+.health-progress {
+  background: var(--paid-accent);
+}
+
+.plan-schedule-table {
+  min-width: 860px;
+}
+
+.plan-schedule-table th:nth-child(1),
+.plan-schedule-table td:nth-child(1) { width: 16%; }
+.plan-schedule-table th:nth-child(2),
+.plan-schedule-table td:nth-child(2) { width: 17%; }
+.plan-schedule-table th:nth-child(3),
+.plan-schedule-table td:nth-child(3) { width: 15%; }
+.plan-schedule-table th:nth-child(4),
+.plan-schedule-table td:nth-child(4) { width: 15%; }
+.plan-schedule-table th:nth-child(5),
+.plan-schedule-table td:nth-child(5) { width: 37%; }
+
+/* Version 5.1 UF verification and responsibility progress ---------------- */
+.status-pill.uf-flag-action {
+  appearance: none;
+  font: inherit;
+  font-size: .69rem;
+  font-weight: 840;
+  line-height: 1.25;
+  cursor: pointer;
+}
+
+.status-pill.uf-flag-action:hover {
+  filter: brightness(.96);
+  box-shadow: 0 0 0 2px rgba(21, 95, 141, .10);
+}
+
+.plan-financial-stack {
+  gap: 4px;
+}
+
+.plan-progress-amounts,
+.plan-progress-heading {
+  margin-top: 5px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  color: var(--navy-800);
+  font-size: .67rem;
+}
+
+.plan-progress-amounts strong,
+.plan-progress-heading strong {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.plan-progress-heading {
+  margin: 0 0 6px;
+  font-size: .76rem;
+}
+
+.plan-account-summary,
+.plan-balance-cards {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.uf-verification-callout {
+  margin: 0 0 12px;
+  padding: 10px 12px;
+  border: 1px solid #83b6d7;
+  border-left: 4px solid #287aa8;
+  border-radius: 9px;
+  color: #174f70;
+  background: #eef7fd;
+  font-size: .78rem;
+}
+
+.detail-uf-check {
+  min-width: 108px;
+  padding: 6px 8px;
+  border: 1px solid #b9cbd7;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #31566c;
+  background: #f7fbfd;
+  font-size: .7rem;
+  font-weight: 780;
+  cursor: pointer;
+}
+
+.detail-uf-check.attention {
+  border-color: #5c9fc6;
+  box-shadow: 0 0 0 2px rgba(40, 122, 168, .10);
+  background: #eef7fd;
+}
+
+.detail-uf-check input {
+  width: auto;
+  margin: 0;
+  accent-color: var(--teal-700);
+}
+
+.uf-check-inline-flag {
+  margin-top: 4px;
+  color: #155f8d;
+  font-size: .64rem;
+  font-weight: 800;
+}
+
+#paymentPlanDetailsSection .plan-history-table {
+  min-width: 880px;
+}
+
+@media (max-width: 900px) {
+  .plan-account-summary,
+  .plan-balance-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Version 5.6 workflow refinements */
+.completion-balance-callout,
+.completion-summary-callout {
+  margin: 0 0 14px;
+  padding: 11px 13px;
+  border: 1px solid #b9d8c5;
+  border-left: 4px solid var(--success);
+  border-radius: 9px;
+  color: #285a3f;
+  background: #f0faf3;
+  font-size: .82rem;
+}
+
+.completion-balance-callout.has-balance,
+.completion-summary-callout.has-balance {
+  border-color: #e6c66e;
+  border-left-color: var(--warning);
+  color: #664b00;
+  background: #fff9e8;
+}
+
+.completion-reason-inline {
+  margin-top: 5px;
+  font-style: italic;
+}
+
+.simplified-financial-summary {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+/* The active work queue was a little too small/dense on desktop displays.
+   Increase operational text modestly without making the table bulky. */
+.payment-board-page .cell-primary { font-size: .86rem; }
+.payment-board-page .cell-secondary { font-size: .78rem; }
+.payment-board-page .mrn { font-size: .78rem; }
+.payment-board-page .financial-line { font-size: .76rem; }
+.payment-board-page .financial-line strong { font-size: .82rem; }
+.payment-board-page .financial-line.balance strong { font-size: .94rem; }
+.payment-board-page .date-main { font-size: .83rem; }
+.payment-board-page .date-relative { font-size: .74rem; }
+.payment-board-page .status-pill { font-size: .72rem; }
+.payment-board-page .status-note-input { font-size: .75rem; }
+.payment-board-page .plan-progress-label { font-size: .71rem; }
+.payment-board-page .plan-progress-subtext,
+.payment-board-page .plan-progress-amounts { font-size: .69rem; }
+
+@media (max-width: 820px) {
+  .simplified-financial-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 520px) {
+  .simplified-financial-summary { grid-template-columns: 1fr; }
+}
+
+.status-pill.uf-age {
+  color: #4f6878;
+  border-color: #c4d1d9;
+  background: #f7fafb;
+  font-weight: 760;
+}
+
+
+/* Version 5.7 readability and queue-polish refinements --------------------- */
+.collapsible-panel {
+  overflow: hidden;
+}
+
+.collapsible-summary {
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+}
+
+.collapsible-summary::-webkit-details-marker { display: none; }
+.collapsible-summary::marker { content: ""; }
+
+.collapse-control {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 72px;
+  justify-content: flex-end;
+  color: var(--teal-700);
+  font-size: .78rem;
+  font-weight: 840;
+}
+
+.collapse-chevron {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+  border: 1px solid #bfd1d9;
+  border-radius: 999px;
+  background: #f4fafb;
+  font-size: 1.35rem;
+  line-height: 1;
+  transform: rotate(90deg);
+  transition: transform .16s ease;
+}
+
+.collapsible-panel[open] .collapse-chevron { transform: rotate(-90deg); }
+.collapsible-panel[open] .collapse-label::after { content: "Hide"; }
+.collapsible-panel:not([open]) .collapse-label::after { content: "Show"; }
+.collapsible-panel .collapse-label { font-size: 0; }
+.collapsible-panel .collapse-label::after { font-size: .78rem; }
+.collapsible-content { border-top: 0; }
+
+/* Make the active board easier to scan from the front desk without making
+   the overall row height dramatically larger. */
+.payment-board-page .cell-primary { font-size: .98rem; line-height: 1.35; }
+.payment-board-page .cell-secondary { font-size: .90rem; line-height: 1.35; }
+.payment-board-page .mrn { font-size: .85rem; }
+.payment-board-page .cell-tertiary { font-size: .75rem; }
+.payment-board-page .status-pill { font-size: .83rem; padding: 5px 9px; }
+.payment-board-page .date-kicker { font-size: .74rem; }
+.payment-board-page .date-main { font-size: .93rem; }
+.payment-board-page .date-relative { font-size: .82rem; }
+.payment-board-page .status-note-input { font-size: .82rem; }
+.payment-board-page .plan-progress-label { font-size: .79rem; }
+.payment-board-page .plan-progress-subtext,
+.payment-board-page .plan-progress-amounts { font-size: .77rem; }
+
+.status-overdue-amount,
+.status-due-amount {
+  flex-basis: 100%;
+  display: block;
+  margin-top: 2px;
+  padding-left: 2px;
+  font-size: .83rem;
+  font-weight: 760;
+  line-height: 1.3;
+  font-variant-numeric: tabular-nums;
+}
+.status-overdue-amount { color: #9f1d17; }
+.status-due-amount { color: #8a5700; }
+.status-overdue-amount strong,
+.status-due-amount strong { font-size: .90rem; }
+
+.payment-board-page .actions {
+  display: grid;
+  grid-template-columns: 1.12fr .72fr 1.34fr 1fr;
+  gap: 6px;
+  width: 100%;
+  align-items: stretch;
+}
+
+.payment-board-page .board-action-btn {
+  min-width: 0;
+  min-height: 38px;
+  padding: 8px 6px;
+  border-radius: 8px;
+  font-size: .74rem;
+  font-weight: 820;
+  white-space: nowrap;
+}
+
+/* "Payments" is the longest first-row action label. Give it a little more
+   room and slightly tighter type so it never clips at normal desktop widths. */
+.payment-board-page .board-action-btn[data-action="payments"] {
+  padding-inline: 5px;
+  font-size: .70rem;
+  letter-spacing: -.012em;
+}
+
+@media (max-width: 1300px) {
+  .payment-board-page .actions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 820px) {
+  .payment-board-page .actions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .collapse-control { min-width: auto; }
+}
+
+/* Version 2 final presentation font polish: active-board working text enlarged ~5–8%. */
+
+/* Version 2.1 boss-feedback workflow -------------------------------------- */
+.treatment-flag-picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 8px 0 2px;
+}
+
+.treatment-flag-picker label,
+.treatment-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid #b9cbd4;
+  border-radius: 999px;
+  background: #f5fafb;
+  color: #274454;
+  font-weight: 780;
+}
+
+.treatment-flag-picker label {
+  padding: 7px 10px;
+  cursor: pointer;
+  font-size: .78rem;
+}
+
+.treatment-flag-picker label:has(input:checked) {
+  border-color: var(--teal-700);
+  background: #eaf8f9;
+  box-shadow: 0 0 0 2px rgba(8, 127, 140, .10);
+}
+
+.treatment-flag-picker input {
+  width: auto;
+  margin: 0;
+  accent-color: var(--teal-700);
+}
+
+.treatment-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.treatment-badge {
+  padding: 4px 7px;
+  font-size: .72rem;
+  line-height: 1.2;
+  white-space: normal;
+}
+
+.payment-board-page .treatment-badge {
+  font-size: .80rem;
+  padding: 5px 8px;
+}
+
+.responsibility-financial-stack {
+  gap: 7px;
+}
+
+.financial-group {
+  padding-top: 5px;
+  border-top: 1px solid rgba(107, 132, 146, .24);
+}
+
+.financial-group:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.financial-group-title {
+  margin-bottom: 3px;
+  color: #284858;
+  font-size: .68rem;
+  font-weight: 850;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: .025em;
+}
+
+.payment-board-page .financial-group-title {
+  font-size: .73rem;
+}
+
+.financial-adjustment-note {
+  margin-top: 2px;
+  padding-top: 4px;
+  border-top: 1px dashed #c7d3da;
+}
+
+.payments-workspace-dialog {
+  width: min(1380px, calc(100vw - 24px));
+  max-width: 1380px;
+}
+
+/* The payments workspace is intentionally wider than the other dialogs.
+   The schedule is the working surface, so preserve every control rather than
+   clipping the far-right action column. */
+.payments-workspace-dialog .modal-body {
+  padding-inline: 14px;
+}
+
+.responsibility-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.responsibility-summary-card {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(21, 45, 59, .04);
+}
+
+.responsibility-summary-card.total { border-top: 4px solid var(--navy-700); }
+.responsibility-summary-card.acc { border-top: 4px solid var(--teal-700); }
+.responsibility-summary-card.uf { border-top: 4px solid #287aa8; }
+
+.responsibility-summary-card h3 {
+  margin: 0 0 9px;
+  color: var(--navy-800);
+  font-size: .82rem;
+}
+
+.responsibility-summary-card > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  padding: 3px 0;
+  font-size: .78rem;
+}
+
+.responsibility-summary-card > div span { color: #58707f; }
+.responsibility-summary-card > div strong {
+  color: var(--navy-900);
+  font-variant-numeric: tabular-nums;
+}
+
+.payment-workspace-section {
+  margin-top: 16px;
+}
+
+.payments-workspace-dialog .history-wrap {
+  overflow-x: auto;
+  scrollbar-gutter: stable;
+}
+
+.payments-schedule-table {
+  min-width: 1180px;
+  table-layout: auto;
+}
+
+/* Give schedule columns deliberate widths so the editable controls stay
+   readable and the action column always has room for both buttons. */
+.payments-schedule-table th:nth-child(1),
+.payments-schedule-table td:nth-child(1) { width: 44px; min-width: 44px; }
+.payments-schedule-table th:nth-child(2),
+.payments-schedule-table td:nth-child(2) { width: 150px; min-width: 150px; }
+.payments-schedule-table th:nth-child(3),
+.payments-schedule-table td:nth-child(3) { width: 155px; min-width: 155px; }
+.payments-schedule-table th:nth-child(4),
+.payments-schedule-table td:nth-child(4) { width: 125px; min-width: 125px; }
+.payments-schedule-table th:nth-child(5),
+.payments-schedule-table td:nth-child(5) { width: 118px; min-width: 118px; }
+.payments-schedule-table th:nth-child(6),
+.payments-schedule-table td:nth-child(6) { width: 124px; min-width: 124px; }
+.payments-schedule-table th:nth-child(7),
+.payments-schedule-table td:nth-child(7) { width: 118px; min-width: 118px; }
+.payments-schedule-table th:nth-child(8),
+.payments-schedule-table td:nth-child(8) {
+  width: 220px;
+  min-width: 220px;
+}
+
+.payments-schedule-table input[type="date"],
+.payments-schedule-table input[type="number"],
+.payments-schedule-table select {
+  width: 100%;
+  min-width: 0;
+  font-size: .76rem;
+}
+
+/* Keep the schedule action available while horizontally scrolling on smaller
+   screens. This also prevents the Remove button from disappearing off-screen. */
+.payments-schedule-table th:last-child,
+.payments-schedule-table td:last-child {
+  position: sticky;
+  right: 0;
+  z-index: 2;
+  box-shadow: -8px 0 12px -12px rgba(17, 46, 63, .45);
+}
+.payments-schedule-table th:last-child {
+  z-index: 3;
+  background: #f7fafb;
+}
+.payments-schedule-table td:last-child { background: #ffffff; }
+
+.schedule-row-actions {
+  display: grid;
+  grid-template-columns: minmax(118px, 1fr) 74px;
+  gap: 6px;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.schedule-row-actions .btn {
+  width: 100%;
+  min-width: 0;
+  padding-inline: 7px;
+}
+
+.payment-ledger-table {
+  min-width: 1120px;
+}
+
+.payment-summary-six {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+#paymentPlanContext {
+  margin: 10px 0 14px;
+  padding: 10px 12px;
+  border: 1px solid #c7d8df;
+  border-radius: 9px;
+  background: #f5fafb;
+  color: #304d5c;
+  font-size: .78rem;
+}
+
+@media (max-width: 900px) {
+  .responsibility-summary-grid { grid-template-columns: 1fr; }
+  .payment-summary-six { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 560px) {
+  .payment-summary-six { grid-template-columns: 1fr; }
+}
+
+/* Version 2.1.1 UI hotfix: wider Payments workspace, protected schedule actions,
+   and main-board Payments button text-fit polish. */
+
+
+/* Version 2.1.2 View Details polish
+   Keep header/footer anchored, reset the content viewport cleanly, and allow
+   wide schedule/ledger tables to scroll inside the summary instead of clipping. */
+#detailsDialog {
+  width: min(1180px, calc(100vw - 36px));
+  max-width: 1180px;
+  max-height: 92vh;
+}
+
+#detailsDialog[open] {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  height: min(88vh, 900px);
+  overflow: hidden;
+}
+
+#detailsDialog .modal-header {
+  padding: 18px 20px;
+}
+
+#detailsDialog .modal-header h2 {
+  font-size: 1.18rem;
+}
+
+#detailsDialog .modal-body {
+  min-height: 0;
+  max-height: none;
+  padding: 20px 20px 26px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-gutter: stable;
+  scroll-padding-top: 14px;
+}
+
+#detailsDialog .responsibility-summary-grid {
+  margin-bottom: 20px;
+}
+
+#detailsDialog .detail-section {
+  margin-top: 22px;
+  padding-top: 19px;
+  border-top: 1px solid #e3eaee;
+}
+
+#detailsDialog .detail-section:first-of-type {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+
+#detailsDialog .detail-section h3 {
+  font-size: 1rem;
+}
+
+#detailsDialog .detail-grid {
+  gap: 11px 18px;
+}
+
+#detailsDialog .history-wrap {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-gutter: stable;
+}
+
+#detailsDialog .history-table {
+  margin: 0;
+}
+
+#detailsDialog .modal-footer {
+  min-height: 62px;
+  padding: 11px 20px;
+  background: #f7fafb;
+  box-shadow: 0 -6px 18px rgba(18, 50, 74, .05);
+}
+
+#detailsDialog .modal-footer .btn {
+  min-height: 40px;
+  padding-inline: 15px;
+}
+
+@media (max-width: 760px) {
+  #detailsDialog {
+    width: calc(100vw - 18px);
+  }
+
+  #detailsDialog[open] {
+    height: 94vh;
+    max-height: 94vh;
+  }
+
+  #detailsDialog .modal-header,
+  #detailsDialog .modal-body,
+  #detailsDialog .modal-footer {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+}
+
+/* Version 2.1.4 — active-board visual hierarchy polish -------------------- */
+/* This pass is intentionally visual only. It does not change status,
+   responsibility, payment, UF, completion, or reporting logic. */
+
+/* Give each row a little more breathing room while preserving density. */
+.payment-board-page .payment-table th,
+.payment-board-page .payment-table td {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.payment-board-page .payment-table tbody tr:hover td {
+  background: rgba(248, 251, 252, .72);
+}
+
+/* Patient identity should be the clearest text anchor in each row. */
+.payment-board-page .patient-link {
+  font-size: 1.03rem;
+  line-height: 1.24;
+  letter-spacing: -.008em;
+}
+
+.payment-board-page .mrn {
+  margin-top: 4px;
+}
+
+.payment-board-page .cell-tertiary {
+  margin-top: 6px;
+}
+
+/* Treatment, site, and insurance get slightly more room and cleaner spacing. */
+.payment-board-page .treatment-badges {
+  gap: 6px;
+  align-content: flex-start;
+}
+
+.payment-board-page .treatment-badge {
+  padding: 6px 9px;
+  border-color: #aec5cf;
+  background: #f4fafb;
+  font-size: .82rem;
+  line-height: 1.18;
+}
+
+.payment-board-page td[data-label="Site & Insurance"] .cell-primary {
+  font-size: 1rem;
+  line-height: 1.28;
+}
+
+.payment-board-page td[data-label="Site & Insurance"] .cell-secondary {
+  margin-top: 5px;
+  font-size: .92rem;
+  line-height: 1.28;
+}
+
+/* Make the immediately actionable dollar amount the strongest secondary
+   signal in Status, without competing with the primary status pill. */
+.payment-board-page .status-stack {
+  gap: 6px;
+}
+
+.payment-board-page .status-overdue-amount,
+.payment-board-page .status-due-amount {
+  margin-top: 1px;
+  padding: 6px 8px;
+  border-radius: 7px;
+  font-size: .88rem;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.payment-board-page .status-overdue-amount {
+  border: 1px solid rgba(159, 29, 23, .18);
+  background: rgba(255, 240, 239, .88);
+}
+
+.payment-board-page .status-due-amount {
+  border: 1px solid rgba(138, 87, 0, .18);
+  background: rgba(255, 248, 228, .9);
+}
+
+.payment-board-page .status-overdue-amount strong,
+.payment-board-page .status-due-amount strong {
+  font-size: .98rem;
+  font-weight: 900;
+}
+
+/* Keep quick notes useful but visually below the actual work status. */
+.payment-board-page .status-note-input {
+  margin-top: 8px;
+  font-size: .80rem;
+  background: rgba(255, 255, 255, .92);
+}
+
+/* Tighten the dense responsibility block so the board spends more width on
+   treatment/site context while keeping all boss-requested financial values. */
+.payment-board-page .responsibility-financial-stack {
+  gap: 5px;
+}
+
+.payment-board-page .financial-group {
+  padding-top: 4px;
+}
+
+.payment-board-page .financial-group-title {
+  margin-bottom: 2px;
+  font-size: .70rem;
+  line-height: 1.12;
+  letter-spacing: .018em;
+}
+
+.payment-board-page .financial-line {
+  gap: 5px;
+  font-size: .75rem;
+  line-height: 1.22;
+}
+
+.payment-board-page .financial-line strong {
+  font-size: .81rem;
+}
+
+.payment-board-page .financial-line.balance {
+  margin-top: 1px;
+  padding: 2px 4px;
+  border-radius: 5px;
+  background: rgba(244, 248, 250, .88);
+}
+
+.payment-board-page .financial-line.balance strong {
+  font-size: .90rem;
+}
+
+.payment-board-page .plan-progress-block {
+  margin-top: 7px;
+}
+
+/* Four predictable action controls: same height/type treatment, while the
+   longer labels receive proportionally more width. */
+.payment-board-page .actions {
+  grid-template-columns: 1.20fr .72fr 1.38fr 1.04fr;
+  gap: 7px;
+}
+
+.payment-board-page .board-action-btn,
+.payment-board-page .board-action-btn[data-action="payments"] {
+  min-height: 42px;
+  padding: 9px 6px;
+  border-radius: 9px;
+  font-size: .72rem;
+  font-weight: 830;
+  letter-spacing: 0;
+}
+
+@media (max-width: 1300px) {
+  .payment-board-page .payment-table th,
+  .payment-board-page .payment-table td {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+}
+
+
+/* Version 2.1.5 — collapsible active patient rows ------------------------- */
+.patient-cell-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  min-width: 0;
+}
+
+.row-collapse-toggle {
+  width: 27px;
+  height: 27px;
+  flex: 0 0 27px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -2px;
+  padding: 0;
+  border: 1px solid #b9ccd5;
+  border-radius: 7px;
+  background: rgba(255,255,255,.88);
+  color: #17445f;
+  font-size: 1rem;
+  font-weight: 900;
+  line-height: 1;
+  cursor: pointer;
+  transition: background .12s ease, border-color .12s ease, transform .12s ease;
+}
+
+.row-collapse-toggle:hover {
+  background: #ffffff;
+  border-color: #7ea7b8;
+}
+
+.row-collapse-toggle:focus-visible {
+  outline: 3px solid rgba(0, 134, 146, .22);
+  outline-offset: 2px;
+}
+
+.collapsed-financial-summary {
+  display: none;
+}
+
+.patient-row.is-collapsed td {
+  padding-top: 9px !important;
+  padding-bottom: 9px !important;
+  vertical-align: middle;
+}
+
+.patient-row.is-collapsed .mrn,
+.patient-row.is-collapsed .cell-tertiary,
+.patient-row.is-collapsed td[data-label="Site & Insurance"] .cell-secondary,
+.patient-row.is-collapsed .status-note-input,
+.patient-row.is-collapsed .status-stack .status-subline,
+.patient-row.is-collapsed .status-overdue-amount,
+.patient-row.is-collapsed .status-due-amount,
+.patient-row.is-collapsed .expanded-financial-content {
+  display: none !important;
+}
+
+.patient-row.is-collapsed .patient-cell-heading {
+  align-items: center;
+}
+
+.patient-row.is-collapsed .patient-link {
+  font-size: .98rem;
+}
+
+.patient-row.is-collapsed .treatment-badges {
+  gap: 4px;
+}
+
+.patient-row.is-collapsed .treatment-badge {
+  padding: 4px 7px;
+  font-size: .75rem;
+}
+
+.patient-row.is-collapsed td[data-label="Site & Insurance"] .cell-primary {
+  font-size: .90rem;
+}
+
+.patient-row.is-collapsed .collapsed-financial-summary {
+  display: grid;
+  gap: 3px;
+}
+
+.collapsed-financial-primary {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  color: #315364;
+  font-size: .76rem;
+  line-height: 1.2;
+}
+
+.collapsed-financial-primary strong {
+  color: #102f43;
+  font-size: .93rem;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.collapsed-financial-secondary {
+  color: #637a86;
+  font-size: .71rem;
+  line-height: 1.2;
+}
+
+.patient-row.is-collapsed .date-kicker {
+  font-size: .67rem;
+  line-height: 1.15;
+}
+
+.patient-row.is-collapsed .date-main {
+  margin-top: 2px;
+  font-size: .86rem;
+}
+
+.patient-row.is-collapsed .date-relative {
+  margin-top: 1px;
+  font-size: .70rem;
+}
+
+.patient-row.is-collapsed .actions {
+  gap: 5px;
+}
+
+.patient-row.is-collapsed .board-action-btn,
+.patient-row.is-collapsed .board-action-btn[data-action="payments"] {
+  min-height: 36px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+#toggleAllRowsButton {
+  min-width: 126px;
+}
+
+@media (max-width: 760px) {
+  .patient-row.is-collapsed .mrn,
+  .patient-row.is-collapsed .cell-tertiary,
+  .patient-row.is-collapsed td[data-label="Site & Insurance"] .cell-secondary,
+  .patient-row.is-collapsed .status-note-input,
+  .patient-row.is-collapsed .status-stack .status-subline,
+  .patient-row.is-collapsed .status-overdue-amount,
+  .patient-row.is-collapsed .status-due-amount,
+  .patient-row.is-collapsed .expanded-financial-content {
+    display: block !important;
+  }
+
+  .patient-row.is-collapsed .collapsed-financial-summary {
+    display: none;
+  }
+}
+
+
+/* Version 2.1.7 — dark mode -------------------------------------------------
+   A site-wide, persistent dark theme for all pages, tables, cards, dialogs,
+   payment windows, analytics, completed patients, and responsive layouts. */
+html[data-theme="dark"] {
+  --background: #081118;
+  --surface: #101b24;
+  --surface-muted: #14232d;
+  --border: #263a47;
+  --border-strong: #3a5362;
+  --text: #e8f0f5;
+  --muted: #a8bac5;
+  --muted-2: #7f95a3;
+  --shadow-sm: 0 5px 18px rgba(0, 0, 0, .28);
+  --shadow-md: 0 18px 42px rgba(0, 0, 0, .38);
+  --focus: 0 0 0 3px rgba(48, 190, 201, .24);
+
+  --ready: #10283a;
+  --ready-accent: #75b9e6;
+  --due: #322711;
+  --due-accent: #f0c56e;
+  --overdue: #35181b;
+  --overdue-accent: #ff8c86;
+  --partial: #302b12;
+  --partial-accent: #e8c85c;
+  --plan: #241b3a;
+  --plan-accent: #b89cff;
+  --paid: #123322;
+  --paid-accent: #72d49a;
+  --none: #1a2730;
+  --none-accent: #a9bac5;
+  --danger: #ff918c;
+  --success: #72d49a;
+  --warning: #f0c56e;
+  --chart-1: #3fc1ca;
+  --chart-2: #75b9e6;
+  --chart-3: #b89cff;
+  --chart-4: #e7bb4c;
+  --chart-5: #72d49a;
+  --chart-6: #ff8c86;
+  color-scheme: dark;
+}
+
+html[data-theme="dark"] body {
+  color: var(--text);
+  background: radial-gradient(circle at 50% -20%, #132635 0, #081118 42%, #071017 100%);
+}
+
+/* Header stays brand-dark in both themes, with a slightly brighter active tab. */
+html[data-theme="dark"] .app-header {
+  background: linear-gradient(135deg, #071b29, #123a52);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, .34);
+}
+html[data-theme="dark"] .app-nav a.active {
+  color: #071b29;
+  background: #eaf4f8;
+}
+html[data-theme="dark"] .theme-toggle {
+  color: #f3fbff;
+  border-color: rgba(160, 215, 231, .38);
+  background: rgba(117, 185, 230, .10);
+}
+html[data-theme="dark"] .theme-toggle:hover {
+  background: rgba(117, 185, 230, .18);
+}
+
+/* Strong text that used navy on the light theme. */
+html[data-theme="dark"] :is(
+  .page-heading h2, .summary-value, .kpi-value, .panel-header h3,
+  .patient-name, .patient-link, .financial-line strong,
+  .financial-line.balance strong, .empty-state strong, .mini-card strong,
+  .detail-section h3, .chart-header h3, .horizontal-bar-value,
+  .donut-center strong, .legend-item strong, .insight-card strong,
+  .section-title-row h2, .record-count-badge, .plan-editor-header h3,
+  .document-list-heading h3, .document-info strong, .document-empty strong,
+  .responsibility-summary-card h3, .responsibility-summary-card > div strong,
+  .operation-card strong, .activity-heading strong,
+  .collapsed-financial-primary strong
+) {
+  color: #e8f4fa;
+}
+
+html[data-theme="dark"] :is(
+  .cell-primary, .date-main, .detail-item strong, .vertical-bar-value,
+  .horizontal-bar-label, .legend-item, .breakdown-table td,
+  .activity-content p, .collapsed-financial-primary,
+  #paymentPlanContext
+) {
+  color: #c6d5de;
+}
+
+html[data-theme="dark"] .mrn { color: #9bb0bd; }
+
+/* Inputs and editable controls */
+html[data-theme="dark"] :is(input, select, textarea) {
+  color: var(--text);
+  border-color: var(--border-strong);
+  background: #0d1821;
+  accent-color: #35b9c3;
+}
+html[data-theme="dark"] :is(input, select, textarea)::placeholder { color: #6f8592; }
+html[data-theme="dark"] :is(input, select, textarea):hover { border-color: #587484; }
+html[data-theme="dark"] :is(input, select, textarea):disabled {
+  color: #8295a1;
+  background: #17242d;
+}
+html[data-theme="dark"] input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(.9); }
+
+/* Buttons */
+html[data-theme="dark"] .btn-secondary {
+  color: #dceaf1;
+  border-color: #39505e;
+  background: #1a2a34;
+}
+html[data-theme="dark"] .btn-ghost {
+  color: #cfe4ed;
+  border-color: #314754;
+  background: #101b24;
+}
+html[data-theme="dark"] .btn-danger {
+  color: #ffaaa6;
+  border-color: #713d3c;
+  background: #301b1d;
+}
+html[data-theme="dark"] .btn-success {
+  color: #90e2ae;
+  border-color: #35664a;
+  background: #183225;
+}
+
+/* Notice stays intentionally warm, but is toned down for a dark canvas. */
+html[data-theme="dark"] .notice {
+  color: #f3d68a;
+  border-color: #70591f;
+  border-left-color: #d5a82d;
+  background: #2a2413;
+}
+html[data-theme="dark"] .notice strong { color: #ffe3a0; }
+
+/* Tabs, table chrome, saved views, and analytics cards. */
+html[data-theme="dark"] .view-tabs { background: #0e1a23; }
+html[data-theme="dark"] .tab { color: #a9bac5; background: #17252f; }
+html[data-theme="dark"] .tab.active {
+  color: #eff8fb;
+  border-bottom-color: #101b24;
+  background: #101b24;
+}
+html[data-theme="dark"] .table-meta,
+html[data-theme="dark"] .section-title-row { background: #101b24; }
+html[data-theme="dark"] :is(
+  .payment-table th, .breakdown-table th, .history-table th,
+  .plan-performance-table th, .payments-schedule-table th,
+  .payment-ledger-table th
+) {
+  color: #b8cad4;
+  background: #14232d;
+}
+html[data-theme="dark"] .payment-table tbody tr:hover td { background: rgba(255,255,255,.025); }
+html[data-theme="dark"] .operation-card,
+html[data-theme="dark"] .insight-card {
+  color: var(--text);
+  background: #121f28;
+}
+html[data-theme="dark"] .operation-card:hover,
+html[data-theme="dark"] .operation-card.active { background: #172731; }
+html[data-theme="dark"] .vertical-bar-track,
+html[data-theme="dark"] .horizontal-bar-track,
+html[data-theme="dark"] .rate-track { background: #22323c; }
+html[data-theme="dark"] .donut { background: conic-gradient(#263741 0 100%); }
+
+/* Status rows remain instantly recognizable without glowing on a dark screen. */
+html[data-theme="dark"] .status-pill {
+  background: rgba(5, 13, 19, .48);
+}
+html[data-theme="dark"] .status-pill.grace { color: #efbd67; border-color: #a8772d; background: #302610; }
+html[data-theme="dark"] .status-pill.promise { color: #66d4da; border-color: #318f96; background: #102d31; }
+html[data-theme="dark"] .ledger-type.positive { background: #143323; }
+html[data-theme="dark"] .ledger-type.negative { background: #35191b; }
+html[data-theme="dark"] .plan-promise-callout { color: #7edee2; border-color: #327c82; background: #102d31; }
+html[data-theme="dark"] .plan-risk-callout { color: #ffaaa5; border-color: #75403e; background: #321a1c; }
+
+/* Modals and every nested payment/details window */
+html[data-theme="dark"] dialog {
+  color: var(--text);
+  background: #101b24;
+  box-shadow: 0 28px 88px rgba(0, 0, 0, .62);
+}
+html[data-theme="dark"] dialog::backdrop {
+  background: rgba(1, 7, 11, .76);
+  backdrop-filter: blur(3px);
+}
+html[data-theme="dark"] .modal-header { background: #0b2a3d; }
+html[data-theme="dark"] .modal-footer,
+html[data-theme="dark"] #detailsDialog .modal-footer { background: #0d1821; }
+html[data-theme="dark"] .form-callout,
+html[data-theme="dark"] #paymentPlanContext {
+  color: #b1c3cd;
+  border-color: #304957;
+  background: #12212a;
+}
+html[data-theme="dark"] .mini-card,
+html[data-theme="dark"] .responsibility-summary-card {
+  background: #13212b;
+}
+html[data-theme="dark"] .detail-item { border-bottom-color: #223540; }
+html[data-theme="dark"] #detailsDialog .detail-section { border-top-color: #223540; }
+html[data-theme="dark"] .payments-schedule-table th:last-child { background: #14232d; }
+html[data-theme="dark"] .payments-schedule-table td:last-child { background: #101b24; }
+html[data-theme="dark"] .activity-timeline::before { background: #2a3e4a; }
+html[data-theme="dark"] .activity-marker { border-color: #101b24; box-shadow: 0 0 0 1px #536b79; }
+html[data-theme="dark"] .activity-content { background: #13212b; }
+
+/* Active-board visual polish in dark mode. */
+html[data-theme="dark"] .payment-board-page .treatment-badge {
+  color: #d5e9f1;
+  border-color: #3d5967;
+  background: #162933;
+}
+html[data-theme="dark"] .payment-board-page .status-note-input { background: rgba(8, 18, 25, .88); }
+html[data-theme="dark"] .payment-board-page .financial-line.balance { background: rgba(29, 45, 55, .78); }
+html[data-theme="dark"] .payment-board-page .status-overdue-amount {
+  color: #ffaaa5;
+  border-color: rgba(255, 140, 134, .28);
+  background: rgba(78, 24, 26, .68);
+}
+html[data-theme="dark"] .payment-board-page .status-due-amount {
+  color: #f4cd79;
+  border-color: rgba(240, 197, 110, .28);
+  background: rgba(68, 49, 15, .68);
+}
+html[data-theme="dark"] .row-collapse-toggle {
+  color: #bfe1ee;
+  border-color: #3c5968;
+  background: rgba(13, 28, 37, .92);
+}
+html[data-theme="dark"] .row-collapse-toggle:hover { background: #172a35; border-color: #5a7d8e; }
+html[data-theme="dark"] .collapsed-financial-primary { color: #bbced8; }
+html[data-theme="dark"] .collapsed-financial-secondary { color: #91a6b3; }
+
+/* Miscellaneous legacy light surfaces used throughout older workflows. */
+html[data-theme="dark"] :is(
+  .document-card, .plan-summary, .installment-card, .history-card,
+  .adjustment-card, .detail-note, .completed-financial-box
+) { background: #13212b; }
+html[data-theme="dark"] :is(.document-empty, .plan-empty, .empty-callout) { background: #12202a; }
+
+/* Scrollbars: subtle enough for all long dialogs and tables. */
+html[data-theme="dark"] * {
+  scrollbar-color: #3b5665 #0c171f;
+}
+html[data-theme="dark"] *::-webkit-scrollbar { width: 11px; height: 11px; }
+html[data-theme="dark"] *::-webkit-scrollbar-track { background: #0c171f; }
+html[data-theme="dark"] *::-webkit-scrollbar-thumb {
+  border: 2px solid #0c171f;
+  border-radius: 999px;
+  background: #3b5665;
+}
+html[data-theme="dark"] *::-webkit-scrollbar-thumb:hover { background: #4d6d7e; }
+
+/* Additional dark-mode coverage for legacy workflow surfaces and callouts. */
+html[data-theme="dark"] .notes-box,
+html[data-theme="dark"] .plan-schedule-wrap,
+html[data-theme="dark"] .document-item,
+html[data-theme="dark"] .responsibility-option,
+html[data-theme="dark"] .plan-total-row.manual,
+html[data-theme="dark"] .status-note-readonly {
+  color: #c6d5de;
+  border-color: var(--border);
+  background: #121f28;
+}
+html[data-theme="dark"] .responsibility-option:has(input:checked) {
+  color: #e2f3f6;
+  border-color: #36aebb;
+  background: #123039;
+}
+html[data-theme="dark"] .plan-target-note {
+  color: #a9d7df;
+  background: #122a31;
+}
+html[data-theme="dark"] .plan-schedule-table th {
+  color: #b8cad4;
+  background: #14232d;
+}
+html[data-theme="dark"] .plan-total-row.balanced {
+  color: #92ddb0;
+  border-color: #3b6e50;
+  background: #153024;
+}
+html[data-theme="dark"] .plan-total-row.unbalanced,
+html[data-theme="dark"] .completion-balance-callout.has-balance,
+html[data-theme="dark"] .completion-summary-callout.has-balance {
+  color: #f2cf7d;
+  border-color: #745e25;
+  background: #302711;
+}
+html[data-theme="dark"] .plan-payment-context {
+  color: #cfbfff;
+  border-color: #55437c;
+  background: #241d35;
+}
+html[data-theme="dark"] .document-warning,
+html[data-theme="dark"] .uf-check-flag {
+  color: #f0cf7d;
+  border-color: #735d25;
+  background: #302711;
+}
+html[data-theme="dark"] .document-type {
+  color: #c8b4ff;
+  background: #2a2140;
+}
+html[data-theme="dark"] .health-green {
+  border-left-color: var(--paid-accent) !important;
+  background: #123021;
+}
+html[data-theme="dark"] .health-yellow {
+  border-left-color: #e7b942 !important;
+  background: #332a12;
+}
+html[data-theme="dark"] .health-red {
+  border-left-color: var(--overdue-accent) !important;
+  background: #36191b;
+}
+html[data-theme="dark"] .status-pill.health-green {
+  color: #79d99d;
+  border-color: #42815a;
+  background: #173726;
+}
+html[data-theme="dark"] .status-pill.health-yellow {
+  color: #f1cc6b;
+  border-color: #8a6c21;
+  background: #352b11;
+}
+html[data-theme="dark"] .status-pill.health-red {
+  color: #ff9a94;
+  border-color: #82413f;
+  background: #38191c;
+}
+html[data-theme="dark"] .status-pill.uf-flag {
+  color: #86c7ef;
+  border-color: #477d9e;
+  background: #122b3a;
+}
+html[data-theme="dark"] .status-pill.uf-age {
+  color: #b2c5d0;
+  border-color: #49606e;
+  background: #17242d;
+}
+html[data-theme="dark"] .toast {
+  color: #bce9cc;
+  border-color: #41765a;
+  border-left-color: var(--success);
+  background: #173126;
+}
+html[data-theme="dark"] .toast.error {
+  color: #ffb0ab;
+  border-color: #7b4140;
+  border-left-color: var(--danger);
+  background: #351b1d;
+}
+html[data-theme="dark"] .activity-content p { color: #c1d1da; }
+html[data-theme="dark"] .status-note-readonly { color: #b9cad4; }
+html[data-theme="dark"] .payment-board-page .status-note-input::placeholder { color: #78909d; }
+html[data-theme="dark"] .payments-schedule-table td:last-child {
+  border-left-color: #263a47;
+}
+
+/* Version 3 authenticated-session controls */
+.session-user {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+.session-username {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0 10px;
+  border: 1px solid rgba(255,255,255,.25);
+  border-radius: 999px;
+  color: #fff;
+  font-size: .82rem;
+  font-weight: 750;
+  white-space: nowrap;
+}
+.session-admin-link,
+.session-logout {
+  min-height: 34px;
+  border-radius: 9px;
+  border: 1px solid rgba(255,255,255,.25);
+  background: rgba(255,255,255,.10);
+  color: #fff;
+  padding: 0 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .78rem;
+  font-weight: 760;
+  text-decoration: none;
+  cursor: pointer;
+}
+.session-admin-link:hover,
+.session-logout:hover { background: rgba(255,255,255,.18); }
+#paymentUsername[readonly] { opacity: .92; cursor: default; }
+@media (max-width: 980px) {
+  .session-user { width: 100%; justify-content: center; }
+}
+.shared-update-banner {
+  position: fixed;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+  z-index: 12000;
+  width: min(760px, calc(100% - 28px));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 14px 12px 16px;
+  border: 1px solid #3b7cab;
+  border-radius: 13px;
+  background: #e8f4fc;
+  color: #153d59;
+  box-shadow: 0 15px 38px rgba(18, 53, 78, .22);
+}
+.shared-update-banner button {
+  flex: 0 0 auto;
+  min-height: 36px;
+  padding: 0 13px;
+  border: 0;
+  border-radius: 9px;
+  background: #155f8d;
+  color: #fff;
+  font-weight: 800;
+  cursor: pointer;
+}
+[data-theme="dark"] .shared-update-banner {
+  background: #173247;
+  color: #d9efff;
+  border-color: #4c96c8;
+}
+@media (max-width: 620px) { .shared-update-banner { align-items: stretch; flex-direction: column; } }

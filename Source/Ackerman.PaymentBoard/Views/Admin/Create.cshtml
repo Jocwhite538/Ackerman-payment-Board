@@ -1,0 +1,15 @@
+@model CreateUserViewModel
+@{ ViewData["Title"] = "Add User"; }
+<div class="auth-card">
+  <h2>Add user</h2>
+  <p class="intro">Finance and Front Desk can both use Standard User for now. The new user will be required to change the temporary password at first sign-in.</p>
+  <div asp-validation-summary="ModelOnly"></div>
+  <form method="post" class="auth-form">
+    @Html.AntiForgeryToken()
+    <div><label asp-for="Username"></label><input asp-for="Username" autocomplete="off" /><span asp-validation-for="Username"></span></div>
+    <div><label asp-for="TemporaryPassword">Temporary password</label><input asp-for="TemporaryPassword" autocomplete="new-password" /><span asp-validation-for="TemporaryPassword"></span></div>
+    <div><label asp-for="Role"></label><select asp-for="Role"><option value="StandardUser">Standard User (Finance / Front Desk)</option><option value="SuperUser">Super User</option></select></div>
+    <button class="btn btn-primary" type="submit">Create User</button>
+    <a class="btn btn-ghost" href="/admin">Cancel</a>
+  </form>
+</div>

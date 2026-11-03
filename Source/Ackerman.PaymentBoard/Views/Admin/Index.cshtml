@@ -1,0 +1,22 @@
+@model IReadOnlyList<AppUser>
+@using Ackerman.PaymentBoard.Models
+@{ ViewData["Title"] = "User Management"; var audit = ViewBag.Audit as IReadOnlyList<AuditEntry> ?? Array.Empty<AuditEntry>(); }
+<div class="admin-shell">
+  <div class="admin-heading"><div><h2>User Management</h2><p>Super Users can add users, reset passwords, change roles, and enable or disable accounts.</p></div><div class="admin-actions"><a class="btn btn-primary" href="/admin/create">+ Add User</a><a class="btn btn-ghost" href="/app">Payment Board</a></div></div>
+  @if (TempData["Message"] is string msg){<div class="alert success">@msg</div>}
+  @if (TempData["Error"] is string err){<div class="alert error">@err</div>}
+  <section class="admin-panel">
+    <table class="admin-table"><thead><tr><th>User</th><th>Role</th><th>Status</th><th>Last Login</th><th>Actions</th></tr></thead><tbody>
+    @foreach (var user in Model){
+      <tr><td><strong>@user.Username</strong>@if(user.MustChangePassword){<div class="cell-secondary">Password change required</div>}</td><td>@user.Role</td><td>@(user.IsActive ? "Active" : "Disabled")</td><td>@(user.LastLoginUtc?.ToLocalTime().ToString("g") ?? "Never")</td><td><div class="admin-actions">
+        <form method="post" action="/admin/set-role/@user.Id">@Html.AntiForgeryToken()<select name="role">@if(user.Role==Roles.StandardUser){<option value="StandardUser">Standard User</option><option value="SuperUser">Super User</option>}else{<option value="SuperUser">Super User</option><option value="StandardUser">Standard User</option>}</select><button class="btn btn-ghost btn-small" type="submit">Set Role</button></form>
+        <form method="post" action="/admin/reset-password">@Html.AntiForgeryToken()<input type="hidden" name="UserId" value="@user.Id"/><input type="password" name="TemporaryPassword" minlength="5" placeholder="Temporary password" required/><button class="btn btn-secondary btn-small" type="submit">Reset Password</button></form>
+        <form method="post" action="/admin/toggle-active/@user.Id">@Html.AntiForgeryToken()<button class="btn @(user.IsActive ? "btn-danger" : "btn-primary") btn-small" type="submit">@(user.IsActive ? "Disable" : "Enable")</button></form>
+      </div></td></tr>
+    }
+    </tbody></table>
+  </section>
+  <section class="admin-panel"><h3>Recent Security / Admin Activity</h3><div class="audit-list">
+    @foreach (var item in audit){<div class="audit-row"><span>@item.TimestampUtc.ToLocalTime().ToString("g")</span><strong>@item.Username</strong><span>@item.Action</span><span>@item.Details</span></div>}
+  </div></section>
+</div>

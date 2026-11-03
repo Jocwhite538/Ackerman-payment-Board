@@ -1,0 +1,8 @@
+{
+  "name": "ackerman-payment-board-browser-tests",
+  "private": true,
+  "description": "Multi-user browser tests for the Ackerman Patient Payment Board (run against the stand-in server).",
+  "devDependencies": {
+    "playwright": "1.63.0"
+  }
+}
