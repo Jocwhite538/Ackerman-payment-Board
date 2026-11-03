@@ -1,0 +1,90 @@
+name: Build and test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  api-tests:
+    name: Real server tests (Linux)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Build
+        run: dotnet build Source/Ackerman.PaymentBoard/Ackerman.PaymentBoard.csproj -c Release
+      - name: Start the app (Development settings, demo patients, Eastern time)
+        working-directory: Source/Ackerman.PaymentBoard
+        env:
+          ASPNETCORE_ENVIRONMENT: Development
+          ASPNETCORE_URLS: http://127.0.0.1:5087
+          TZ: America/New_York
+        run: nohup dotnet run -c Release --no-build --no-launch-profile > "$RUNNER_TEMP/app.log" 2>&1 &
+      - name: API checks against the real server
+        env:
+          APP_URL: http://127.0.0.1:5087
+        run: node tests/api/smoke.mjs
+      - name: App log
+        if: always()
+        run: cat "$RUNNER_TEMP/app.log"
+
+  browser-tests:
+    name: Multi-user browser tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: tests/browser
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install
+      - run: npx playwright install --with-deps chromium
+      - name: Merge and normalization unit tests
+        run: |
+          node seed.js ../../Source/Ackerman.PaymentBoard/wwwroot/assets
+          node unit.js ../../Source/Ackerman.PaymentBoard/wwwroot/assets
+      - name: Three users at once (23 checks)
+        run: |
+          node mock-server.js ../../Source/Ackerman.PaymentBoard 5099 legacy.json > mock.log 2>&1 &
+          SERVER=$!
+          sleep 2
+          node concurrency.js http://localhost:5099
+          kill $SERVER
+      - name: Twelve users on the same patients
+        run: |
+          MOCK_LATENCY_MS=15 node mock-server.js ../../Source/Ackerman.PaymentBoard 5099 legacy.json > mock.log 2>&1 &
+          SERVER=$!
+          sleep 2
+          node stress.js http://localhost:5099 12 6
+          kill $SERVER
+
+  iis-package:
+    name: IIS deployment package (Windows)
+    needs: [ api-tests, browser-tests ]
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: Build IIS folder
+        shell: powershell
+        run: ./Build/Build-IIS-Drop.ps1
+      - name: Upload IIS-ready folder
+        uses: actions/upload-artifact@v4
+        with:
+          name: Ackerman-IIS-Site-Version-3.3
+          path: IIS_SITE_OUTPUT/
+          if-no-files-found: error
